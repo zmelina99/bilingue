@@ -1,0 +1,181 @@
+{
+  "meta": {
+    "title": "Bilingue · Sprachcoaching & Lektorat",
+    "description": "Cours particuliers et soutien scolaire en allemand et en français, révision de travaux de fin d'études"
+  },
+  "header": {
+    "homeLabel": "Accueil",
+    "languageSwitcher": "Langue",
+    "languages": {
+      "fr": "Français",
+      "de": "Deutsch",
+      "en": "English"
+    },
+    "nav": {
+      "label": "Navigation principale",
+      "courses": "Coaching linguistique",
+      "editing": "Édition"
+    },
+    "menu": "Menu"
+  },
+  "common": {
+    "contact": "Contact",
+    "termsSubtitle": "Conditions générales de vente"
+  },
+  "hero": {
+    "title": "Cours particuliers et soutien scolaire en allemand et en français,",
+    "accent": "révision de travaux de fin d'études",
+    "body": "Parce que derrière Bilingue se trouve une spécialiste des langues et des textes parfaitement bilingue, qui maintient vos connaissances linguistiques à jour et met votre travail de bachelor ou de master en forme, que ce soit sur le plan grammatical, stylistique ou du contenu. En tant que réviseuse, je suis aussi la partenaire idéale de toutes les entreprises et maisons d'édition qui communiquent en Suisse romande.",
+    "imageAlt": "Trois hommes dans une bibliothèque lisent ensemble un journal (illustration)"
+  },
+  "courses": {
+    "meta": {
+      "description": "Cours particuliers et soutien scolaire en allemand et en français : cours individuels, à deux, en petits groupes et de conversation."
+    },
+    "imageAlt": "Deux femmes à une table, l'une lit un livre (peinture)",
+    "offer": {
+      "title": "Mon offre",
+      "items": [
+        {
+          "title": "Cours d'allemand",
+          "body": "Mes cours d'allemand : texte à venir."
+        },
+        {
+          "title": "Cours de français",
+          "body": "Mes cours de français : texte à venir."
+        },
+        {
+          "title": "Cours de conversation",
+          "body": "Mes cours de conversation : texte à venir."
+        }
+      ]
+    },
+    "rates": {
+      "title": "Tarifs",
+      "intro": "Mes tarifs dépendent de la nature de ma prestation. Je garantis toutefois toujours une qualité maximale et un service optimal, que j'accompagne des élèves, des adultes, des personnes migrantes ou des candidats à la naturalisation.",
+      "rows": [
+        {
+          "label": "Cours individuel",
+          "value": "CHF 90.–/45 min"
+        },
+        {
+          "label": "Cours à deux",
+          "value": "CHF 60.– par personne/45 min"
+        },
+        {
+          "label": "Petits groupes (4–5 élèves)",
+          "value": "CHF 40.–/50 min"
+        },
+        {
+          "label": "Conversation",
+          "value": "CHF 80.–/45 min"
+        }
+      ],
+      "note": "Pour une évaluation du niveau, je soumets volontiers mes tarifs sur demande."
+    },
+    "terms": {
+      "title": "CGV",
+      "pending": "Conditions générales à venir."
+    }
+  },
+  "editing": {
+    "meta": {
+      "description": "Correction, révision, réécriture et post-édition de textes, traductions et travaux de fin d'études en allemand et en français."
+    },
+    "imageAlt": "Affiche « The Chap-Book » : une femme en bleu",
+    "clients": {
+      "title": "Clients",
+      "subtitle": "De B à W",
+      "external": "s’ouvre dans un nouvel onglet",
+      "showAll": "Afficher tous les clients",
+      "showLess": "Afficher moins"
+    },
+    "services": {
+      "title": "Prestations",
+      "items": [
+        {
+          "title": "Correction",
+          "body": "Ma correction vérifie et corrige vos textes et traductions en allemand et en français sur le plan grammatical et formel : du manuscrit aux épreuves, à la mise en page, au bon à tirer et jusqu'à la révision finale. Je ne contrôle pas seulement l'orthographe, la grammaire, la ponctuation et la syntaxe. Je veille aussi à l'uniformité de la terminologie, je démêle les incohérences et je prends en compte la typographie, afin que votre message soit correct de A à Z."
+        },
+        {
+          "title": "Révision",
+          "body": "Ma révision évalue vos textes et traductions en allemand et en français quant au contenu, au style, à la tonalité, à la force d'expression et à la logique. Le texte est traité comme une œuvre d'ensemble, cohérente jusque dans les moindres détails. Sur demande, je ne me limite pas à l'évaluation : je retravaille des phrases isolées, des passages entiers ou la totalité du texte."
+        },
+        {
+          "title": "Réécriture",
+          "body": "Ma réécriture va un cran plus loin dans le traitement de vos textes et traductions en allemand et en français. Contrairement à la révision, j'étudie le contenu en profondeur et restructure ses aspects selon les besoins. J'écris ensuite le texte à nouveau, raccourcis ou allonge des passages en respectant le sens, et vous livre un texte qui transmet simplement même des messages complexes. L'adaptation de textes internationaux au marché suisse et à ses particularités en fait également partie."
+        },
+        {
+          "title": "Post-édition",
+          "body": "Ma post-édition répond à une tendance confortable mais trompeuse : les traductions automatiques de l'allemand vers le français et inversement. Bien que les traducteurs automatiques soient de plus en plus performants, les textes sont souvent pleins d'incohérences, notamment dans les subtilités de la langue. Dans la « petite » post-édition, je rends vos traductions automatiques compréhensibles et exemptes de fautes d'orthographe et de grammaire ; dans la « grande » post-édition, je les retravaille aussi sur le plan stylistique."
+        }
+      ]
+    },
+    "rates": {
+      "title": "Tarifs",
+      "intro": "Mes tarifs dépendent de la nature de ma prestation. Je garantis toutefois toujours une qualité maximale et un service optimal, que je travaille pour des entreprises, des maisons d'édition, des agences de publicité, des bureaux de rédaction ou d'autres mandants.",
+      "rows": [
+        {
+          "label": "Correction / révision",
+          "value": "CHF 110.–/h"
+        },
+        {
+          "label": "Réécriture / toilettage de texte",
+          "value": "CHF 130.–/h"
+        },
+        {
+          "label": "Post-édition",
+          "value": "CHF 130.–/h"
+        },
+        {
+          "label": "Tarif minimum pour petits mandats",
+          "value": "CHF 55.–"
+        }
+      ],
+      "note": "Pour les mandats volumineux, je soumets volontiers mes tarifs sur demande."
+    },
+    "terms": {
+      "title": "CGV",
+      "items": [
+        "Sauf convention contraire, le prix de la prestation fournie est fixé selon les conditions publiées sur www.bilingue.ch au moment du mandat.",
+        "La facturation intervient en règle générale après la livraison, sous la forme d'une facture envoyée par la poste. Elle est payable sans déduction dans un délai de 30 jours.",
+        "Si le mandant annule le mandat, le travail déjà effectué doit être payé.",
+        "Sauf convention contraire, le mandataire peut faire appel à des tiers pour l'exécution du mandat.",
+        "Les données et informations transmises par le mandant sont traitées de manière confidentielle. Le mandataire engage également les tiers participants à la confidentialité.",
+        "Les textes sont traités avec le plus grand soin. Si le mandant constate malgré tout des défauts, il en informe le mandataire par écrit. Les réclamations sont acceptées jusqu'à 14 jours après la facturation ; passé ce délai, la prestation est réputée acceptée.",
+        "En cas d'erreur résultant d'une intention avérée ou d'une négligence grave, une réparation en nature est fournie jusqu'à concurrence du montant du mandat reçu. Toute autre prétention est exclue. Les réclamations portant sur des parties ou des livraisons partielles ne donnent pas droit à contester l'ensemble de la livraison.",
+        "Les délais convenus sont respectés. Le mandataire n'est toutefois pas responsable des retards dus à un cas de force majeure.",
+        "Le mandataire n'assume aucune responsabilité quant aux conséquences commerciales ou juridiques de l'utilisation de ses travaux.",
+        "La transmission de textes et de données entre le mandant et le mandataire s'effectue aux risques du mandant.",
+        "En passant commande, le mandant confirme avoir pris connaissance des présentes conditions générales et les avoir acceptées."
+      ]
+    }
+  },
+  "portrait": {
+    "title": "Portrait",
+    "imageAlt": "Portrait de Danielle Lerch Süess",
+    "paragraphs": [
+      "Je suis spécialiste indépendante des langues et des textes depuis 2002. Je donne des cours d'allemand et de français à des débutants et à des personnes avancées, et je révise des travaux de bachelor et de master. En tant que réviseuse, je travaille en outre sur des textes allemands et français pour des entreprises, des maisons d'édition et des agences de publicité.",
+      "J'ai grandi à Bienne, fille d'une mère germanophone et d'un père francophone. Après mon diplôme de commerce et ma formation au SAWI, j'ai obtenu le diplôme fédéral de responsable de communication, puis le diplôme fédéral de correctrice dans mes langues maternelles, l'allemand et le français. Pendant plus de quinze ans, j'ai formé de futurs correcteurs, j'ai été experte à l'examen fédéral de correcteur et membre de la commission fédérale d'examen. Par ailleurs, j'ai enseigné l'allemand et le français à mon fils jusqu'à sa maturité."
+    ],
+    "role": "Spécialiste des langues et des textes"
+  },
+  "contact": {
+    "title": "Contact",
+    "body": "Votre intérêt pour mes prestations me réjouit. Et peut-être vous réjouirez-vous d'avoir désormais une seule interlocutrice pour deux langues.",
+    "imageAlt": "Paysage de lac et de montagnes (peinture)",
+    "labels": {
+      "address": "Adresse",
+      "email": "E-mail",
+      "phone": "Téléphone",
+      "mobile": "Mobile"
+    }
+  },
+  "footer": {
+    "navLabel": "Pied de page"
+  },
+  "whatsapp": {
+    "label": "Écrire sur WhatsApp",
+    "message": "Bonjour,"
+  }
+}

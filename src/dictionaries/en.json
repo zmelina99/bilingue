@@ -1,0 +1,181 @@
+{
+  "meta": {
+    "title": "Bilingue · Sprachcoaching & Lektorat",
+    "description": "Private lessons and tutoring in German and French, editing of academic theses"
+  },
+  "header": {
+    "homeLabel": "Home",
+    "languageSwitcher": "Language",
+    "languages": {
+      "fr": "Français",
+      "de": "Deutsch",
+      "en": "English"
+    },
+    "nav": {
+      "label": "Main navigation",
+      "courses": "Language coaching",
+      "editing": "Editing"
+    },
+    "menu": "Menu"
+  },
+  "common": {
+    "contact": "Contact",
+    "termsSubtitle": "Terms and conditions"
+  },
+  "hero": {
+    "title": "Private lessons and tutoring in German and French,",
+    "accent": "editing of academic theses",
+    "body": "Because behind Bilingue stands a perfectly bilingual language and text specialist who keeps your language skills up to date and brings your bachelor's or master's thesis into shape, whether grammatically, stylistically or in terms of content. As an editor, I am also the ideal partner for all companies and publishers communicating in French-speaking Switzerland.",
+    "imageAlt": "Three men in a library reading a newspaper together (illustration)"
+  },
+  "courses": {
+    "meta": {
+      "description": "Private lessons and tutoring in German and French: individual lessons, lessons for two, small groups and conversation."
+    },
+    "imageAlt": "Two women at a table, one reading a book (painting)",
+    "offer": {
+      "title": "What I offer",
+      "items": [
+        {
+          "title": "German lessons",
+          "body": "My German lessons: text to follow."
+        },
+        {
+          "title": "French lessons",
+          "body": "My French lessons: text to follow."
+        },
+        {
+          "title": "Conversation courses",
+          "body": "My conversation courses: text to follow."
+        }
+      ]
+    },
+    "rates": {
+      "title": "Rates",
+      "intro": "My rates depend on the type of service. However, I always guarantee the highest quality and the best service, whether I am working with pupils, adults, newcomers to Switzerland or naturalisation applicants.",
+      "rows": [
+        {
+          "label": "Individual lessons",
+          "value": "CHF 90.–/45 min"
+        },
+        {
+          "label": "Lessons for two",
+          "value": "CHF 60.– each/45 min"
+        },
+        {
+          "label": "Small groups (4–5 pupils)",
+          "value": "CHF 40.–/50 min"
+        },
+        {
+          "label": "Conversation",
+          "value": "CHF 80.–/45 min"
+        }
+      ],
+      "note": "For a level assessment I am happy to provide rates on request."
+    },
+    "terms": {
+      "title": "T&Cs",
+      "pending": "Terms and conditions to follow."
+    }
+  },
+  "editing": {
+    "meta": {
+      "description": "Proofreading, editing, rewriting and post-editing of German and French texts, translations and academic theses."
+    },
+    "imageAlt": "“The Chap-Book” poster showing a woman in blue",
+    "clients": {
+      "title": "Clients",
+      "subtitle": "From B to W",
+      "external": "opens in a new tab",
+      "showAll": "Show all clients",
+      "showLess": "Show fewer"
+    },
+    "services": {
+      "title": "Services",
+      "items": [
+        {
+          "title": "Proofreading",
+          "body": "My proofreading checks and corrects your German and French texts and translations for grammar and form: from the manuscript through the galley proof, layout and final proof to the revision. I check not only spelling, grammar, punctuation and syntax. I also make sure terminology is consistent, resolve inconsistencies and review the typography, so that your message is correct from A to Z."
+        },
+        {
+          "title": "Editing",
+          "body": "My editing assesses your German and French texts and translations for content, style, tone, expressiveness and logic. The text is treated as a complete work that should be coherent down to the smallest detail. On request, I go beyond the assessment and clean up individual sentences, whole passages or the entire text."
+        },
+        {
+          "title": "Rewriting",
+          "body": "My rewriting goes one step further in working on your German and French texts and translations. Unlike editing, I study the content from the ground up and restructure its aspects as needed. I then rewrite the original, shorten or extend passages while preserving the meaning, and deliver a text that conveys even complex messages simply. Adapting international texts for the Swiss market and its particularities also belongs here."
+        },
+        {
+          "title": "Post-editing",
+          "body": "My post-editing responds to a convenient but treacherous trend: machine translations from German into French and vice versa. Although so-called translation machines keep getting better, the texts are often full of inconsistencies, especially in linguistic nuances. In “light” post-editing I make your machine translations understandable and free of spelling and grammar errors; in “full” post-editing I also revise them stylistically."
+        }
+      ]
+    },
+    "rates": {
+      "title": "Rates",
+      "intro": "My rates depend on the type of service. However, I always guarantee the highest quality and the best service, whether I am working for companies, publishers, advertising agencies, text agencies or other clients.",
+      "rows": [
+        {
+          "label": "Proofreading/editing",
+          "value": "CHF 110.–/hr"
+        },
+        {
+          "label": "Rewriting/text cleanup",
+          "value": "CHF 130.–/hr"
+        },
+        {
+          "label": "Post-editing",
+          "value": "CHF 130.–/hr"
+        },
+        {
+          "label": "Minimum rate for small jobs",
+          "value": "CHF 55.–"
+        }
+      ],
+      "note": "For extensive jobs I am happy to provide rates on request."
+    },
+    "terms": {
+      "title": "T&Cs",
+      "items": [
+        "Unless otherwise agreed, the price for the service provided is based on the terms published on www.bilingue.ch at the time of the order.",
+        "Invoicing takes place after delivery, as a rule with an invoice sent by post. It is payable without deductions within 30 days.",
+        "If the client cancels the order, the work already carried out must be paid for.",
+        "Unless otherwise agreed, the contractor may call on third parties to fulfil the order.",
+        "Data and information provided by the client are treated confidentially. The contractor also obliges any third parties involved to maintain confidentiality.",
+        "Texts are processed with the greatest care. Should the client nevertheless find defects, they must notify the contractor in writing. Complaints are accepted up to 14 days after invoicing; after that, the service is deemed accepted.",
+        "In the case of demonstrable intent or gross negligence, compensation in kind is provided up to the value of the order received. Further claims are excluded. Complaints about parts or partial deliveries do not entitle the client to complain about the entire delivery.",
+        "Agreed deadlines will be met. However, the contractor is not liable for delays due to force majeure.",
+        "The contractor accepts no liability for commercial or legal consequences arising from the use of their work.",
+        "Texts and data are transmitted between client and contractor at the client's risk.",
+        "By placing an order, the client confirms that they have read and accepted these general terms and conditions."
+      ]
+    }
+  },
+  "portrait": {
+    "title": "Portrait",
+    "imageAlt": "Portrait of Danielle Lerch Süess",
+    "paragraphs": [
+      "I have been a freelance language and text specialist since 2002. I teach German and French to beginners and advanced learners and edit bachelor's and master's theses. As an editor, I also work on German and French texts for companies, publishers and advertising agencies.",
+      "I grew up in Biel/Bienne as the daughter of a German-speaking mother and a French-speaking father. After my commercial diploma and training at SAWI came the federal diploma as a communications manager and later the federal diploma as a proofreader in my native languages, German and French. For more than fifteen years I trained aspiring proofreaders, served as an examiner for the federal proofreader examination and was a member of the federal examination board. I also taught my son German and French up to his Matura."
+    ],
+    "role": "Language and text specialist"
+  },
+  "contact": {
+    "title": "Contact",
+    "body": "I am delighted by your interest in my services. And you may be pleased to have a single contact for two languages from now on.",
+    "imageAlt": "Lake landscape with mountains (painting)",
+    "labels": {
+      "address": "Address",
+      "email": "Email",
+      "phone": "Phone",
+      "mobile": "Mobile"
+    }
+  },
+  "footer": {
+    "navLabel": "Footer"
+  },
+  "whatsapp": {
+    "label": "Chat on WhatsApp",
+    "message": "Hello,"
+  }
+}

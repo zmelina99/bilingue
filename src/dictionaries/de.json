@@ -1,0 +1,181 @@
+{
+  "meta": {
+    "title": "Bilingue · Sprachcoaching & Lektorat",
+    "description": "Privatunterricht und Nachhilfe in Deutsch und Französisch, Lektorat von Abschlussarbeiten"
+  },
+  "header": {
+    "homeLabel": "Startseite",
+    "languageSwitcher": "Sprache",
+    "languages": {
+      "fr": "Français",
+      "de": "Deutsch",
+      "en": "English"
+    },
+    "nav": {
+      "label": "Hauptnavigation",
+      "courses": "Sprachcoaching",
+      "editing": "Lektorat"
+    },
+    "menu": "Menü"
+  },
+  "common": {
+    "contact": "Kontakt",
+    "termsSubtitle": "Allgemeine Geschäftsbedingungen"
+  },
+  "hero": {
+    "title": "Privatunterricht und Nachhilfe in Deutsch und Französisch,",
+    "accent": "Lektorat von Abschlussarbeiten",
+    "body": "Weil hinter Bilingue eine perfekt zweisprachige Sprachen- und Textspezialistin steht, die deine Sprachkenntnisse à jour hält und deine Bachelorarbeit oder Masterarbeit in Form bringt, sei es grammatisch, stilistisch oder inhaltlich. Als Lektorin bin ich auch die ideale Partnerin für alle Unternehmen und Verlage, die in der Westschweiz kommunizieren.",
+    "imageAlt": "Drei Männer in einer Bibliothek lesen gemeinsam eine Zeitung (Illustration)"
+  },
+  "courses": {
+    "meta": {
+      "description": "Privatunterricht und Nachhilfe in Deutsch und Französisch: Einzelunterricht, Unterricht zu zweit, Kleingruppen und Konversation."
+    },
+    "imageAlt": "Zwei Frauen an einem Tisch, eine liest in einem Buch (Gemälde)",
+    "offer": {
+      "title": "Was ich biete",
+      "items": [
+        {
+          "title": "Deutschunterricht",
+          "body": "Mein Deutschunterricht: Text folgt."
+        },
+        {
+          "title": "Französischunterricht",
+          "body": "Mein Französischunterricht: Text folgt."
+        },
+        {
+          "title": "Konversationskurse",
+          "body": "Meine Konversationskurse: Text folgt."
+        }
+      ]
+    },
+    "rates": {
+      "title": "Tarife",
+      "intro": "Meine Tarife hängen von der Art meiner Leistung ab. Immer garantiere ich jedoch für höchste Qualität und besten Service, ob ich Schüler, Erwachsene, Zugewanderte oder Einbürgerungsbewerber betreue.",
+      "rows": [
+        {
+          "label": "Einzelunterricht",
+          "value": "CHF 90.–/45 Min."
+        },
+        {
+          "label": "Unterricht zu zweit",
+          "value": "je CHF 60.–/45 Min."
+        },
+        {
+          "label": "Kleingruppen (4–5 Schüler)",
+          "value": "CHF 40.–/50 Min."
+        },
+        {
+          "label": "Konversation",
+          "value": "CHF 80.–/45 Min."
+        }
+      ],
+      "note": "Für eine Standortbestimmung unterbreite ich die Tarife gerne auf Anfrage."
+    },
+    "terms": {
+      "title": "AGB",
+      "pending": "AGB folgen."
+    }
+  },
+  "editing": {
+    "meta": {
+      "description": "Korrektorat, Lektorat, Rewriting und Postediting für deutsche und französische Texte, Übersetzungen und Abschlussarbeiten."
+    },
+    "imageAlt": "Plakat «The Chap-Book» mit einer Frau in Blau",
+    "clients": {
+      "title": "Kunden",
+      "subtitle": "Von B bis W",
+      "external": "öffnet in neuem Tab",
+      "showAll": "Alle Kunden anzeigen",
+      "showLess": "Weniger anzeigen"
+    },
+    "services": {
+      "title": "Leistungen",
+      "items": [
+        {
+          "title": "Korrektorat",
+          "body": "Mein Korrektorat überprüft und korrigiert Ihre deutschen und französischen Texte und Übersetzungen grammatikalisch und gestalterisch: vom Manuskript über die Fahne, das Layout, das Gut zum Druck bis zur Revision. Dabei kontrolliere ich nicht nur die Orthografie, Grammatik, Interpunktion und Syntax. Ich beachte auch die Einheitlichkeit der Begriffe, entwirre Ungereimtheiten und mache mir ein Bild von der Typografie, sodass Ihre Botschaft von A bis Z korrekt ist."
+        },
+        {
+          "title": "Lektorat",
+          "body": "Mein Lektorat begutachtet Ihre deutschen und französischen Texte und Übersetzungen im Hinblick auf Inhalt, Stil, Tonalität, Aussagekraft und Logik. Der Text wird als ein Gesamtwerk behandelt, das bis in alle Einzelheiten stimmig sein soll. Auf Wunsch bereinige ich über die Begutachtung hinaus einzelne Sätze, ganze Passagen oder den gesamten Text."
+        },
+        {
+          "title": "Rewriting",
+          "body": "Mein Rewriting geht in der Bearbeitung Ihrer deutschen und französischen Texte und Übersetzungen einen Schritt weiter. Im Vergleich zum Lektorat studiere ich den Inhalt von Grund auf und strukturiere seine Aspekte nach Bedarf neu. Danach schreibe ich die Vorlage um, kürze oder verlängere Abschnitte sinngemäss und liefere Ihnen einen Text, der auch komplexe Botschaften einfach transportiert. Das Aufbereiten von internationalen Texten für den Schweizer Markt mit seinen Eigenheiten gehört ebenfalls hierher."
+        },
+        {
+          "title": "Postediting",
+          "body": "Mein Postediting reagiert auf einen bequemen, aber tückischen Trend: auf die automatisch erstellten Übersetzungen aus dem Deutschen ins Französische und umgekehrt. Obwohl sogenannte Übersetzungsmaschinen zusehends leistungsfähiger werden, sind die Texte oft voller Ungereimtheiten, gerade in den sprachlichen Feinheiten. Im «kleinen» Postediting mache ich Ihre maschinellen Übersetzungen verständlich sowie orthografisch und grammatikalisch fehlerfrei, im «grossen» Postediting überarbeite ich sie auch stilistisch."
+        }
+      ]
+    },
+    "rates": {
+      "title": "Tarife",
+      "intro": "Meine Tarife hängen von der Art meiner Leistung ab. Immer garantiere ich jedoch für höchste Qualität und besten Service, ob ich für Unternehmen, Verlage, Werbeagenturen, Textbüros oder andere Auftraggeber arbeite.",
+      "rows": [
+        {
+          "label": "Korrektorat/Lektorat",
+          "value": "CHF 110.–/Std."
+        },
+        {
+          "label": "Rewriting/Textbereinigung",
+          "value": "CHF 130.–/Std."
+        },
+        {
+          "label": "Postediting",
+          "value": "CHF 130.–/Std."
+        },
+        {
+          "label": "Mindesttarif Kleinaufträge",
+          "value": "CHF 55.–"
+        }
+      ],
+      "note": "Für umfangreiche Aufträge unterbreite ich die Tarife gerne auf Anfrage."
+    },
+    "terms": {
+      "title": "AGB",
+      "items": [
+        "Ohne anderslautende Vereinbarung richtet sich der Preis für die erbrachte Dienstleistung nach den zum Auftragszeitpunkt auf www.bilingue.ch publizierten Konditionen.",
+        "Die Rechnungsstellung erfolgt im Anschluss an die Lieferung in der Regel mit einer per Post versandten Faktur. Sie ist ohne Abzüge innerhalb von 30 Tagen zur Zahlung fällig.",
+        "Wird der Auftrag durch den Auftraggeber storniert, ist die bereits geleistete Arbeit zu bezahlen.",
+        "Ohne anderslautende Vereinbarung kann der Auftragnehmer zur Erfüllung des Auftrags die Hilfe Dritter in Anspruch nehmen.",
+        "Die vom Auftraggeber übermittelten Daten und Informationen werden vertraulich behandelt. Der Auftragnehmer verpflichtet mitwirkende Dritte ebenfalls zur Geheimhaltung.",
+        "Die Bearbeitung der Texte erfolgt mit grösster Sorgfalt. Sollte der Auftraggeber dennoch Mängel feststellen, teilt er diese dem Auftragnehmer schriftlich mit. Beanstandungen werden bis 14 Tage nach Rechnungsstellung entgegengenommen, danach gilt die Leistung als akzeptiert.",
+        "Für Fehler wird bei nachweislichem Vorsatz oder grober Fahrlässigkeit Realersatz bis zur Höhe des entgegengenommenen Auftrags geleistet. Weitere Forderungen sind ausgeschlossen. Beanstandungen an Teilen oder Teillieferungen berechtigen nicht zur Beanstandung der gesamten Lieferung.",
+        "Vereinbarte Termine werden eingehalten. Der Auftragnehmer haftet aber nicht für Verzögerungen infolge von höherer Gewalt.",
+        "Der Auftragnehmer übernimmt keine Haftung für geschäftliche oder juristische Folgen der Verwendung seiner Bearbeitungen.",
+        "Die Übermittlung von Texten und Daten zwischen Auftraggeber und Auftragnehmer erfolgt auf Gefahr des Auftraggebers.",
+        "Mit der Auftragserteilung bestätigt der Auftraggeber, dass er die vorliegenden Allgemeinen Geschäftsbedingungen zur Kenntnis genommen und akzeptiert hat."
+      ]
+    }
+  },
+  "portrait": {
+    "title": "Porträt",
+    "imageAlt": "Porträt von Danielle Lerch Süess",
+    "paragraphs": [
+      "Ich bin seit 2002 freiberufliche Sprachen- und Textspezialistin, gebe Deutsch- und Französischunterricht für Anfänger und Fortgeschrittene und lektoriere Bachelor- und Masterarbeiten. Als Lektorin arbeite ich ausserdem an deutschen und französischen Texten für Unternehmen, Verlage und Werbeagenturen.",
+      "Aufgewachsen bin ich als Tochter einer deutschsprachigen Mutter und eines französischsprachigen Vaters in Biel. Nach dem Handelsdiplom folgten nach der Ausbildung am SAWI das eidgenössische Diplom als Kommunikationsleiterin und später das eidgenössische Diplom als Korrektorin in den Muttersprachen Deutsch und Französisch. Ich habe während über fünfzehn Jahren angehende Korrektoren ausgebildet, war Expertin der eidgenössischen Korrektorenprüfung und Mitglied der eidgenössischen Prüfungskommission. Daneben habe ich meinen Sohn bis zum Maturadiplom in Deutsch und Französisch unterrichtet."
+    ],
+    "role": "Sprachen- und Textspezialistin"
+  },
+  "contact": {
+    "title": "Kontakt",
+    "body": "Ich freue mich über dein Interesse an meinen Leistungen. Und du freust dich möglicherweise darüber, künftig eine einzige Ansprechpartnerin für zwei Sprachen zu haben.",
+    "imageAlt": "Seelandschaft mit Bergen (Gemälde)",
+    "labels": {
+      "address": "Adresse",
+      "email": "E-Mail",
+      "phone": "Telefon",
+      "mobile": "Mobil"
+    }
+  },
+  "footer": {
+    "navLabel": "Fusszeile"
+  },
+  "whatsapp": {
+    "label": "Auf WhatsApp schreiben",
+    "message": "Guten Tag,"
+  }
+}
