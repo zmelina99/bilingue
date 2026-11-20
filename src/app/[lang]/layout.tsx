@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
-import { Karla, Newsreader } from "next/font/google";
+import { Cormorant_Garamond, Karla } from "next/font/google";
 import { lang } from "next/root-params";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import { locales } from "@/lib/locales";
 import "../globals.css";
 
-const title = Newsreader({
+const title = Cormorant_Garamond({
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
   style: ["normal", "italic"],
-  variable: "--font-newsreader",
+  variable: "--font-cormorant",
 });
 const sans = Karla({ subsets: ["latin"], variable: "--font-karla" });
 

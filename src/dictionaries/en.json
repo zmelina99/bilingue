@@ -32,21 +32,21 @@
     "meta": {
       "description": "Private lessons and tutoring in German and French: individual lessons, lessons for two, small groups and conversation."
     },
-    "imageAlt": "Two women at a table, one reading a book (painting)",
+    "imageAlt": "A young person reading a book by lamplight, leaning on a table (engraving)",
     "offer": {
       "title": "What I offer",
       "items": [
         {
           "title": "German lessons",
-          "body": "My German lessons: text to follow."
+          "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip."
         },
         {
           "title": "French lessons",
-          "body": "My French lessons: text to follow."
+          "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit."
         },
         {
           "title": "Conversation courses",
-          "body": "My conversation courses: text to follow."
+          "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Ut enim ad minim veniam, quis nostrud exercitation ullamco."
         }
       ]
     },
@@ -82,9 +82,9 @@
     "meta": {
       "description": "Proofreading, editing, rewriting and post-editing of German and French texts, translations and academic theses."
     },
-    "imageAlt": "“The Chap-Book” poster showing a woman in blue",
+    "imageAlt": "Two women at a table, one reading a book (painting)",
     "clients": {
-      "title": "Clients",
+      "title": "Trusted by",
       "subtitle": "From B to W",
       "external": "opens in a new tab",
       "showAll": "Show all clients",
@@ -92,6 +92,7 @@
     },
     "services": {
       "title": "Services",
+      "imageAlt": "Art Nouveau print of a woman reading within an ornamental frame (Alphonse Mucha, 1901)",
       "items": [
         {
           "title": "Proofreading",

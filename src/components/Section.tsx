@@ -16,6 +16,9 @@ type Props = {
   collapsible?: { subtitle: string };
   /** Smaller gap between heading and content. */
   tight?: boolean;
+  /** Controls the alignment of the section heading. */
+  alignment?: "left" | "center";
+  titleColor?: string;
 };
 
 // Every section is either "split" (aside) or "full" (heading row, then content).
@@ -30,8 +33,13 @@ export default function Section({
   aside,
   collapsible,
   tight,
+  alignment = "left",
+  titleColor,
 }: Props) {
   const band = tone === "surface" ? "bg-surface" : "";
+  const isCentered = alignment === "center";
+
+  const headingAlignment = isCentered ? "text-center" : "text-left";
 
   if (collapsible) {
     return (
@@ -42,12 +50,12 @@ export default function Section({
       >
         <details className="group page-x">
           <summary className="flex min-h-20 cursor-pointer list-none items-center justify-between gap-6 py-6 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-foreground md:py-8 [&::-webkit-details-marker]:hidden">
-            <h2
+            <p
               id={`${id}-title`}
-              className="text-2xl leading-tight font-semibold tracking-tight md:text-3xl"
+              className={`text-2xl leading-tight font-semibold tracking-tight md:text-3xl ${headingAlignment}`}
             >
               {title}
-            </h2>
+            </p>
             <span className="flex items-center gap-4 text-foreground/60 transition-colors group-hover:text-primary-800">
               <span className="hidden text-base sm:inline">
                 {collapsible.subtitle}
@@ -80,11 +88,15 @@ export default function Section({
   }
 
   const heading = (
-    <div>
+    <div className={headingAlignment}>
       {eyebrow && <p className="eyebrow">{eyebrow}</p>}
-      <h2 id={`${id}-title`} className={`heading-2 ${eyebrow ? "mt-3" : ""}`}>
+      <p
+        id={`${id}-title`}
+        className={`heading-2 ${eyebrow ? "mt-3" : ""}`}
+        style={{ color: titleColor }}
+      >
         {title}
-      </h2>
+      </p>
     </div>
   );
 
@@ -108,9 +120,17 @@ export default function Section({
         ) : (
           <>
             <div className="grid-page items-end">
-              <div className="md:col-span-7">{heading}</div>
+              <div
+                className={
+                  isCentered && !intro ? "col-span-12" : "md:col-span-7"
+                }
+              >
+                {heading}
+              </div>
               {intro && (
-                <p className="body-text md:col-span-4 md:col-start-9">{intro}</p>
+                <p className="body-text md:col-span-4 md:col-start-9">
+                  {intro}
+                </p>
               )}
             </div>
             {children && (

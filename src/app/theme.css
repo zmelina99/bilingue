@@ -17,10 +17,14 @@
   --color-ink: #10162a;
 
   --color-secondary: #717578;
-  /* Soft grey band behind hero and page headers */
-  --color-surface: #f4f5f7;
+  /* Soft band behind hero and page headers.
+     Two interchangeable options — comment one, uncomment the other. */
+  /* OPTION A — Cool gray (original) */
+  /* --color-surface: #f4f5f7; */
+  /* OPTION B — Warm ivory (proposed) */
+  --color-surface: #f8f6f2;
 
-  --font-title: var(--font-newsreader), Georgia, "Times New Roman", serif;
+  --font-title: var(--font-cormorant), serif;
   --font-sans: var(--font-karla), Arial, Helvetica, sans-serif;
 
   /* Motion */
@@ -40,7 +44,7 @@
 }
 
 @layer base {
-  h1, h2, h3, h4, h5, h6 {
+  h1 {
     font-family: var(--font-title);
     letter-spacing: -0.01em;
   }

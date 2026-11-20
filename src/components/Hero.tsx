@@ -9,11 +9,10 @@ type Props = {
   image: StaticImageData;
   imageAlt: string;
   imageClassName?: string;
-  /** Quick links shown under the hero, separated by thin vertical rules. */
+  /** Quick links shown under the hero. */
   strip?: { label: string; href: string }[];
 };
 
-// Page opener: grey band, big heading on the left, artwork on the right, quick links below.
 export default function Hero({
   eyebrow,
   title,
@@ -25,26 +24,45 @@ export default function Hero({
 }: Props) {
   return (
     <section className="bg-surface">
-      <div className="page-x grid-page items-center pt-10 md:pt-14">
-        <div className="md:col-span-7 lg:col-span-5">
+      {/* Contemporary Literary: text left, artwork right on desktop;
+          on mobile the title leads and the artwork follows. */}
+      <div className="page-x grid-page relative items-center gap-y-8 py-8 md:gap-y-0 md:py-10">
+        {/* Decorative Art Nouveau iris sprig (transparent PNG) growing
+            diagonally from the bottom-left corner. Absolutely positioned and
+            bottom-anchored, sized by height so the tallest bloom reaches near
+            the top without affecting the hero height. Proportions preserved
+            (width auto); hidden below lg where the margin is too narrow. */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/iris-sprig.png"
+          alt=""
+          aria-hidden="true"
+          className="pointer-events-none absolute bottom-0 left-0 hidden h-full w-auto select-none lg:block"
+        />
+
+        {/* Hero text — left column on desktop, first on mobile.
+            At lg+ a left pad clears the full width of the diagonal sprig so the
+            text never overlaps it. */}
+        <div className="md:col-span-5 md:col-start-1 md:row-start-1 lg:col-span-6 lg:pl-[180px] xl:pl-[220px]">
           <p className="motion-safe:animate-fade-up eyebrow">{eyebrow}</p>
+
           <h1
-            className="motion-safe:animate-fade-up mt-3 text-5xl leading-[1.04] font-semibold tracking-tight xl:text-6xl 2xl:text-7xl"
+            className="motion-safe:animate-fade-up mt-3 text-[clamp(2.75rem,6vw,5.25rem)] leading-[1.02] font-semibold tracking-tight text-balance break-words [hyphens:auto]"
             style={{ animationDelay: "80ms" }}
           >
             {title}
           </h1>
-          {actions && (
-            <div
-              className="motion-safe:animate-fade-up mt-6 flex flex-wrap gap-4"
-              style={{ animationDelay: "160ms" }}
-            >
-              {actions}
-            </div>
-          )}
+
+          <div
+            aria-hidden
+            className="motion-safe:animate-fade-up mt-6 h-px w-16 bg-primary-800"
+            style={{ animationDelay: "160ms" }}
+          />
         </div>
+
+        {/* Hero illustration — right column on desktop, below on mobile */}
         <div
-          className="motion-safe:animate-fade-up md:col-span-5 md:col-start-8 lg:col-span-7 lg:col-start-6"
+          className="motion-safe:animate-fade-up md:col-span-6 md:col-start-7 md:row-start-1"
           style={{ animationDelay: "240ms" }}
         >
           <MediaImage
@@ -52,16 +70,18 @@ export default function Hero({
             alt={imageAlt}
             priority
             still
-            sizes="(min-width: 768px) 50vw, 100vw"
-            className="aspect-[2/1] lg:aspect-[5/2]"
+            sizes="(min-width: 768px) 26rem, 100vw"
+            className="aspect-[3/2] w-full max-w-[26rem] md:ml-auto"
             imageClassName={imageClassName}
+            borderRadius
           />
         </div>
       </div>
 
-      {strip && (
+      {/*  TODO Optional quick links */}
+      {/* {strip && strip.length > 0 && (
         <nav className="page-x">
-          <ul className="mt-10 flex flex-wrap gap-x-8 gap-y-3 border-t border-foreground/15 py-6 md:mt-14 md:gap-x-10 md:py-8 lg:grid lg:auto-cols-fr lg:grid-flow-col lg:gap-0">
+          <ul className="flex flex-wrap gap-x-8 gap-y-3 border-t border-foreground/15 py-6 md:gap-x-10 lg:grid lg:auto-cols-fr lg:grid-flow-col lg:gap-0">
             {strip.map(({ label, href }) => (
               <li
                 key={href}
@@ -69,7 +89,7 @@ export default function Hero({
               >
                 <a
                   href={href}
-                  className="font-title text-lg font-semibold transition-colors duration-200 hover:text-primary-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground md:text-xl xl:text-2xl"
+                  className="text-lg font-semibold transition-colors duration-200 hover:text-primary-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground md:text-xl xl:text-2xl"
                 >
                   {label}
                 </a>
@@ -77,8 +97,7 @@ export default function Hero({
             ))}
           </ul>
         </nav>
-      )}
-      {!strip && <div className="h-10 md:h-14" />}
+      )} */}
     </section>
   );
 }

@@ -6,7 +6,7 @@ import PortraitSection from "@/components/PortraitSection";
 import RatesList from "@/components/RatesList";
 import Section from "@/components/Section";
 import ServiceList from "@/components/ServiceList";
-import reading from "@/assets/art/reading.jpg";
+import heroArt from "@/assets/art/SAAM-1971.170_1.jpg";
 import { brand } from "@/data/business";
 import { getDictionary, getLocale } from "@/lib/dictionaries";
 import { slugify } from "@/lib/slug";
@@ -32,14 +32,14 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function CoursesPage() {
   const { header, common, courses } = await getDictionary();
-  const { offer, rates, terms } = courses;
+  const { offer, rates } = courses;
 
   return (
     <main className="flex flex-1 flex-col">
       <Hero
         eyebrow={brand.name}
         title={header.nav.courses}
-        image={reading}
+        image={heroArt}
         imageAlt={courses.imageAlt}
         actions={<ContactButton>{common.contact}</ContactButton>}
         strip={offer.items.map(({ title }) => ({
@@ -61,15 +61,6 @@ export default async function CoursesPage() {
       >
         <p>{rates.intro}</p>
         <p className="text-sm">{rates.note}</p>
-      </Section>
-
-      <Section
-        id="terms"
-        title={terms.title}
-        tone="surface"
-        collapsible={{ subtitle: common.termsSubtitle }}
-      >
-        <p className="text-foreground/70">{terms.pending}</p>
       </Section>
 
       <ContactSection />

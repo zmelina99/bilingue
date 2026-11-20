@@ -32,21 +32,21 @@
     "meta": {
       "description": "Privatunterricht und Nachhilfe in Deutsch und Französisch: Einzelunterricht, Unterricht zu zweit, Kleingruppen und Konversation."
     },
-    "imageAlt": "Zwei Frauen an einem Tisch, eine liest in einem Buch (Gemälde)",
+    "imageAlt": "Eine junge Person liest bei Lampenlicht ein Buch, auf einen Tisch gestützt (Illustration)",
     "offer": {
       "title": "Was ich biete",
       "items": [
         {
           "title": "Deutschunterricht",
-          "body": "Mein Deutschunterricht: Text folgt."
+          "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip."
         },
         {
           "title": "Französischunterricht",
-          "body": "Mein Französischunterricht: Text folgt."
+          "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit."
         },
         {
           "title": "Konversationskurse",
-          "body": "Meine Konversationskurse: Text folgt."
+          "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Ut enim ad minim veniam, quis nostrud exercitation ullamco."
         }
       ]
     },
@@ -82,16 +82,18 @@
     "meta": {
       "description": "Korrektorat, Lektorat, Rewriting und Postediting für deutsche und französische Texte, Übersetzungen und Abschlussarbeiten."
     },
-    "imageAlt": "Plakat «The Chap-Book» mit einer Frau in Blau",
+    "imageAlt": "Zwei Frauen an einem Tisch, eine liest in einem Buch (Gemälde)",
     "clients": {
-      "title": "Kunden",
-      "subtitle": "Von B bis W",
+      "title": "Vertraut von",
+
+      "subtitle": "",
       "external": "öffnet in neuem Tab",
       "showAll": "Alle Kunden anzeigen",
       "showLess": "Weniger anzeigen"
     },
     "services": {
       "title": "Leistungen",
+      "imageAlt": "Jugendstil-Druck einer lesenden Frau in ornamentalem Rahmen (Alfons Mucha, 1901)",
       "items": [
         {
           "title": "Korrektorat",

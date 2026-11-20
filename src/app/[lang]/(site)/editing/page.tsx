@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Clients from "@/components/Clients";
 import ContactButton from "@/components/ContactButton";
 import ContactSection from "@/components/ContactSection";
@@ -7,8 +8,14 @@ import PortraitSection from "@/components/PortraitSection";
 import RatesList from "@/components/RatesList";
 import Section from "@/components/Section";
 import ServiceList from "@/components/ServiceList";
-import chapbook from "@/assets/art/chapbook.jpg";
-import { brand, clients, featuredClients } from "@/data/business";
+import heroArt from "@/assets/art/Thomas_Wilmer_Dewing_-_A_Reading_-_1897.jpg";
+import servicesArt from "@/assets/art/mucha-reading.jpg";
+import {
+  allClients,
+  brand,
+  featuredClientIds,
+  featuredClients,
+} from "@/data/business";
 import { getDictionary, getLocale } from "@/lib/dictionaries";
 import { slugify } from "@/lib/slug";
 import { locales } from "@/lib/locales";
@@ -33,14 +40,14 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function EditingPage() {
   const { header, common, editing } = await getDictionary();
-  const { clients: clientsText, services, rates, terms } = editing;
+  const { clients: clientsText, services, rates } = editing;
 
   return (
     <main className="flex flex-1 flex-col">
       <Hero
         eyebrow={brand.name}
         title={header.nav.editing}
-        image={chapbook}
+        image={heroArt}
         imageAlt={editing.imageAlt}
         imageClassName="object-[50%_50%]"
         actions={<ContactButton>{common.contact}</ContactButton>}
@@ -52,29 +59,35 @@ export default async function EditingPage() {
 
       <PortraitSection />
 
-      <Section
-        id="clients"
-        title={clientsText.title}
-        eyebrow={clientsText.subtitle}
-        tone="surface"
-        tight
-      >
-        <Clients
-          featured={featuredClients.map((f) => ({
-            ...clients.find((c) => c.name === f.name)!,
-            ...f,
-          }))}
-          others={clients.filter(
-            (c) => !featuredClients.some((f) => f.name === c.name),
-          )}
-          showAllLabel={clientsText.showAll}
-          showLessLabel={clientsText.showLess}
-          externalLabel={clientsText.external}
-        />
-      </Section>
+      <section id="clients" className="scroll-mt-16 bg-surface">
+        <div className="page-x py-8 md:py-10">
+          <Clients
+            heading={clientsText.title}
+            featured={featuredClients}
+            others={allClients.filter(
+              (c) => !(featuredClientIds as readonly string[]).includes(c.id),
+            )}
+            showAllLabel={clientsText.showAll}
+            showLessLabel={clientsText.showLess}
+            externalLabel={clientsText.external}
+          />
+        </div>
+      </section>
 
-      <Section id="services" title={services.title}>
-        <ServiceList items={services.items} className="md:grid-cols-2" />
+      <Section id="services" title={services.title} alignment="center">
+        <div className="grid-page items-start">
+          <div className="md:col-span-8">
+            <ServiceList items={services.items} className="sm:grid-cols-2" />
+          </div>
+          <figure className="md:col-span-4 md:col-start-10">
+            <Image
+              src={servicesArt}
+              alt={services.imageAlt}
+              sizes="(min-width: 768px) 33vw, 100vw"
+              className="mx-auto h-auto w-full max-w-[18rem] rounded-2xl md:max-w-none"
+            />
+          </figure>
+        </div>
       </Section>
 
       <Section
@@ -85,20 +98,6 @@ export default async function EditingPage() {
       >
         <p>{rates.intro}</p>
         <p className="text-sm">{rates.note}</p>
-      </Section>
-
-      <Section
-        id="terms"
-        title={terms.title}
-        collapsible={{ subtitle: common.termsSubtitle }}
-      >
-        <ol className="max-w-3xl list-decimal space-y-4 pl-6 text-foreground/70 marker:font-bold marker:text-primary-800">
-          {terms.items.map((item) => (
-            <li key={item} className="pl-2">
-              {item}
-            </li>
-          ))}
-        </ol>
       </Section>
 
       <ContactSection />

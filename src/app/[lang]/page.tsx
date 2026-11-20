@@ -34,16 +34,7 @@ export default async function Home() {
         className="bg-surface/90"
       />
       <main className="relative isolate flex flex-1 flex-col overflow-hidden">
-        {/* Phones: artwork as a quiet backdrop, faded out towards the text. */}
-        <Image
-          src={library}
-          alt=""
-          aria-hidden
-          sizes="100vw"
-          className="absolute inset-x-0 bottom-0 -z-10 h-1/2 w-full object-cover object-[60%_50%] opacity-15 mix-blend-multiply [mask-image:linear-gradient(to_top,black,transparent_90%)] md:hidden"
-        />
-
-        <section className="page-x grid-page flex-1 items-center py-6">
+        <section className="page-x grid-page flex-1 items-center py-5 sm:py-6">
           <div className="md:col-span-6">
             <p className="motion-safe:animate-fade-up eyebrow">{brand.owner}</p>
             <h1
@@ -53,8 +44,24 @@ export default async function Home() {
               {hero.title}{" "}
               <span className="text-primary-800">{hero.accent}</span>
             </h1>
+
+            {/* Phones: the artwork as a real part of the first screen, shown at
+                its natural ratio between the headline and the supporting text. */}
+            <figure
+              className="motion-safe:animate-fade-up mt-5 md:hidden"
+              style={{ animationDelay: "160ms" }}
+            >
+              <Image
+                src={library}
+                alt={hero.imageAlt}
+                priority
+                sizes="100vw"
+                className="h-auto w-full object-contain"
+              />
+            </figure>
+
             <p
-              className="motion-safe:animate-fade-up mt-4 max-w-xl text-sm leading-normal text-foreground/70 sm:mt-6 sm:text-lg sm:leading-relaxed"
+              className="motion-safe:animate-fade-up mt-5 max-w-xl text-sm leading-normal text-foreground/70 sm:mt-6 sm:text-lg sm:leading-relaxed"
               style={{ animationDelay: "160ms" }}
             >
               {hero.body}

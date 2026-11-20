@@ -8,7 +8,7 @@ const link =
 
 export default async function Footer() {
   const lang = await getLocale();
-  const { header, footer } = await getDictionary();
+  const { header, common, footer } = await getDictionary();
 
   const links = [
     { href: `/${lang}/courses`, label: header.nav.courses },
@@ -32,9 +32,14 @@ export default async function Footer() {
         </nav>
       </div>
       <div className="border-t border-foreground/10">
-        <p className="page-x py-4 pr-20 text-xs text-secondary">
-          © {brand.name} · {brand.descriptor}
-        </p>
+        <div className="page-x flex flex-wrap items-center justify-between gap-x-10 gap-y-2 py-4 pr-20 text-xs text-secondary">
+          <p>
+            © {brand.name} · {brand.descriptor}
+          </p>
+          <Link href={`/${lang}/terms`} className={link}>
+            {common.termsSubtitle}
+          </Link>
+        </div>
       </div>
     </footer>
   );
