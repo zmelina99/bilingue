@@ -51,7 +51,7 @@ export default async function EditingPage() {
         imageAlt={editing.imageAlt}
         imageClassName="object-[50%_50%]"
         actions={
-          <ContactButton className="editing__contact-button">
+          <ContactButton arrow className="editing__contact-button">
             {common.contact}
           </ContactButton>
         }
@@ -104,6 +104,7 @@ export default async function EditingPage() {
         id="rates"
         title={rates.title}
         tone="surface"
+        flip
         aside={<RatesList rows={rates.rows} />}
       >
         <p className="font-sans max-md:leading-[1.6] editing__rates-intro">{rates.intro}</p>

@@ -9,7 +9,7 @@ import { getDictionary, getLocale } from "@/lib/dictionaries";
 // present at the end of each service page; the landing page passes a mailto.
 export default async function Header({
   contactHref = "#contact",
-  className = "bg-background/90",
+  className = "bg-background",
 }: {
   contactHref?: string;
   className?: string;
@@ -23,7 +23,7 @@ export default async function Header({
 
   return (
     <header
-      className={`sticky top-0 z-40 border-b border-foreground/10 backdrop-blur-md header ${className}`}
+      className={`sticky top-0 z-40 border-b border-foreground/10 header ${className}`}
     >
       <div className="page-x relative grid h-16 grid-cols-[1fr_auto] items-center gap-x-4 md:grid-cols-[auto_1fr_auto] lg:gap-x-6 header__inner outline-none">
         <Logo className="header__logo outline-none" />

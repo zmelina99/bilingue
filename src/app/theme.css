@@ -29,12 +29,12 @@
 
   /* Motion */
   --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
-  --animate-fade-up: fade-up 0.8s var(--ease-soft) both;
+  --animate-fade-up: fade-up 0.3s var(--ease-soft) both;
 
   @keyframes fade-up {
     from {
       opacity: 0;
-      transform: translateY(1rem);
+      transform: translateY(10px);
     }
     to {
       opacity: 1;

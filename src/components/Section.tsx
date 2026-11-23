@@ -19,6 +19,8 @@ type Props = {
   /** Controls the alignment of the section heading. */
   alignment?: "left" | "center";
   titleColor?: string;
+  /** Split layout only: puts the aside on the left and the text on the right. */
+  flip?: boolean;
 };
 
 // Every section is either "split" (aside) or "full" (heading row, then content).
@@ -35,6 +37,7 @@ export default function Section({
   tight,
   alignment = "left",
   titleColor,
+  flip,
 }: Props) {
   const band = tone === "surface" ? "bg-surface" : "";
   const isCentered = alignment === "center";
@@ -106,16 +109,16 @@ export default function Section({
       aria-labelledby={`${id}-title`}
       className={`scroll-mt-16 section ${isCentered ? "section--centered" : ""} ${tone === "surface" ? "section--surface" : ""} ${band}`}
     >
-      <div className="reveal page-x section-y section__inner">
+      <div className="page-x section-y section__inner">
         {aside ? (
           <div className="grid-page items-start section__split">
-            <div className="md:col-span-4 section__main">
+            <div className={`md:col-span-4 ${flip ? "md:col-start-9 md:row-start-1" : ""} section__main`}>
               {heading}
               <div className="body-text mt-5 max-w-prose space-y-4 md:mt-6 section__text">
                 {children}
               </div>
             </div>
-            <div className="-mt-3 md:mt-0 md:col-span-7 md:col-start-6 section__aside">{aside}</div>
+            <div className={`-mt-3 md:mt-0 md:col-span-7 ${flip ? "md:col-start-1 md:row-start-1" : "md:col-start-6"} section__aside`}>{aside}</div>
           </div>
         ) : (
           <>

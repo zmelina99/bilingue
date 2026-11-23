@@ -44,26 +44,25 @@ export default function Hero({
             At lg+ a left pad clears the full width of the diagonal sprig so the
             text never overlaps it. */}
         <div className="md:col-span-5 md:col-start-1 md:row-start-1 lg:col-span-6 lg:pl-[180px] xl:pl-[220px] hero__content">
-          <p className="motion-safe:animate-fade-up eyebrow hero__eyebrow">{eyebrow}</p>
+          <p className="eyebrow hero__eyebrow">{eyebrow}</p>
 
           <h1
-            className="motion-safe:animate-fade-up mt-3 text-[clamp(2.75rem,6vw,5.25rem)] leading-[1.02] font-semibold tracking-tight text-balance break-words [hyphens:auto] hero__title"
-            style={{ animationDelay: "80ms" }}
+            className="mt-3 text-[clamp(2.5rem,6vw,5.25rem)] leading-[1.02] font-semibold tracking-tight text-balance break-words [hyphens:auto] hero__title"
           >
             {title}
           </h1>
 
           <div
             aria-hidden
-            className="motion-safe:animate-fade-up mt-6 h-px w-16 bg-primary-800 hero__divider"
-            style={{ animationDelay: "160ms" }}
+            className="mt-6 h-px w-16 bg-primary-800 hero__divider"
           />
+          {actions && <div className="mt-8 hero__actions">{actions}</div>}
         </div>
 
         {/* Hero illustration — right column on desktop, below on mobile */}
         <div
           className="motion-safe:animate-fade-up md:col-span-6 md:col-start-7 md:row-start-1 hero__media"
-          style={{ animationDelay: "240ms" }}
+          style={{ animationDelay: "60ms" }}
         >
           <MediaImage
             src={image}

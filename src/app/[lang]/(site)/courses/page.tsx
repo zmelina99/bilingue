@@ -53,7 +53,7 @@ export default async function CoursesPage() {
         image={heroArt}
         imageAlt={courses.imageAlt}
         actions={
-          <ContactButton className="courses__contact-button">
+          <ContactButton arrow className="courses__contact-button">
             {common.contact}
           </ContactButton>
         }

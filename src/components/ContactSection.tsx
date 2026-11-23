@@ -1,14 +1,15 @@
 
 import Image from "next/image";
 import lake from "@/assets/art/lake.jpg";
-import { contact } from "@/data/business";
+import ButtonLink from "@/components/ButtonLink";
+import { brand, contact } from "@/data/business";
 import { getDictionary } from "@/lib/dictionaries";
 
 const label =
   "text-[0.6875rem] font-bold tracking-[0.2em] text-secondary uppercase";
 
 const value =
-  "text-xl transition-colors duration-200 hover:text-primary-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground";
+  "link-underline text-xl hover:text-primary-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground";
 
 // Identical on every page; target of all "Contact" buttons.
 export default async function ContactSection() {
@@ -34,7 +35,7 @@ export default async function ContactSection() {
           className="absolute inset-0 -z-10 bg-linear-to-tr from-primary-950/80 via-primary-950/25 to-transparent contact__overlay"
         />
 
-        <div className="page-x pt-24 pb-12 text-white md:pb-20 contact__content">
+        <div className="reveal page-x pt-24 pb-12 text-white md:pb-20 contact__content">
           <p
             id="contact-title"
             className="text-[0.6875rem] font-bold tracking-[0.2em] uppercase text-white/80 contact__title"
@@ -45,11 +46,24 @@ export default async function ContactSection() {
           <p className="mt-5 max-w-[750px] font-title text-[2rem] leading-[1.3] md:text-[2.375rem] contact__body">
             {t.body}
           </p>
+          <p className="mt-4 font-title text-2xl italic text-white/90 contact__signature">
+            {brand.owner}
+          </p>
+
+          <ButtonLink
+            href={`mailto:${contact.email}`}
+            variant="light"
+            size="lg"
+            arrow
+            className="mt-8 max-w-full break-all contact__cta"
+          >
+            {contact.email}
+          </ButtonLink>
         </div>
       </div>
 
       <div className="bg-surface contact__details">
-        <dl className="page-x flex flex-wrap items-start justify-between gap-x-8 gap-y-8 py-10 contact__list">
+        <dl className="page-x grid grid-cols-1 gap-x-8 gap-y-8 py-10 sm:grid-cols-2 lg:grid-cols-4 contact__list">
           <div className="text-left contact__item contact__item--address">
             <dt className={`${label} contact__label`}>
               {t.labels.address}

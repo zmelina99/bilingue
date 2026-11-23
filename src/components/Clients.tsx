@@ -152,14 +152,11 @@ export default function Clients({
         ))}
       </ul>
 
-      {/* Toggle sits below the logos while collapsed. */}
-      {!open && toggle}
-
       {/* Expanded: the remaining client names (text only) in three columns. */}
       <div
         id={listId}
         inert={!open}
-        className={`grid transition-[grid-template-rows] duration-300 ease-soft motion-reduce:transition-none clients__panel ${open ? "grid-rows-[1fr] clients__panel--expanded" : "grid-rows-[0fr]"}`}
+        className={`grid transition-[grid-template-rows,opacity] duration-300 ease-soft motion-reduce:transition-none clients__panel ${open ? "grid-rows-[1fr] opacity-100 clients__panel--expanded" : "grid-rows-[0fr] opacity-0"}`}
       >
         <div className="min-h-0 overflow-hidden clients__panel-inner">
           {/* Horizontal divider above the list; three columns spread across the
@@ -180,7 +177,7 @@ export default function Clients({
                     <ExternalLink
                       client={client}
                       label={externalLabel}
-                      className="text-left font-sans text-base text-foreground/80 transition-colors duration-200 hover:text-primary-800 clients__name"
+                      className="link-underline text-left font-sans text-base text-foreground/80 hover:text-primary-800 clients__name"
                     >
                       {client.name}
                     </ExternalLink>
@@ -192,8 +189,7 @@ export default function Clients({
         </div>
       </div>
 
-      {/* Toggle sits below the list once expanded. */}
-      {open && toggle}
+      {toggle}
     </div>
   );
 }

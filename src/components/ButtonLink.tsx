@@ -17,18 +17,32 @@ const sizes = {
 type Props = ComponentProps<typeof Link> & {
   variant?: keyof typeof variants;
   size?: keyof typeof sizes;
+  /** Adds a small arrow that nudges right on hover/focus. */
+  arrow?: boolean;
 };
 
 export default function ButtonLink({
   variant = "primary",
   size = "md",
   className = "",
+  arrow,
+  children,
   ...props
 }: Props) {
   return (
     <Link
-      className={`inline-flex items-center justify-center rounded-full transition duration-300 ease-soft motion-safe:hover:-translate-y-0.5 motion-safe:active:translate-y-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground ${sizes[size]} ${variants[variant]} button-link button-link--${variant} button-link--${size} ${className}`}
+      className={`group inline-flex items-center justify-center gap-2 rounded-full text-center transition duration-300 ease-soft motion-safe:hover:-translate-y-0.5 motion-safe:active:translate-y-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground ${sizes[size]} ${variants[variant]} button-link button-link--${variant} button-link--${size} ${className}`}
       {...props}
-    />
+    >
+      {children}
+      {arrow && (
+        <span
+          aria-hidden
+          className="inline-block transition-transform duration-200 ease-soft group-hover:translate-x-1 group-focus-visible:translate-x-1 motion-reduce:transition-none motion-reduce:transform-none"
+        >
+          &rarr;
+        </span>
+      )}
+    </Link>
   );
 }
