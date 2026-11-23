@@ -28,7 +28,7 @@ export default async function Logo({
         className={`h-10 w-auto transition-transform ${tone === "light" ? "brightness-0 invert" : ""} duration-500 ease-soft motion-safe:group-hover:-rotate-6`}
       />
       <span className="flex flex-col leading-none">
-        <span className={`font-title text-2xl font-bold tracking-tight ${tone === "light" ? "text-white" : "text-foreground"}`}>
+        <span className={`text-2xl font-bold tracking-tight ${tone === "light" ? "text-white" : "text-foreground"}`}>
           {brand.name}
         </span>
         <span className={`mt-1.5 hidden text-[0.625rem] tracking-[0.18em] whitespace-nowrap uppercase lg:block ${tone === "light" ? "text-white/60" : "text-secondary"}`}>

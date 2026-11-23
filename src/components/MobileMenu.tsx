@@ -60,7 +60,7 @@ export default function MobileMenu({ label, items, contact }: Props) {
                   href={href}
                   onClick={close}
                   aria-current={active ? "page" : undefined}
-                  className={`flex min-h-14 items-center justify-between font-title text-2xl ${active ? "text-primary-800" : "text-foreground"}`}
+                  className={`flex min-h-14 items-center justify-between text-2xl ${active ? "text-primary-800" : "text-foreground"}`}
                 >
                   {label}
                   <span aria-hidden className="text-base text-secondary">

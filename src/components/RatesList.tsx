@@ -15,7 +15,7 @@ export default function RatesList({ rows }: Props) {
           >
             <dt className="text-base md:text-lg">{row.label}</dt>
             <dd className="whitespace-nowrap tabular-nums">
-              <span className="font-title text-xl font-semibold text-foreground md:text-2xl">
+              <span className="text-xl font-semibold text-foreground md:text-2xl">
                 {price}
               </span>
               <span className="text-sm text-secondary">{unit}</span>

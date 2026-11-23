@@ -56,7 +56,7 @@ export default async function Home() {
                 alt={hero.imageAlt}
                 priority
                 sizes="100vw"
-                className="h-auto w-full object-contain"
+                className="h-auto w-full object-contain rounded-lg"
               />
             </figure>
 
@@ -90,7 +90,7 @@ export default async function Home() {
                 fill
                 priority
                 sizes="(min-width: 768px) 45vw, 0px"
-                className="object-cover object-[60%_50%]"
+                className="object-cover object-[60%_50%] rounded-lg"
               />
             </div>
             <figcaption className="mt-3 text-xs text-secondary">

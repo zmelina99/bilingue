@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 760" fill="none" role="img" aria-labelledby="title desc" preserveAspectRatio="xMinYMax meet">
+<title id="title">Art Nouveau iris botanical ornament</title>
+<desc id="desc">Blue irises on gracefully bending stems growing diagonally from the lower-left, with sage leaves and fine antique-gold outlines.</desc>
+<g stroke-linecap="round" stroke-linejoin="round">
+<!-- Long tapered foliage sweeping up and to the right from the base. -->
+<path d="M80 750 C56 540 120 356 236 230 C152 404 104 560 96 750Z" fill="#B6BE9A" fill-opacity=".62" stroke="#9A8654" stroke-width="1.5"/>
+<path d="M84 748 C106 598 152 468 216 386 C160 502 112 622 100 748Z" fill="#9DAE9A" fill-opacity=".58" stroke="#9A8654" stroke-width="1.5"/>
+<path d="M76 744 C47 658 23 602 13 552 C59 586 93 654 99 742Z" fill="#8EA8A0" fill-opacity=".5" stroke="#9A8654" stroke-width="1.3"/>
+<path d="M101 574 C152 520 208 486 252 452 C207 514 150 562 111 588Z" fill="#B8C3AC" fill-opacity=".66" stroke="#9A8654" stroke-width="1.3"/>
+<path d="M95 442 C150 388 214 360 258 342 C210 402 150 460 106 462Z" fill="#91A99A" fill-opacity=".52" stroke="#9A8654" stroke-width="1.2"/>
+<!-- Leaf veins -->
+<path d="M85 742 Q150 420 232 242 M91 740 Q162 500 212 396 M80 736 Q45 626 17 562 M110 580 Q180 516 250 460" stroke="#D8D3AE" stroke-width="1" opacity=".85"/>
+<!-- Gracefully bending stems, bottom-left to upper-right. -->
+<path d="M79 752 C72 594 118 468 150 398 C176 330 190 276 198 250" stroke="#9A8654" stroke-width="2.1"/>
+<path d="M104 566 C113 500 118 470 120 434" stroke="#9A8654" stroke-width="1.6"/>
+<path d="M100 582 C91 560 85 548 83 532" stroke="#9A8654" stroke-width="1.3"/>
+<!-- Small seedlike bud near the base -->
+<path d="M84 533 C71 524 63 522 58 525 C65 536 75 539 84 533Z" fill="#B3C1A8" stroke="#9A8654" stroke-width="1"/>
+<!-- MID IRIS — lower bloom on its bending stem -->
+<g transform="translate(-34.4 150.8) scale(0.78)">
+<path d="M198 358 C176 327 177 298 191 267 C212 294 218 328 198 358Z" fill="#8FA7CB" stroke="#9A8654" stroke-width="1.5"/>
+<path d="M199 358 C207 312 231 285 262 281 C255 317 231 345 199 358Z" fill="#B1C1D6" stroke="#9A8654" stroke-width="1.5"/>
+<path d="M197 358 C170 338 142 334 123 347 C145 367 172 374 197 358Z" fill="#A0B1C9" stroke="#9A8654" stroke-width="1.5"/>
+<path d="M198 355 C172 351 153 370 150 395 C147 414 162 425 175 412 C186 400 189 386 194 383 C188 405 193 430 208 438 C224 421 220 396 209 382 C231 382 244 403 263 402 C281 400 278 382 260 372 C241 359 219 351 198 355Z" fill="#809AC4" stroke="#9A8654" stroke-width="1.8"/>
+<path d="M199 364 Q204 395 208 427 M191 363 Q171 378 159 404 M210 362 Q242 373 265 393" stroke="#D6D3B9" stroke-width="1.3"/>
+<path d="M187 362 Q197 369 211 360" stroke="#B6A16A" stroke-width="4.5"/>
+<path d="M197 352 Q195 307 191 267 M201 353 Q227 304 262 281" stroke="#E1DBCA" stroke-width="1"/>
+</g>
+<!-- TOP IRIS — tall bloom crowning the stem at upper-right -->
+<g transform="translate(67.7 3) scale(0.98)">
+<path d="M135 146 C109 115 102 66 118 19 C146 47 158 96 135 146Z" fill="#879FC5" stroke="#9A8654" stroke-width="1.7"/>
+<path d="M136 147 C142 89 169 48 207 31 C202 83 173 127 136 147Z" fill="#A6B7CF" stroke="#9A8654" stroke-width="1.7"/>
+<path d="M135 145 C108 107 71 95 43 104 C66 142 100 157 135 145Z" fill="#B0B9CE" stroke="#9A8654" stroke-width="1.6"/>
+<path d="M135 143 C101 143 76 164 64 194 C59 219 77 230 91 212 C103 197 111 180 127 178 C112 207 112 237 134 250 C152 231 154 204 145 176 C169 177 183 203 205 209 C224 214 229 195 213 178 C190 154 161 142 135 143Z" fill="#718FBD" stroke="#9A8654" stroke-width="1.9"/>
+<path d="M134 151 C128 174 127 198 134 237 M130 153 C106 166 90 187 79 208 M143 151 C173 165 192 185 211 197" stroke="#D4CDA7" stroke-width="1.5"/>
+<path d="M120 157 C130 165 139 166 151 156" stroke="#B29A56" stroke-width="5"/>
+<path d="M135 144 C130 93 126 57 118 19 M138 144 Q167 82 207 31 M132 142 Q91 115 43 104" stroke="#E0D9C4" stroke-width="1.2" opacity=".8"/>
+</g>
+</g>
+</svg>

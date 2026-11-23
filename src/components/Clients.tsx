@@ -72,7 +72,7 @@ function LogoItem({
             className="h-7 w-auto max-w-[7rem] object-contain opacity-70 brightness-0 transition duration-200 group-hover:opacity-100 group-hover:brightness-100"
           />
         ) : (
-          <span className="font-title text-xl leading-none font-semibold tracking-tight text-foreground/80 transition-colors duration-200 group-hover:text-primary-800">
+          <span className="text-xl leading-none font-semibold tracking-tight text-foreground/80 transition-colors duration-200 group-hover:text-primary-800">
             {client.name}
           </span>
         )}

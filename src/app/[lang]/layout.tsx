@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Karla } from "next/font/google";
+import { Cormorant_Garamond } from "next/font/google";
 import { lang } from "next/root-params";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import { locales } from "@/lib/locales";
@@ -11,7 +11,6 @@ const title = Cormorant_Garamond({
   style: ["normal", "italic"],
   variable: "--font-cormorant",
 });
-const sans = Karla({ subsets: ["latin"], variable: "--font-karla" });
 
 export const metadata: Metadata = {
   title: { default: "Bilingue", template: "%s – Bilingue" },
@@ -30,7 +29,7 @@ export default async function RootLayout({ children }: LayoutProps<"/[lang]">) {
     <html
       lang={await lang()}
       data-scroll-behavior="smooth"
-      className={`${title.variable} ${sans.variable} h-full antialiased`}
+      className={`${title.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         {children}

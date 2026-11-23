@@ -30,7 +30,7 @@ export default async function PortraitSection() {
               />
             </div>
             <figcaption className="md:mt-5">
-              <p className="font-title text-2xl leading-tight font-semibold">
+              <p className="text-2xl leading-tight font-semibold">
                 {brand.owner}
               </p>
               <p className="mt-1.5 text-sm text-foreground/60">{t.role}</p>

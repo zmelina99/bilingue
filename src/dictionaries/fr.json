@@ -20,7 +20,8 @@
   },
   "common": {
     "contact": "Contact",
-    "termsSubtitle": "Conditions générales de vente"
+    "termsSubtitle": "Conditions générales de vente",
+    "learnMore": "En savoir plus"
   },
   "hero": {
     "title": "Cours particuliers et soutien scolaire en allemand et en français,",
@@ -35,18 +36,58 @@
     "imageAlt": "Une jeune personne lit un livre à la lueur d'une lampe, accoudée à une table (gravure)",
     "offer": {
       "title": "Mon offre",
+      "modal": {
+        "questionsTitle": "Des questions ?",
+        "cta": "Prendre contact"
+      },
       "items": [
         {
           "title": "Cours d'allemand",
-          "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip."
+          "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
+          "imageAlt": "Deux jeunes femmes lisant un livre à une table (peinture, Michael Ancher, 1917)",
+          "details": {
+            "paragraphs": [
+              "Que ce soit pour l'école, le travail ou la naturalisation, j'adapte chaque cours à votre objectif et à votre rythme.",
+              "Nous travaillons la grammaire, le vocabulaire et la prononciation, et exerçons l'expression libre dans des situations du quotidien et professionnelles."
+            ],
+            "bullets": [
+              "Cours individuels ou en groupe",
+              "Matériel adapté à votre niveau",
+              "Horaires flexibles, en ligne ou sur place"
+            ]
+          }
         },
         {
           "title": "Cours de français",
-          "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit."
+          "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit.",
+          "imageAlt": "Affiche Art nouveau d'une femme en bleu qui lit (William H. Bradley)",
+          "details": {
+            "paragraphs": [
+              "Parfaitement bilingue, je vous accompagne du premier mot jusqu'à une conversation assurée.",
+              "Le cours associe des bases solides à une pratique vivante de la langue, adaptée à votre quotidien ou à votre travail."
+            ],
+            "bullets": [
+              "Du niveau débutant à avancé",
+              "Accent sur la prononciation et la conversation",
+              "Préparation aux examens et diplômes"
+            ]
+          }
         },
         {
           "title": "Cours de conversation",
-          "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Ut enim ad minim veniam, quis nostrud exercitation ullamco."
+          "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Ut enim ad minim veniam, quis nostrud exercitation ullamco.",
+          "imageAlt": "Deux femmes en conversation autour d'un thé (peinture, Federico Zandomeneghi, v. 1892)",
+          "details": {
+            "paragraphs": [
+              "Dans une ambiance détendue, vous réactivez vos connaissances et gagnez en aisance à l'oral.",
+              "Des thèmes actuels, des situations du quotidien et vos propres centres d'intérêt guident chaque séance."
+            ],
+            "bullets": [
+              "En petit groupe ou en individuel",
+              "Vocabulaire naturel et courant",
+              "Plus de fluidité et de confiance"
+            ]
+          }
         }
       ]
     },

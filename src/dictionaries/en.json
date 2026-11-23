@@ -20,7 +20,8 @@
   },
   "common": {
     "contact": "Contact",
-    "termsSubtitle": "Terms and conditions"
+    "termsSubtitle": "Terms and conditions",
+    "learnMore": "Learn more"
   },
   "hero": {
     "title": "Private lessons and tutoring in German and French,",
@@ -35,18 +36,58 @@
     "imageAlt": "A young person reading a book by lamplight, leaning on a table (engraving)",
     "offer": {
       "title": "What I offer",
+      "modal": {
+        "questionsTitle": "Have questions?",
+        "cta": "Get in touch"
+      },
       "items": [
         {
           "title": "German lessons",
-          "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip."
+          "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
+          "imageAlt": "Two young women reading a book at a table (painting, Michael Ancher, 1917)",
+          "details": {
+            "paragraphs": [
+              "Whether for school, work or naturalisation, I shape every lesson around your goal and your pace.",
+              "We work on grammar, vocabulary and pronunciation, and practise free speaking in everyday and professional situations."
+            ],
+            "bullets": [
+              "One-to-one or group lessons",
+              "Material matched to your level",
+              "Flexible times, online or in person"
+            ]
+          }
         },
         {
           "title": "French lessons",
-          "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit."
+          "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit.",
+          "imageAlt": "Art Nouveau poster of a woman in blue reading (William H. Bradley)",
+          "details": {
+            "paragraphs": [
+              "As a fully bilingual teacher, I guide you from your first words to confident conversation.",
+              "Lessons combine solid foundations with lively language practice, tailored to your daily life or work."
+            ],
+            "bullets": [
+              "From beginner to advanced",
+              "Focus on pronunciation and conversation",
+              "Preparation for exams and diplomas"
+            ]
+          }
         },
         {
           "title": "Conversation courses",
-          "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Ut enim ad minim veniam, quis nostrud exercitation ullamco."
+          "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Ut enim ad minim veniam, quis nostrud exercitation ullamco.",
+          "imageAlt": "Two women in conversation over tea (painting, Federico Zandomeneghi, c. 1892)",
+          "details": {
+            "paragraphs": [
+              "In a relaxed setting you get your language skills flowing again and gain confidence speaking freely.",
+              "Current topics, everyday situations and your own interests run through every session."
+            ],
+            "bullets": [
+              "Small groups or one-to-one",
+              "Natural, everyday vocabulary",
+              "More fluency and self-confidence"
+            ]
+          }
         }
       ]
     },

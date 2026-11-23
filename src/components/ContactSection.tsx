@@ -8,7 +8,7 @@ const label =
   "text-[0.6875rem] font-bold tracking-[0.2em] text-secondary uppercase";
 
 const value =
-  "font-title text-xl transition-colors duration-200 hover:text-primary-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground";
+  "text-xl transition-colors duration-200 hover:text-primary-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground";
 
 // Identical on every page; target of all "Contact" buttons.
 export default async function ContactSection() {
@@ -56,7 +56,7 @@ export default async function ContactSection() {
             </dt>
 
             <dd className="mt-2">
-              <address className="font-title text-xl leading-snug not-italic">
+              <address className="text-xl leading-snug not-italic">
                 {contact.name}
                 <br />
                 {contact.street} · {contact.city}

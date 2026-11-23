@@ -20,7 +20,8 @@
   },
   "common": {
     "contact": "Kontakt",
-    "termsSubtitle": "Allgemeine Geschäftsbedingungen"
+    "termsSubtitle": "Allgemeine Geschäftsbedingungen",
+    "learnMore": "Mehr erfahren"
   },
   "hero": {
     "title": "Privatunterricht und Nachhilfe in Deutsch und Französisch,",
@@ -35,18 +36,58 @@
     "imageAlt": "Eine junge Person liest bei Lampenlicht ein Buch, auf einen Tisch gestützt (Illustration)",
     "offer": {
       "title": "Was ich biete",
+      "modal": {
+        "questionsTitle": "Haben Sie Fragen?",
+        "cta": "Kontakt aufnehmen"
+      },
       "items": [
         {
           "title": "Deutschunterricht",
-          "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip."
+          "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
+          "imageAlt": "Zwei junge Frauen lesen an einem Tisch ein Buch (Gemälde, Michael Ancher, 1917)",
+          "details": {
+            "paragraphs": [
+              "Ob für Schule, Beruf oder Einbürgerung – ich richte den Unterricht ganz nach Ihrem Ziel und Ihrem Tempo aus.",
+              "Wir arbeiten an Grammatik, Wortschatz und Aussprache und üben das freie Sprechen in Alltags- und Berufssituationen."
+            ],
+            "bullets": [
+              "Einzel- oder Gruppenunterricht",
+              "Material auf Ihr Niveau abgestimmt",
+              "Flexible Termine, online oder vor Ort"
+            ]
+          }
         },
         {
           "title": "Französischunterricht",
-          "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit."
+          "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit.",
+          "imageAlt": "Jugendstil-Plakat mit einer lesenden Frau in Blau (William H. Bradley)",
+          "details": {
+            "paragraphs": [
+              "Als perfekt zweisprachige Sprachlehrerin begleite ich Sie vom ersten Wort bis zur sicheren Konversation.",
+              "Der Unterricht verbindet solide Grundlagen mit lebendiger Sprachpraxis – abgestimmt auf Ihren Alltag oder Ihre Arbeit."
+            ],
+            "bullets": [
+              "Für Anfänger bis Fortgeschrittene",
+              "Fokus auf Aussprache und Konversation",
+              "Vorbereitung auf Prüfungen und Diplome"
+            ]
+          }
         },
         {
           "title": "Konversationskurse",
-          "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Ut enim ad minim veniam, quis nostrud exercitation ullamco."
+          "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Ut enim ad minim veniam, quis nostrud exercitation ullamco.",
+          "imageAlt": "Zwei Frauen im Gespräch beim Tee (Gemälde, Federico Zandomeneghi, um 1892)",
+          "details": {
+            "paragraphs": [
+              "In entspannter Atmosphäre bringen Sie Ihre Sprachkenntnisse in Schwung und gewinnen Sicherheit im freien Sprechen.",
+              "Aktuelle Themen, Alltagssituationen und Ihre eigenen Interessen bilden den roten Faden jeder Stunde."
+            ],
+            "bullets": [
+              "Kleine Gruppen oder Einzelunterricht",
+              "Natürlicher, alltagsnaher Wortschatz",
+              "Mehr Flüssigkeit und Selbstvertrauen"
+            ]
+          }
         }
       ]
     },
@@ -60,7 +101,7 @@
         },
         {
           "label": "Unterricht zu zweit",
-          "value": "je CHF 60.–/45 Min."
+          "value": "CHF 60.–/45 Min."
         },
         {
           "label": "Kleingruppen (4–5 Schüler)",
@@ -85,7 +126,6 @@
     "imageAlt": "Zwei Frauen an einem Tisch, eine liest in einem Buch (Gemälde)",
     "clients": {
       "title": "Vertraut von",
-
       "subtitle": "",
       "external": "öffnet in neuem Tab",
       "showAll": "Alle Kunden anzeigen",

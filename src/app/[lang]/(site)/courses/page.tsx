@@ -7,6 +7,9 @@ import RatesList from "@/components/RatesList";
 import Section from "@/components/Section";
 import ServiceList from "@/components/ServiceList";
 import heroArt from "@/assets/art/SAAM-1971.170_1.jpg";
+import deutschArt from "@/assets/art/ancher-reading.jpg";
+import franzoesischArt from "@/assets/art/chapbook.jpg";
+import konversationArt from "@/assets/art/tea-conversation.jpg";
 import { brand } from "@/data/business";
 import { getDictionary, getLocale } from "@/lib/dictionaries";
 import { slugify } from "@/lib/slug";
@@ -34,6 +37,14 @@ export default async function CoursesPage() {
   const { header, common, courses } = await getDictionary();
   const { offer, rates } = courses;
 
+  // Artwork per service, in the dictionary's item order
+  // (German lessons, French lessons, conversation courses).
+  const offerArt = [deutschArt, franzoesischArt, konversationArt];
+  const offerItems = offer.items.map((item, i) => ({
+    ...item,
+    image: offerArt[i],
+  }));
+
   return (
     <main className="flex flex-1 flex-col">
       <Hero
@@ -51,7 +62,16 @@ export default async function CoursesPage() {
       <PortraitSection />
 
       <Section id="offer" title={offer.title} tone="surface">
-        <ServiceList items={offer.items} className="md:grid-cols-3" />
+        <ServiceList
+          items={offerItems}
+          learnMoreLabel={common.learnMore}
+          modal={{
+            label: header.nav.courses,
+            questionsTitle: offer.modal.questionsTitle,
+            cta: offer.modal.cta,
+          }}
+          className="md:grid-cols-3"
+        />
       </Section>
 
       <Section

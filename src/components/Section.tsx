@@ -52,7 +52,7 @@ export default function Section({
           <summary className="flex min-h-20 cursor-pointer list-none items-center justify-between gap-6 py-6 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-foreground md:py-8 [&::-webkit-details-marker]:hidden">
             <p
               id={`${id}-title`}
-              className={`text-2xl leading-tight font-semibold tracking-tight md:text-3xl ${headingAlignment}`}
+              className={`font-title text-2xl leading-tight font-semibold tracking-tight md:text-3xl ${headingAlignment}`}
             >
               {title}
             </p>

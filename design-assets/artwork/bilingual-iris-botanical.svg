@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 720" fill="none" role="img" aria-labelledby="title desc">
+<title id="title">Art Nouveau iris botanical ornament</title>
+<desc id="desc">Two elegant blue irises with sage leaves and fine antique-gold outlines, designed for a literary website.</desc>
+<g stroke-linecap="round" stroke-linejoin="round">
+<!-- flowing stems -->
+<path d="M122 694 C114 566 116 439 132 304 C138 237 143 161 133 77" stroke="#9A8654" stroke-width="2.1"/>
+<path d="M125 690 C149 550 168 475 193 397 C206 356 207 312 198 271" stroke="#9A8654" stroke-width="1.7"/>
+<path d="M121 695 C94 575 69 493 67 405" stroke="#9A8654" stroke-width="1.3"/>
+<!-- long tapered foliage -->
+<path d="M124 691 C83 590 52 474 39 342 C84 410 114 515 124 691Z" fill="#9DAE9A" fill-opacity=".62" stroke="#9A8654" stroke-width="1.5"/>
+<path d="M124 691 C127 535 146 406 177 337 C175 462 154 584 124 691Z" fill="#B6BE9A" fill-opacity=".74" stroke="#9A8654" stroke-width="1.5"/>
+<path d="M120 686 C84 619 36 571 12 527 C78 547 109 611 120 686Z" fill="#B8C3AC" fill-opacity=".68" stroke="#9A8654" stroke-width="1.4"/>
+<path d="M130 687 C177 608 216 554 264 523 C241 585 181 644 130 687Z" fill="#91A99A" fill-opacity=".56" stroke="#9A8654" stroke-width="1.5"/>
+<path d="M135 568 C163 468 208 402 251 374 C230 435 189 507 135 568Z" fill="#B6C5AD" fill-opacity=".66" stroke="#9A8654" stroke-width="1.2"/>
+<path d="M103 564 C80 505 36 466 12 448 C64 455 98 508 103 564Z" fill="#8EA8A0" fill-opacity=".5" stroke="#9A8654" stroke-width="1.2"/>
+<!-- leaf veins -->
+<path d="M122 680 Q83 473 39 342 M126 676 Q153 449 177 337 M126 681 Q197 564 264 523 M135 563 Q206 426 251 374" stroke="#D8D3AE" stroke-width="1" opacity=".85"/>
+<!-- upper iris, upright standards -->
+<path d="M135 146 C109 115 102 66 118 19 C146 47 158 96 135 146Z" fill="#879FC5" stroke="#9A8654" stroke-width="1.7"/>
+<path d="M136 147 C142 89 169 48 207 31 C202 83 173 127 136 147Z" fill="#A6B7CF" stroke="#9A8654" stroke-width="1.7"/>
+<path d="M135 145 C108 107 71 95 43 104 C66 142 100 157 135 145Z" fill="#B0B9CE" stroke="#9A8654" stroke-width="1.6"/>
+<!-- upper falls -->
+<path d="M135 143 C101 143 76 164 64 194 C59 219 77 230 91 212 C103 197 111 180 127 178 C112 207 112 237 134 250 C152 231 154 204 145 176 C169 177 183 203 205 209 C224 214 229 195 213 178 C190 154 161 142 135 143Z" fill="#718FBD" stroke="#9A8654" stroke-width="1.9"/>
+<path d="M134 151 C128 174 127 198 134 237 M130 153 C106 166 90 187 79 208 M143 151 C173 165 192 185 211 197" stroke="#D4CDA7" stroke-width="1.5"/>
+<path d="M120 157 C130 165 139 166 151 156" stroke="#B29A56" stroke-width="5"/>
+<path d="M135 144 C130 93 126 57 118 19 M138 144 Q167 82 207 31 M132 142 Q91 115 43 104" stroke="#E0D9C4" stroke-width="1.2" opacity=".8"/>
+<!-- lower iris standards -->
+<path d="M198 358 C176 327 177 298 191 267 C212 294 218 328 198 358Z" fill="#8FA7CB" stroke="#9A8654" stroke-width="1.5"/>
+<path d="M199 358 C207 312 231 285 262 281 C255 317 231 345 199 358Z" fill="#B1C1D6" stroke="#9A8654" stroke-width="1.5"/>
+<path d="M197 358 C170 338 142 334 123 347 C145 367 172 374 197 358Z" fill="#A0B1C9" stroke="#9A8654" stroke-width="1.5"/>
+<!-- lower falls -->
+<path d="M198 355 C172 351 153 370 150 395 C147 414 162 425 175 412 C186 400 189 386 194 383 C188 405 193 430 208 438 C224 421 220 396 209 382 C231 382 244 403 263 402 C281 400 278 382 260 372 C241 359 219 351 198 355Z" fill="#809AC4" stroke="#9A8654" stroke-width="1.8"/>
+<path d="M199 364 Q204 395 208 427 M191 363 Q171 378 159 404 M210 362 Q242 373 265 393" stroke="#D6D3B9" stroke-width="1.3"/>
+<path d="M187 362 Q197 369 211 360" stroke="#B6A16A" stroke-width="4.5"/>
+<path d="M197 352 Q195 307 191 267 M201 353 Q227 304 262 281" stroke="#E1DBCA" stroke-width="1"/>
+<!-- small seedlike flourish -->
+<path d="M83 460 C96 432 109 417 131 413" stroke="#9A8654" stroke-width="1.2"/>
+<path d="M130 414 C115 405 105 402 99 405 C108 416 118 419 130 414Z" fill="#B3C1A8" stroke="#9A8654" stroke-width="1"/>
+</g>
+</svg>

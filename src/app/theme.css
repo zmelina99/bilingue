@@ -1,6 +1,6 @@
 /* Brand design tokens — single source of truth for colors and fonts. */
 @theme {
-  /* Primary scale — 800 is the logo blue (#000183). */
+  /* Primary scale — 800 is the brand blue (#000091). */
   --color-primary-50: #f2f2f9;
   --color-primary-100: #e6e6f3;
   --color-primary-200: #cccce6;
@@ -9,7 +9,7 @@
   --color-primary-500: #5c5cb0;
   --color-primary-600: #38399e;
   --color-primary-700: #1a1a8f;
-  --color-primary-800: #000183;
+  --color-primary-800: #000091;
   --color-primary-900: #000166;
   --color-primary-950: #000142;
 
@@ -24,8 +24,8 @@
   /* OPTION B — Warm ivory (proposed) */
   --color-surface: #f8f6f2;
 
-  --font-title: var(--font-cormorant), serif;
-  --font-sans: var(--font-karla), Arial, Helvetica, sans-serif;
+  --font-title: var(--font-cormorant), "Cormorant Garamond", serif;
+  --font-sans: Arial, Helvetica, sans-serif;
 
   /* Motion */
   --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
@@ -44,8 +44,17 @@
 }
 
 @layer base {
-  h1 {
+  /* Every heading is Cormorant Garamond; body text falls back to --font-sans
+     (Arial). Label-style headings opt back out via the .eyebrow utility. */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: var(--font-title);
+  }
+  h1 {
     letter-spacing: -0.01em;
   }
 }
