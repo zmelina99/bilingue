@@ -115,7 +115,7 @@ export default function Section({
                 {children}
               </div>
             </div>
-            <div className="md:col-span-7 md:col-start-6 section__aside">{aside}</div>
+            <div className="-mt-3 md:mt-0 md:col-span-7 md:col-start-6 section__aside">{aside}</div>
           </div>
         ) : (
           <>

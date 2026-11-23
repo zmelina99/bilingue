@@ -25,8 +25,8 @@ export default async function Header({
     <header
       className={`sticky top-0 z-40 border-b border-foreground/10 backdrop-blur-md header ${className}`}
     >
-      <div className="page-x relative grid h-16 grid-cols-[1fr_auto] items-center gap-x-4 md:grid-cols-[auto_1fr_auto] lg:gap-x-6 header__inner">
-        <Logo className="header__logo" />
+      <div className="page-x relative grid h-16 grid-cols-[1fr_auto] items-center gap-x-4 md:grid-cols-[auto_1fr_auto] lg:gap-x-6 header__inner outline-none">
+        <Logo className="header__logo outline-none" />
         <div className="hidden justify-self-center md:block header__nav">
           <MainNav label={header.nav.label} items={items} />
         </div>
@@ -37,7 +37,11 @@ export default async function Header({
             names={header.languages}
           />
           <span className="hidden md:block header__contact">
-            <ButtonLink href={contactHref} size="sm" className="header__contact-button">
+            <ButtonLink
+              href={contactHref}
+              size="sm"
+              className="header__contact-button"
+            >
               {common.contact}
             </ButtonLink>
           </span>

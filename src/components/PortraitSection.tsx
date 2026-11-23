@@ -39,10 +39,10 @@ export default async function PortraitSection() {
         </div>
 
         <div className="md:col-span-7 md:col-start-6 portrait__text">
-          <p className="lead max-w-3xl portrait__lead">{lead}</p>
-          <div className="mt-6 max-w-2xl space-y-4 md:mt-8 portrait__body">
+          <p className="max-w-2xl font-sans text-[1.5rem] leading-[1.4] font-normal portrait__lead">{lead}</p>
+          <div className="mt-8 max-w-2xl space-y-4 md:mt-10 portrait__body">
             {rest.map((p) => (
-              <p key={p} className="body-text portrait__paragraph">
+              <p key={p} className="font-sans text-[1.0625rem] leading-[1.65] font-normal text-foreground/75 portrait__paragraph">
                 {p}
               </p>
             ))}

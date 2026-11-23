@@ -63,7 +63,10 @@ export default async function EditingPage() {
 
       <PortraitSection />
 
-      <section id="clients" className="scroll-mt-16 bg-surface editing__clients">
+      <section
+        id="clients"
+        className="scroll-mt-16 bg-surface editing__clients"
+      >
         <div className="page-x py-8 md:py-10 editing__clients-inner">
           <Clients
             heading={clientsText.title}
@@ -86,7 +89,7 @@ export default async function EditingPage() {
               className="sm:grid-cols-2 editing__service-list"
             />
           </div>
-          <figure className="md:col-span-4 md:col-start-10 editing__figure">
+          <figure className="hidden md:block md:col-span-4 md:col-start-10 editing__figure">
             <Image
               src={servicesArt}
               alt={services.imageAlt}
@@ -103,8 +106,8 @@ export default async function EditingPage() {
         tone="surface"
         aside={<RatesList rows={rates.rows} />}
       >
-        <p className="editing__rates-intro">{rates.intro}</p>
-        <p className="text-sm editing__rates-note">{rates.note}</p>
+        <p className="font-sans max-md:leading-[1.6] editing__rates-intro">{rates.intro}</p>
+        <p className="font-sans text-sm max-md:leading-[1.6] editing__rates-note">{rates.note}</p>
       </Section>
 
       <ContactSection />

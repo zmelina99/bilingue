@@ -95,10 +95,14 @@ export default function ServiceModal({
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="mt-4 inline-flex items-center gap-1.5 self-start text-sm font-semibold text-primary-800 transition-colors hover:text-primary-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground service-modal__trigger"
+        aria-haspopup="dialog"
+        aria-label={`${triggerLabel}: ${title}`}
+        className="mt-4 inline-flex cursor-pointer items-center gap-1.5 self-start text-sm font-semibold text-primary-800 transition-colors group-hover:text-primary-900 focus-visible:outline-none after:absolute after:inset-0 after:rounded-lg after:content-[''] focus-visible:after:outline-2 focus-visible:after:outline-offset-4 focus-visible:after:outline-foreground service-modal__trigger"
       >
         {triggerLabel}
-        <span aria-hidden className="service-modal__trigger-icon">&rarr;</span>
+        <span aria-hidden className="service-modal__trigger-icon">
+          &rarr;
+        </span>
       </button>
 
       {mounted &&
@@ -148,34 +152,33 @@ export default function ServiceModal({
                     {title}
                   </h2>
                 </div>
-                {image && (
-                  <div className="relative h-28 w-20 shrink-0 overflow-hidden rounded-lg bg-surface service-modal__media">
-                    <Image
-                      src={image}
-                      alt={imageAlt ?? ""}
-                      fill
-                      sizes="80px"
-                      className="object-cover service-modal__image"
-                    />
-                  </div>
-                )}
               </div>
 
-              <div aria-hidden className="mt-5 h-0.5 w-12 bg-primary-800 service-modal__divider" />
+              <div
+                aria-hidden
+                className="mt-5 h-0.5 w-12 bg-primary-800 service-modal__divider"
+              />
 
               <div className="mt-6 space-y-4 leading-relaxed text-foreground/75 service-modal__content">
                 {paragraphs.map((paragraph, i) => (
-                  <p key={i} className="service-modal__paragraph">{paragraph}</p>
+                  <p key={i} className="service-modal__paragraph">
+                    {paragraph}
+                  </p>
                 ))}
                 {bullets && bullets.length > 0 && (
                   <ul className="space-y-2 service-modal__list">
                     {bullets.map((bullet, i) => (
-                      <li key={i} className="flex gap-2.5 service-modal__list-item">
+                      <li
+                        key={i}
+                        className="flex gap-2.5 service-modal__list-item"
+                      >
                         <span
                           aria-hidden
                           className="mt-2 size-1.5 shrink-0 rounded-full bg-primary-800 service-modal__bullet"
                         />
-                        <span className="service-modal__bullet-text">{bullet}</span>
+                        <span className="service-modal__bullet-text">
+                          {bullet}
+                        </span>
                       </li>
                     ))}
                   </ul>

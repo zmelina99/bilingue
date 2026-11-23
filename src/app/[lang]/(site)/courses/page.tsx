@@ -83,8 +83,8 @@ export default async function CoursesPage() {
         title={rates.title}
         aside={<RatesList rows={rates.rows} />}
       >
-        <p className="courses__rates-intro">{rates.intro}</p>
-        <p className="text-sm courses__rates-note">{rates.note}</p>
+        <p className="font-sans max-md:leading-[1.6] courses__rates-intro">{rates.intro}</p>
+        <p className="font-sans text-sm max-md:leading-[1.6] courses__rates-note">{rates.note}</p>
       </Section>
 
       <ContactSection />

@@ -40,7 +40,7 @@ export default function ServiceList({
           <li
             key={item.title}
             id={slugify(item.title)}
-            className="group flex scroll-mt-24 flex-col service-list__item service-list__item--card"
+            className="group relative flex scroll-mt-24 flex-col service-list__item service-list__item--card"
           >
             <div className="relative aspect-[3/2] w-full overflow-hidden rounded-lg bg-surface service-list__media">
               <Image
@@ -48,7 +48,7 @@ export default function ServiceList({
                 alt={item.imageAlt ?? ""}
                 fill
                 sizes="(min-width: 768px) 33vw, 100vw"
-                className="object-cover service-list__image"
+                className="object-cover transition-transform duration-500 ease-soft motion-safe:group-hover:scale-[1.02] service-list__image"
               />
             </div>
             <h3 className="mt-5 font-title text-2xl font-semibold leading-tight service-list__title">
