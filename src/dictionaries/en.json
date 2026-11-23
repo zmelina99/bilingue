@@ -225,5 +225,34 @@
   "whatsapp": {
     "label": "Chat on WhatsApp",
     "message": "Hello,"
+  },
+  "contactForm": {
+    "title": "Send a message",
+    "name": "Name",
+    "email": "Email",
+    "service": "Subject",
+    "message": "Message",
+    "choose": "Please choose",
+    "services": {
+      "coaching": "Language coaching",
+      "editing": "Proofreading",
+      "other": "Other"
+    },
+    "counter": "{n} / {max} characters",
+    "submit": "Send message",
+    "sending": "Sending …",
+    "successTitle": "Thank you!",
+    "successBody": "Your message has arrived. I will get back to you as soon as possible.",
+    "again": "Send another message",
+    "errorTitle": "Sorry, sending failed.",
+    "errorBody": "Your entries are still here – please try again or write directly to",
+    "errorRate": "Too many attempts. Please wait a moment or write directly to",
+    "errors": {
+      "required": "Please fill in this field.",
+      "email": "Please enter a valid email address.",
+      "nameLong": "The name is too long (max. {max} characters).",
+      "messageShort": "Please write at least {min} characters.",
+      "messageLong": "The message is too long (max. {max} characters)."
+    }
   }
 }

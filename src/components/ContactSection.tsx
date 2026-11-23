@@ -2,8 +2,10 @@
 import Image from "next/image";
 import lake from "@/assets/art/lake.jpg";
 import ButtonLink from "@/components/ButtonLink";
+import ContactForm from "@/components/ContactForm";
 import { brand, contact, whatsappHref } from "@/data/business";
-import { getDictionary } from "@/lib/dictionaries";
+import type { Service } from "@/lib/contact-form";
+import { getDictionary, getLocale } from "@/lib/dictionaries";
 
 const label =
   "text-[0.6875rem] font-bold tracking-[0.2em] text-secondary uppercase";
@@ -14,11 +16,17 @@ const value =
 // Identical on every page; target of all "Contact" buttons.
 export default async function ContactSection({
   inquiryLabel,
+  defaultService,
 }: {
+  /** Service preselected in the form; omit to leave it unselected. */
+  defaultService?: Service;
   /** Short CTA label (e.g. "Unterricht anfragen"); falls back to the email address. */
   inquiryLabel?: string;
 }) {
-  const { contact: t, whatsapp } = await getDictionary();
+  const [lang, { contact: t, contactForm, whatsapp }] = await Promise.all([
+    getLocale(),
+    getDictionary(),
+  ]);
 
   return (
     <section
@@ -56,7 +64,7 @@ export default async function ContactSection({
               {brand.owner}
             </p>
             <ButtonLink
-              href={`mailto:${contact.email}`}
+              href="#contact-form"
               variant="light"
               size="lg"
               arrow
@@ -68,8 +76,21 @@ export default async function ContactSection({
         </div>
       </div>
 
-      <div className="bg-surface contact__details">
-        <dl className="page-x grid grid-cols-1 gap-x-8 gap-y-8 py-10 sm:grid-cols-2 lg:grid-cols-4 contact__list">
+      <div className="bg-surface contact__body">
+        <div className="page-x grid-page items-start py-12 md:py-16 lg:py-20 contact__layout">
+          <div
+            id="contact-form"
+            className="scroll-mt-24 md:col-span-7 contact__form"
+          >
+            <ContactForm
+              t={contactForm}
+              lang={lang}
+              email={contact.email}
+              defaultService={defaultService}
+            />
+          </div>
+
+          <dl className="grid grid-cols-1 gap-y-8 border-t border-black/10 pt-8 md:col-span-4 md:col-start-9 md:border-t-0 md:pt-2 contact__list">
           <div className="text-left contact__item contact__item--address">
             <dt className={`${label} contact__label`}>
               {t.labels.address}
@@ -138,7 +159,8 @@ export default async function ContactSection({
               </a>
             </dd>
           </div>
-        </dl>
+          </dl>
+        </div>
       </div>
     </section>
   );

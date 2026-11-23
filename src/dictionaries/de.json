@@ -225,5 +225,34 @@
   "whatsapp": {
     "label": "Auf WhatsApp schreiben",
     "message": "Guten Tag,"
+  },
+  "contactForm": {
+    "title": "Nachricht senden",
+    "name": "Name",
+    "email": "E-Mail",
+    "service": "Anliegen",
+    "message": "Nachricht",
+    "choose": "Bitte wählen",
+    "services": {
+      "coaching": "Sprachcoaching",
+      "editing": "Lektorat",
+      "other": "Anderes"
+    },
+    "counter": "{n} / {max} Zeichen",
+    "submit": "Nachricht senden",
+    "sending": "Wird gesendet …",
+    "successTitle": "Vielen Dank!",
+    "successBody": "Deine Nachricht ist angekommen. Ich melde mich so bald wie möglich.",
+    "again": "Weitere Nachricht senden",
+    "errorTitle": "Das Senden hat leider nicht geklappt.",
+    "errorBody": "Deine Eingaben sind noch da – bitte versuche es erneut oder schreibe direkt an",
+    "errorRate": "Zu viele Versuche. Bitte warte einen Moment oder schreibe direkt an",
+    "errors": {
+      "required": "Bitte ausfüllen.",
+      "email": "Bitte gib eine gültige E-Mail-Adresse ein.",
+      "nameLong": "Der Name ist zu lang (max. {max} Zeichen).",
+      "messageShort": "Bitte schreibe mindestens {min} Zeichen.",
+      "messageLong": "Die Nachricht ist zu lang (max. {max} Zeichen)."
+    }
   }
 }

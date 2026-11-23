@@ -109,7 +109,7 @@ export default async function EditingPage() {
         </p>
       </Section>
 
-      <ContactSection inquiryLabel={cta.requestEditing} />
+      <ContactSection inquiryLabel={cta.requestEditing} defaultService="editing" />
     </main>
   );
 }

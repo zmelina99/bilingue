@@ -225,5 +225,34 @@
   "whatsapp": {
     "label": "Écrire sur WhatsApp",
     "message": "Bonjour,"
+  },
+  "contactForm": {
+    "title": "Envoyer un message",
+    "name": "Nom",
+    "email": "E-mail",
+    "service": "Votre demande",
+    "message": "Message",
+    "choose": "Veuillez choisir",
+    "services": {
+      "coaching": "Coaching linguistique",
+      "editing": "Relecture",
+      "other": "Autre"
+    },
+    "counter": "{n} / {max} caractères",
+    "submit": "Envoyer le message",
+    "sending": "Envoi en cours …",
+    "successTitle": "Merci !",
+    "successBody": "Votre message est bien arrivé. Je vous répondrai dès que possible.",
+    "again": "Envoyer un autre message",
+    "errorTitle": "L'envoi a malheureusement échoué.",
+    "errorBody": "Vos saisies sont conservées – veuillez réessayer ou écrire directement à",
+    "errorRate": "Trop de tentatives. Veuillez patienter un instant ou écrire directement à",
+    "errors": {
+      "required": "Veuillez remplir ce champ.",
+      "email": "Veuillez saisir une adresse e-mail valide.",
+      "nameLong": "Le nom est trop long ({max} caractères max.).",
+      "messageShort": "Veuillez écrire au moins {min} caractères.",
+      "messageLong": "Le message est trop long ({max} caractères max.)."
+    }
   }
 }

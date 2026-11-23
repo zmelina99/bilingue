@@ -91,7 +91,7 @@ export default async function CoursesPage() {
         </p>
       </Section>
 
-      <ContactSection inquiryLabel={cta.requestLessons} />
+      <ContactSection inquiryLabel={cta.requestLessons} defaultService="coaching" />
     </main>
   );
 }
