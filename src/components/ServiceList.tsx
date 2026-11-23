@@ -1,4 +1,5 @@
 import Image, { type StaticImageData } from "next/image";
+import Reveal from "@/components/Reveal";
 import ServiceModal from "@/components/ServiceModal";
 import { slugify } from "@/lib/slug";
 
@@ -19,7 +20,7 @@ type Props = {
   /** When set, each card shows a "learn more" action. */
   learnMoreLabel?: string;
   /** Strings for the "learn more" modal; enables it alongside learnMoreLabel. */
-  modal?: { label: string; questionsTitle: string; cta: string };
+  modal?: { label: string; questionsTitle: string; cta: string; inquiryLabel?: string };
 };
 
 // Independent services side by side (no numbering: they are not steps).
@@ -35,26 +36,28 @@ export default function ServiceList({
 }: Props) {
   return (
     <ul className={`grid gap-x-8 gap-y-10 md:gap-y-12 lg:gap-x-10 service-list ${className}`}>
-      {items.map((item) =>
+      {items.map((item, i) =>
         item.image ? (
           <li
             key={item.title}
             id={slugify(item.title)}
             className="group relative flex scroll-mt-24 flex-col service-list__item service-list__item--card"
           >
-            <div className="relative aspect-[3/2] w-full overflow-hidden rounded-lg bg-surface service-list__media">
-              <Image
-                src={item.image}
-                alt={item.imageAlt ?? ""}
-                fill
-                sizes="(min-width: 768px) 33vw, 100vw"
-                className="object-cover transition-transform duration-500 ease-soft motion-safe:group-hover:scale-[1.02] service-list__image"
-              />
-            </div>
+            <Reveal delay={i * 120}>
+              <div className="relative aspect-[3/2] w-full overflow-hidden rounded-lg bg-surface service-list__media">
+                <Image
+                  src={item.image}
+                  alt={item.imageAlt ?? ""}
+                  fill
+                  sizes="(min-width: 768px) 33vw, 100vw"
+                  className="object-cover transition-transform duration-500 ease-soft motion-safe:group-hover:scale-[1.02] service-list__image"
+                />
+              </div>
+            </Reveal>
             <h3 className="mt-5 font-title text-2xl font-semibold leading-tight service-list__title">
               {item.title}
             </h3>
-            <p className="mt-3 leading-relaxed text-foreground/70 service-list__body">
+            <p className="mt-3 flex-1 leading-relaxed text-foreground/70 service-list__body">
               {item.body}
             </p>
             {learnMoreLabel && modal && item.details && (
@@ -68,6 +71,7 @@ export default function ServiceList({
                 triggerLabel={learnMoreLabel}
                 questionsTitle={modal.questionsTitle}
                 cta={modal.cta}
+                inquiryLabel={modal.inquiryLabel}
               />
             )}
           </li>

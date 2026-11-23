@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import ContactButton from "@/components/ContactButton";
+import ArrowLink from "@/components/ArrowLink";
+import ButtonLink from "@/components/ButtonLink";
 import ContactSection from "@/components/ContactSection";
 import Hero from "@/components/Hero";
 import PortraitSection from "@/components/PortraitSection";
@@ -34,7 +35,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function CoursesPage() {
-  const { header, common, courses } = await getDictionary();
+  const { header, common, courses, cta } = await getDictionary();
   const { offer, rates } = courses;
 
   // Artwork per service, in the dictionary's item order
@@ -53,17 +54,15 @@ export default async function CoursesPage() {
         image={heroArt}
         imageAlt={courses.imageAlt}
         actions={
-          <ContactButton arrow className="courses__contact-button">
-            {common.contact}
-          </ContactButton>
+          <ButtonLink href="#contact" size="lg" arrow className="courses__contact-button">
+            {cta.requestLessons}
+          </ButtonLink>
         }
         strip={offer.items.map(({ title }) => ({
           label: title,
           href: `#${slugify(title)}`,
         }))}
       />
-
-      <PortraitSection />
 
       <Section id="offer" title={offer.title} tone="surface">
         <ServiceList
@@ -73,21 +72,28 @@ export default async function CoursesPage() {
             label: header.nav.courses,
             questionsTitle: offer.modal.questionsTitle,
             cta: offer.modal.cta,
+            inquiryLabel: cta.requestLessons,
           }}
           className="md:grid-cols-3 courses__services"
         />
       </Section>
 
+      <PortraitSection />
+
       <Section
         id="rates"
         title={rates.title}
+        tone="surface"
         aside={<RatesList rows={rates.rows} />}
       >
         <p className="font-sans max-md:leading-[1.6] courses__rates-intro">{rates.intro}</p>
         <p className="font-sans text-sm max-md:leading-[1.6] courses__rates-note">{rates.note}</p>
+        <p className="courses__rates-cta">
+          <ArrowLink href="#contact">{cta.requestLessons}</ArrowLink>
+        </p>
       </Section>
 
-      <ContactSection />
+      <ContactSection inquiryLabel={cta.requestLessons} />
     </main>
   );
 }

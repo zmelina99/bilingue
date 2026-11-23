@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useId, useState } from "react";
+import Reveal from "@/components/Reveal";
 
 type Client = {
   name: string;
@@ -142,7 +143,8 @@ export default function Clients({
       </div>
 
       {/* Featured logos evenly distributed in one row (two columns on mobile). */}
-      <ul className="mt-7 grid grid-cols-2 items-center gap-x-8 gap-y-5 sm:grid-cols-4 clients__logos">
+      <Reveal className="mt-7">
+      <ul className="grid grid-cols-2 items-center gap-x-8 gap-y-5 sm:grid-cols-4 clients__logos">
         {featured.map((client) => (
           <LogoItem
             key={client.name}
@@ -151,6 +153,7 @@ export default function Clients({
           />
         ))}
       </ul>
+      </Reveal>
 
       {/* Expanded: the remaining client names (text only) in three columns. */}
       <div

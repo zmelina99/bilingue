@@ -213,6 +213,11 @@
       "mobile": "Mobile"
     }
   },
+  "cta": {
+    "contactDanielle": "Contacter Danielle",
+    "requestLessons": "Demander un cours",
+    "requestEditing": "Demander une révision"
+  },
   "footer": {
     "navLabel": "Pied de page"
   },

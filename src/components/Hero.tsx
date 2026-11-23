@@ -61,8 +61,7 @@ export default function Hero({
 
         {/* Hero illustration — right column on desktop, below on mobile */}
         <div
-          className="motion-safe:animate-fade-up md:col-span-6 md:col-start-7 md:row-start-1 hero__media"
-          style={{ animationDelay: "60ms" }}
+          className="motion-safe:animate-hero-in md:col-span-6 md:col-start-7 md:row-start-1 hero__media"
         >
           <MediaImage
             src={image}

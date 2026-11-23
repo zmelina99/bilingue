@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import ArrowLink from "@/components/ArrowLink";
 import ButtonLink from "@/components/ButtonLink";
 import Header from "@/components/Header";
 import library from "@/assets/art/library.jpg";
@@ -25,7 +26,7 @@ export async function generateMetadata(): Promise<Metadata> {
 // One-screen landing page: a single choice between the two halves of the business.
 export default async function Home() {
   const lang = await getLocale();
-  const { hero, header } = await getDictionary();
+  const { hero, header, cta } = await getDictionary();
 
   return (
     <div className="flex min-h-dvh flex-col bg-surface home">
@@ -54,7 +55,7 @@ export default async function Home() {
             </div>
 
             <figure
-              className="motion-safe:animate-fade-up order-4 mt-6 md:hidden home__figure home__figure--mobile"
+              className="motion-safe:animate-hero-in order-4 mt-6 md:hidden home__figure home__figure--mobile"
             >
               <Image
                 src={library}
@@ -68,11 +69,15 @@ export default async function Home() {
             <p className="order-5 mt-5 max-w-xl text-sm leading-relaxed text-foreground/70 sm:mt-6 sm:text-lg md:order-4 home__body">
               {hero.body}
             </p>
+            <p className="order-6 mt-4 text-sm sm:text-base md:order-4 home__contact-cta">
+              <ArrowLink href={`mailto:${contact.email}`} className="font-normal">
+                {cta.contactDanielle}
+              </ArrowLink>
+            </p>
           </div>
 
           <figure
-            className="motion-safe:animate-fade-up hidden md:col-span-5 md:col-start-8 md:block home__figure home__figure--desktop"
-            style={{ animationDelay: "60ms" }}
+            className="motion-safe:animate-hero-in hidden md:col-span-5 md:col-start-8 md:block home__figure home__figure--desktop"
           >
             <div className="relative h-[min(56dvh,32rem)] overflow-hidden home__figure-frame">
               <Image

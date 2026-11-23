@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Clients from "@/components/Clients";
-import ContactButton from "@/components/ContactButton";
+import ArrowLink from "@/components/ArrowLink";
+import ButtonLink from "@/components/ButtonLink";
 import ContactSection from "@/components/ContactSection";
 import Hero from "@/components/Hero";
 import PortraitSection from "@/components/PortraitSection";
@@ -39,7 +40,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function EditingPage() {
-  const { header, common, editing } = await getDictionary();
+  const { header, editing, cta } = await getDictionary();
   const { clients: clientsText, services, rates } = editing;
 
   return (
@@ -51,9 +52,9 @@ export default async function EditingPage() {
         imageAlt={editing.imageAlt}
         imageClassName="object-[50%_50%]"
         actions={
-          <ContactButton arrow className="editing__contact-button">
-            {common.contact}
-          </ContactButton>
+          <ButtonLink href="#contact" size="lg" arrow className="editing__contact-button">
+            {cta.requestEditing}
+          </ButtonLink>
         }
         strip={services.items.map(({ title }) => ({
           label: title,
@@ -63,25 +64,7 @@ export default async function EditingPage() {
 
       <PortraitSection />
 
-      <section
-        id="clients"
-        className="scroll-mt-16 bg-surface editing__clients"
-      >
-        <div className="page-x py-8 md:py-10 editing__clients-inner">
-          <Clients
-            heading={clientsText.title}
-            featured={featuredClients}
-            others={allClients.filter(
-              (c) => !(featuredClientIds as readonly string[]).includes(c.id),
-            )}
-            showAllLabel={clientsText.showAll}
-            showLessLabel={clientsText.showLess}
-            externalLabel={clientsText.external}
-          />
-        </div>
-      </section>
-
-      <Section id="services" title={services.title} alignment="center">
+      <Section id="services" title={services.title} alignment="center" tone="surface">
         <div className="grid-page items-start editing__services">
           <div className="md:col-span-8 editing__services-list">
             <ServiceList
@@ -98,20 +81,38 @@ export default async function EditingPage() {
             />
           </figure>
         </div>
+        {/* Trust proof sits directly under the services it supports. */}
+        <div
+          id="clients"
+          className="mt-12 scroll-mt-24 border-t border-primary-800/20 pt-10 md:mt-16 editing__clients"
+        >
+          <Clients
+            heading={clientsText.title}
+            featured={featuredClients}
+            others={allClients.filter(
+              (c) => !(featuredClientIds as readonly string[]).includes(c.id),
+            )}
+            showAllLabel={clientsText.showAll}
+            showLessLabel={clientsText.showLess}
+            externalLabel={clientsText.external}
+          />
+        </div>
       </Section>
 
       <Section
         id="rates"
         title={rates.title}
-        tone="surface"
         flip
         aside={<RatesList rows={rates.rows} />}
       >
         <p className="font-sans max-md:leading-[1.6] editing__rates-intro">{rates.intro}</p>
         <p className="font-sans text-sm max-md:leading-[1.6] editing__rates-note">{rates.note}</p>
+        <p className="editing__rates-cta">
+          <ArrowLink href="#contact">{cta.requestEditing}</ArrowLink>
+        </p>
       </Section>
 
-      <ContactSection />
+      <ContactSection inquiryLabel={cta.requestEditing} />
     </main>
   );
 }

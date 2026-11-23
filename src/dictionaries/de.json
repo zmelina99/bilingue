@@ -213,6 +213,11 @@
       "mobile": "Mobil"
     }
   },
+  "cta": {
+    "contactDanielle": "Danielle kontaktieren",
+    "requestLessons": "Unterricht anfragen",
+    "requestEditing": "Lektorat anfragen"
+  },
   "footer": {
     "navLabel": "Fusszeile"
   },

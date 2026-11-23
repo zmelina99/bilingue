@@ -213,6 +213,11 @@
       "mobile": "Mobile"
     }
   },
+  "cta": {
+    "contactDanielle": "Contact Danielle",
+    "requestLessons": "Request lessons",
+    "requestEditing": "Request editing"
+  },
   "footer": {
     "navLabel": "Footer"
   },

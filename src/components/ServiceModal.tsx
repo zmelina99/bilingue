@@ -3,6 +3,7 @@
 import Image, { type StaticImageData } from "next/image";
 import { useEffect, useId, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import ArrowLink from "@/components/ArrowLink";
 import ButtonLink from "@/components/ButtonLink";
 
 type Props = {
@@ -19,6 +20,8 @@ type Props = {
   /** Footer prompt + pill button. */
   questionsTitle: string;
   cta: string;
+  /** Matching inquiry link label ("Unterricht anfragen"); closes the dialog and jumps to contact. */
+  inquiryLabel?: string;
   /** Contact target (same-page hash). */
   contactHref?: string;
 };
@@ -37,6 +40,7 @@ export default function ServiceModal({
   triggerLabel,
   questionsTitle,
   cta,
+  inquiryLabel,
   contactHref = "#contact",
 }: Props) {
   const [open, setOpen] = useState(false);
@@ -90,6 +94,20 @@ export default function ServiceModal({
 
   const close = () => setOpen(false);
 
+  // Close first so the scroll lock and focus restore finish, then go to contact.
+  const goToContact = (e: React.MouseEvent) => {
+    e.preventDefault();
+    close();
+    requestAnimationFrame(() => {
+      const target = document.querySelector<HTMLElement>(contactHref);
+      if (!target) return;
+      target.scrollIntoView();
+      history.replaceState(null, "", contactHref);
+      target.setAttribute("tabindex", "-1");
+      target.focus({ preventScroll: true });
+    });
+  };
+
   return (
     <>
       <button
@@ -109,7 +127,7 @@ export default function ServiceModal({
         open &&
         createPortal(
           <div
-            className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto overscroll-contain bg-ink/40 p-4 py-8 sm:items-center sm:p-6 service-modal__overlay"
+            className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto overscroll-contain bg-ink/40 p-4 py-8 motion-safe:animate-fade-in sm:items-center sm:p-6 service-modal__overlay"
             onMouseDown={(e) => {
               if (e.target === e.currentTarget) close();
             }}
@@ -189,14 +207,25 @@ export default function ServiceModal({
                 <p className="font-title text-xl font-semibold service-modal__questions">
                   {questionsTitle}
                 </p>
-                <ButtonLink
-                  href={contactHref}
-                  onClick={close}
-                  size="sm"
-                  className="self-start sm:self-auto service-modal__cta"
-                >
-                  {cta}
-                </ButtonLink>
+                <div className="flex flex-wrap items-center gap-x-6 gap-y-3 service-modal__actions">
+                  {inquiryLabel && (
+                    <ArrowLink
+                      href={contactHref}
+                      onClick={goToContact}
+                      className="text-sm service-modal__inquiry"
+                    >
+                      {inquiryLabel}
+                    </ArrowLink>
+                  )}
+                  <ButtonLink
+                    href={contactHref}
+                    onClick={close}
+                    size="sm"
+                    className="service-modal__cta"
+                  >
+                    {cta}
+                  </ButtonLink>
+                </div>
               </div>
             </div>
           </div>,

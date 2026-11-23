@@ -32,6 +32,9 @@ export default async function RootLayout({ children }: LayoutProps<"/[lang]">) {
       className={`${title.variable} h-full antialiased site`}
     >
       <body className="min-h-full flex flex-col site__body">
+        <noscript>
+          <style>{".reveal-item{opacity:1!important;transform:none!important}"}</style>
+        </noscript>
         {children}
         <WhatsAppButton />
       </body>

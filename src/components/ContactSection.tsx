@@ -12,7 +12,12 @@ const value =
   "link-underline text-xl hover:text-primary-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground";
 
 // Identical on every page; target of all "Contact" buttons.
-export default async function ContactSection() {
+export default async function ContactSection({
+  inquiryLabel,
+}: {
+  /** Short CTA label (e.g. "Unterricht anfragen"); falls back to the email address. */
+  inquiryLabel?: string;
+}) {
   const { contact: t } = await getDictionary();
 
   return (
@@ -35,7 +40,7 @@ export default async function ContactSection() {
           className="absolute inset-0 -z-10 bg-linear-to-tr from-primary-950/80 via-primary-950/25 to-transparent contact__overlay"
         />
 
-        <div className="reveal page-x pt-24 pb-12 text-white md:pb-20 contact__content">
+        <div className="page-x pt-24 pb-12 text-white md:pb-20 contact__content">
           <p
             id="contact-title"
             className="text-[0.6875rem] font-bold tracking-[0.2em] uppercase text-white/80 contact__title"
@@ -46,19 +51,20 @@ export default async function ContactSection() {
           <p className="mt-5 max-w-[750px] font-title text-[2rem] leading-[1.3] md:text-[2.375rem] contact__body">
             {t.body}
           </p>
-          <p className="mt-4 font-title text-2xl italic text-white/90 contact__signature">
-            {brand.owner}
-          </p>
-
-          <ButtonLink
-            href={`mailto:${contact.email}`}
-            variant="light"
-            size="lg"
-            arrow
-            className="mt-8 max-w-full break-all contact__cta"
-          >
-            {contact.email}
-          </ButtonLink>
+          <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-4 contact__signoff">
+            <p className="font-title text-2xl italic text-white/90 contact__signature">
+              {brand.owner}
+            </p>
+            <ButtonLink
+              href={`mailto:${contact.email}`}
+              variant="light"
+              size="lg"
+              arrow
+              className="max-w-full break-all contact__cta"
+            >
+              {inquiryLabel ?? contact.email}
+            </ButtonLink>
+          </div>
         </div>
       </div>
 

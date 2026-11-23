@@ -7,15 +7,16 @@ import { getDictionary } from "@/lib/dictionaries";
 // label, photo and name in columns 1-4; the text from column 6, top-aligned.
 export default async function PortraitSection() {
   const { portrait: t } = await getDictionary();
-  const [lead, ...rest] = t.paragraphs;
+  // The manuscript has one biography paragraph; render it whole.
+  const biography = t.paragraphs.join(" ");
 
   return (
     <section
       id="portrait"
       aria-labelledby="portrait-title"
-      className="scroll-mt-16 portrait"
+      className="scroll-mt-16 border-t border-primary-800/20 portrait"
     >
-      <div className="reveal page-x section-y grid-page items-start portrait__inner">
+      <div className="page-x section-y grid-page items-start portrait__inner">
         <div className="md:col-span-4 portrait__intro">
           <h2 id="portrait-title" className="eyebrow portrait__title">
             {t.title}
@@ -39,14 +40,9 @@ export default async function PortraitSection() {
         </div>
 
         <div className="md:col-span-7 md:col-start-6 portrait__text">
-          <p className="max-w-2xl font-sans text-[1.5rem] leading-[1.4] font-normal portrait__lead">{lead}</p>
-          <div className="mt-8 max-w-2xl space-y-4 md:mt-10 portrait__body">
-            {rest.map((p) => (
-              <p key={p} className="font-sans text-[1.0625rem] leading-[1.65] font-normal text-foreground/75 portrait__paragraph">
-                {p}
-              </p>
-            ))}
-          </div>
+          <p className="max-w-2xl font-sans text-lg leading-[1.6] font-normal md:text-[1.25rem] portrait__biography">
+            {biography}
+          </p>
         </div>
       </div>
     </section>
