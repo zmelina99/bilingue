@@ -46,13 +46,17 @@ export default async function CoursesPage() {
   }));
 
   return (
-    <main className="flex flex-1 flex-col">
+    <main className="flex flex-1 flex-col courses">
       <Hero
         eyebrow={brand.name}
         title={header.nav.courses}
         image={heroArt}
         imageAlt={courses.imageAlt}
-        actions={<ContactButton>{common.contact}</ContactButton>}
+        actions={
+          <ContactButton className="courses__contact-button">
+            {common.contact}
+          </ContactButton>
+        }
         strip={offer.items.map(({ title }) => ({
           label: title,
           href: `#${slugify(title)}`,
@@ -70,7 +74,7 @@ export default async function CoursesPage() {
             questionsTitle: offer.modal.questionsTitle,
             cta: offer.modal.cta,
           }}
-          className="md:grid-cols-3"
+          className="md:grid-cols-3 courses__services"
         />
       </Section>
 
@@ -79,8 +83,8 @@ export default async function CoursesPage() {
         title={rates.title}
         aside={<RatesList rows={rates.rows} />}
       >
-        <p>{rates.intro}</p>
-        <p className="text-sm">{rates.note}</p>
+        <p className="courses__rates-intro">{rates.intro}</p>
+        <p className="text-sm courses__rates-note">{rates.note}</p>
       </Section>
 
       <ContactSection />

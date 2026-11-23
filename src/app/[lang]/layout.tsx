@@ -29,9 +29,9 @@ export default async function RootLayout({ children }: LayoutProps<"/[lang]">) {
     <html
       lang={await lang()}
       data-scroll-behavior="smooth"
-      className={`${title.variable} h-full antialiased`}
+      className={`${title.variable} h-full antialiased site`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col site__body">
         {children}
         <WhatsAppButton />
       </body>

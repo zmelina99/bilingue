@@ -43,14 +43,18 @@ export default async function EditingPage() {
   const { clients: clientsText, services, rates } = editing;
 
   return (
-    <main className="flex flex-1 flex-col">
+    <main className="flex flex-1 flex-col editing">
       <Hero
         eyebrow={brand.name}
         title={header.nav.editing}
         image={heroArt}
         imageAlt={editing.imageAlt}
         imageClassName="object-[50%_50%]"
-        actions={<ContactButton>{common.contact}</ContactButton>}
+        actions={
+          <ContactButton className="editing__contact-button">
+            {common.contact}
+          </ContactButton>
+        }
         strip={services.items.map(({ title }) => ({
           label: title,
           href: `#${slugify(title)}`,
@@ -59,8 +63,8 @@ export default async function EditingPage() {
 
       <PortraitSection />
 
-      <section id="clients" className="scroll-mt-16 bg-surface">
-        <div className="page-x py-8 md:py-10">
+      <section id="clients" className="scroll-mt-16 bg-surface editing__clients">
+        <div className="page-x py-8 md:py-10 editing__clients-inner">
           <Clients
             heading={clientsText.title}
             featured={featuredClients}
@@ -75,16 +79,19 @@ export default async function EditingPage() {
       </section>
 
       <Section id="services" title={services.title} alignment="center">
-        <div className="grid-page items-start">
-          <div className="md:col-span-8">
-            <ServiceList items={services.items} className="sm:grid-cols-2" />
+        <div className="grid-page items-start editing__services">
+          <div className="md:col-span-8 editing__services-list">
+            <ServiceList
+              items={services.items}
+              className="sm:grid-cols-2 editing__service-list"
+            />
           </div>
-          <figure className="md:col-span-4 md:col-start-10">
+          <figure className="md:col-span-4 md:col-start-10 editing__figure">
             <Image
               src={servicesArt}
               alt={services.imageAlt}
               sizes="(min-width: 768px) 33vw, 100vw"
-              className="mx-auto h-auto w-full max-w-[18rem] rounded-2xl md:max-w-none"
+              className="mx-auto h-auto w-full max-w-[18rem] rounded-2xl md:max-w-none editing__image"
             />
           </figure>
         </div>
@@ -96,8 +103,8 @@ export default async function EditingPage() {
         tone="surface"
         aside={<RatesList rows={rates.rows} />}
       >
-        <p>{rates.intro}</p>
-        <p className="text-sm">{rates.note}</p>
+        <p className="editing__rates-intro">{rates.intro}</p>
+        <p className="text-sm editing__rates-note">{rates.note}</p>
       </Section>
 
       <ContactSection />

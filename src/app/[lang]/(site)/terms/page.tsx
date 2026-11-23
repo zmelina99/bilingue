@@ -25,11 +25,11 @@ export default async function TermsPage() {
   const { terms } = editing;
 
   return (
-    <main className="flex flex-1 flex-col">
+    <main className="flex flex-1 flex-col terms">
       <Section id="terms" title={common.termsSubtitle} eyebrow={brand.name}>
-        <ol className="max-w-3xl list-decimal space-y-4 pl-6 text-foreground/70 marker:font-bold marker:text-primary-800">
+        <ol className="max-w-3xl list-decimal space-y-4 pl-6 text-foreground/70 marker:font-bold marker:text-primary-800 terms__list">
           {terms.items.map((item) => (
-            <li key={item} className="pl-2">
+            <li key={item} className="pl-2 terms__item">
               {item}
             </li>
           ))}

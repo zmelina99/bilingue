@@ -34,27 +34,27 @@ export default function ServiceList({
   modal,
 }: Props) {
   return (
-    <ul className={`grid gap-x-8 gap-y-10 md:gap-y-12 lg:gap-x-10 ${className}`}>
+    <ul className={`grid gap-x-8 gap-y-10 md:gap-y-12 lg:gap-x-10 service-list ${className}`}>
       {items.map((item) =>
         item.image ? (
           <li
             key={item.title}
             id={slugify(item.title)}
-            className="group flex scroll-mt-24 flex-col"
+            className="group flex scroll-mt-24 flex-col service-list__item service-list__item--card"
           >
-            <div className="relative aspect-[3/2] w-full overflow-hidden rounded-lg bg-surface">
+            <div className="relative aspect-[3/2] w-full overflow-hidden rounded-lg bg-surface service-list__media">
               <Image
                 src={item.image}
                 alt={item.imageAlt ?? ""}
                 fill
                 sizes="(min-width: 768px) 33vw, 100vw"
-                className="object-cover"
+                className="object-cover service-list__image"
               />
             </div>
-            <h3 className="mt-5 font-title text-2xl font-semibold leading-tight">
+            <h3 className="mt-5 font-title text-2xl font-semibold leading-tight service-list__title">
               {item.title}
             </h3>
-            <p className="mt-3 leading-relaxed text-foreground/70">
+            <p className="mt-3 leading-relaxed text-foreground/70 service-list__body">
               {item.body}
             </p>
             {learnMoreLabel && modal && item.details && (
@@ -75,14 +75,14 @@ export default function ServiceList({
           <li
             key={item.title}
             id={slugify(item.title)}
-            className="group relative scroll-mt-24 border-t border-foreground/15 pt-6"
+            className="group relative scroll-mt-24 border-t border-foreground/15 pt-6 service-list__item service-list__item--list"
           >
             <span
               aria-hidden
-              className="absolute -top-px left-0 h-0.5 w-0 bg-primary-800 transition-[width] duration-500 ease-soft group-hover:w-full group-focus-within:w-full"
+              className="absolute -top-px left-0 h-0.5 w-0 bg-primary-800 transition-[width] duration-500 ease-soft group-hover:w-full group-focus-within:w-full service-list__rule"
             />
-            <h3 className="text-2xl font-semibold">{item.title}</h3>
-            <p className="mt-3 max-w-xl leading-relaxed text-foreground/70">
+            <h3 className="text-2xl font-semibold service-list__title">{item.title}</h3>
+            <p className="mt-3 max-w-xl leading-relaxed text-foreground/70 service-list__body">
               {item.body}
             </p>
           </li>

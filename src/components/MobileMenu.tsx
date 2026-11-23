@@ -26,21 +26,21 @@ export default function MobileMenu({ label, items, contact }: Props) {
   const close = () => setOpen(false);
 
   return (
-    <div className="md:hidden">
+    <div className="md:hidden mobile-menu">
       <button
         type="button"
         aria-expanded={open}
         aria-controls={panelId}
         onClick={() => setOpen((o) => !o)}
-        className="-mr-2 inline-flex size-11 items-center justify-center rounded focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
+        className={`-mr-2 inline-flex size-11 items-center justify-center rounded focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground mobile-menu__toggle ${open ? "mobile-menu__toggle--open" : ""}`}
       >
-        <span className="sr-only">{label}</span>
-        <span aria-hidden className="relative block h-3 w-6">
+        <span className="sr-only mobile-menu__label">{label}</span>
+        <span aria-hidden className="relative block h-3 w-6 mobile-menu__icon">
           <span
-            className={`absolute inset-x-0 h-px bg-foreground transition-all duration-300 motion-reduce:transition-none ${open ? "top-1.5 rotate-45" : "top-0"}`}
+            className={`absolute inset-x-0 h-px bg-foreground transition-all duration-300 motion-reduce:transition-none mobile-menu__bar mobile-menu__bar--top ${open ? "top-1.5 rotate-45" : "top-0"}`}
           />
           <span
-            className={`absolute inset-x-0 h-px bg-foreground transition-all duration-300 motion-reduce:transition-none ${open ? "top-1.5 -rotate-45" : "top-3"}`}
+            className={`absolute inset-x-0 h-px bg-foreground transition-all duration-300 motion-reduce:transition-none mobile-menu__bar mobile-menu__bar--bottom ${open ? "top-1.5 -rotate-45" : "top-3"}`}
           />
         </span>
       </button>
@@ -49,21 +49,21 @@ export default function MobileMenu({ label, items, contact }: Props) {
         id={panelId}
         aria-label={label}
         hidden={!open}
-        className="absolute inset-x-0 top-full border-b border-foreground/10 bg-background"
+        className={`absolute inset-x-0 top-full border-b border-foreground/10 bg-background mobile-menu__panel ${open ? "mobile-menu__panel--open" : ""}`}
       >
-        <ul className="page-x py-2">
+        <ul className="page-x py-2 mobile-menu__list">
           {[...items, contact].map(({ href, label }) => {
             const active = pathname === href || pathname.startsWith(`${href}/`);
             return (
-              <li key={href} className="border-b border-foreground/10 last:border-0">
+              <li key={href} className="border-b border-foreground/10 last:border-0 mobile-menu__item">
                 <Link
                   href={href}
                   onClick={close}
                   aria-current={active ? "page" : undefined}
-                  className={`flex min-h-14 items-center justify-between text-2xl ${active ? "text-primary-800" : "text-foreground"}`}
+                  className={`flex min-h-14 items-center justify-between text-2xl mobile-menu__link ${active ? "text-primary-800 mobile-menu__link--active" : "text-foreground"}`}
                 >
                   {label}
-                  <span aria-hidden className="text-base text-secondary">
+                  <span aria-hidden className="text-base text-secondary mobile-menu__arrow">
                     →
                   </span>
                 </Link>

@@ -46,24 +46,24 @@ export default function Section({
       <section
         id={id}
         aria-labelledby={`${id}-title`}
-        className={`scroll-mt-16 border-t border-foreground/10 ${band}`}
+        className={`scroll-mt-16 border-t border-foreground/10 section section--collapsible ${tone === "surface" ? "section--surface" : ""} ${band}`}
       >
-        <details className="group page-x">
-          <summary className="flex min-h-20 cursor-pointer list-none items-center justify-between gap-6 py-6 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-foreground md:py-8 [&::-webkit-details-marker]:hidden">
+        <details className="group page-x section__details">
+          <summary className="flex min-h-20 cursor-pointer list-none items-center justify-between gap-6 py-6 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-foreground md:py-8 [&::-webkit-details-marker]:hidden section__summary">
             <p
               id={`${id}-title`}
-              className={`font-title text-2xl leading-tight font-semibold tracking-tight md:text-3xl ${headingAlignment}`}
+              className={`font-title text-2xl leading-tight font-semibold tracking-tight md:text-3xl section__title ${headingAlignment}`}
             >
               {title}
             </p>
-            <span className="flex items-center gap-4 text-foreground/60 transition-colors group-hover:text-primary-800">
-              <span className="hidden text-base sm:inline">
+            <span className="flex items-center gap-4 text-foreground/60 transition-colors group-hover:text-primary-800 section__toggle">
+              <span className="hidden text-base sm:inline section__subtitle">
                 {collapsible.subtitle}
               </span>
               <svg
                 aria-hidden
                 viewBox="0 0 20 20"
-                className="size-5 shrink-0 text-primary-800 transition-transform duration-300 ease-soft group-open:rotate-180 motion-reduce:transition-none"
+                className="size-5 shrink-0 text-primary-800 transition-transform duration-300 ease-soft group-open:rotate-180 motion-reduce:transition-none section__icon"
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="1.5"
@@ -74,9 +74,9 @@ export default function Section({
               </svg>
             </span>
           </summary>
-          <div className="grid-page pb-12 md:pb-16">
-            <div className="md:col-span-7 md:col-start-6">
-              <p className="mb-6 text-base text-foreground/60 sm:hidden">
+          <div className="grid-page pb-12 md:pb-16 section__body">
+            <div className="md:col-span-7 md:col-start-6 section__content">
+              <p className="mb-6 text-base text-foreground/60 sm:hidden section__subtitle-mobile">
                 {collapsible.subtitle}
               </p>
               {children}
@@ -88,11 +88,11 @@ export default function Section({
   }
 
   const heading = (
-    <div className={headingAlignment}>
-      {eyebrow && <p className="eyebrow">{eyebrow}</p>}
+    <div className={`${headingAlignment} section__heading`}>
+      {eyebrow && <p className="eyebrow section__eyebrow">{eyebrow}</p>}
       <p
         id={`${id}-title`}
-        className={`heading-2 ${eyebrow ? "mt-3" : ""}`}
+        className={`heading-2 section__title ${eyebrow ? "mt-3" : ""}`}
         style={{ color: titleColor }}
       >
         {title}
@@ -104,37 +104,37 @@ export default function Section({
     <section
       id={id}
       aria-labelledby={`${id}-title`}
-      className={`scroll-mt-16 ${band}`}
+      className={`scroll-mt-16 section ${isCentered ? "section--centered" : ""} ${tone === "surface" ? "section--surface" : ""} ${band}`}
     >
-      <div className="reveal page-x section-y">
+      <div className="reveal page-x section-y section__inner">
         {aside ? (
-          <div className="grid-page items-start">
-            <div className="md:col-span-4">
+          <div className="grid-page items-start section__split">
+            <div className="md:col-span-4 section__main">
               {heading}
-              <div className="body-text mt-5 max-w-prose space-y-4 md:mt-6">
+              <div className="body-text mt-5 max-w-prose space-y-4 md:mt-6 section__text">
                 {children}
               </div>
             </div>
-            <div className="md:col-span-7 md:col-start-6">{aside}</div>
+            <div className="md:col-span-7 md:col-start-6 section__aside">{aside}</div>
           </div>
         ) : (
           <>
-            <div className="grid-page items-end">
+            <div className="grid-page items-end section__header">
               <div
-                className={
+                className={`section__heading-wrap ${
                   isCentered && !intro ? "col-span-12" : "md:col-span-7"
-                }
+                }`}
               >
                 {heading}
               </div>
               {intro && (
-                <p className="body-text md:col-span-4 md:col-start-9">
+                <p className="body-text md:col-span-4 md:col-start-9 section__intro">
                   {intro}
                 </p>
               )}
             </div>
             {children && (
-              <div className={tight ? "mt-8 md:mt-10" : "mt-8 md:mt-12"}>
+              <div className={`section__content ${tight ? "mt-8 md:mt-10 section__content--tight" : "mt-8 md:mt-12"}`}>
                 {children}
               </div>
             )}

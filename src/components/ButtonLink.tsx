@@ -27,7 +27,7 @@ export default function ButtonLink({
 }: Props) {
   return (
     <Link
-      className={`inline-flex items-center justify-center rounded-full transition duration-300 ease-soft motion-safe:hover:-translate-y-0.5 motion-safe:active:translate-y-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground ${sizes[size]} ${variants[variant]} ${className}`}
+      className={`inline-flex items-center justify-center rounded-full transition duration-300 ease-soft motion-safe:hover:-translate-y-0.5 motion-safe:active:translate-y-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground ${sizes[size]} ${variants[variant]} button-link button-link--${variant} button-link--${size} ${className}`}
       {...props}
     />
   );

@@ -16,14 +16,14 @@ export default async function Footer() {
   ];
 
   return (
-    <footer className="bg-background">
-      <div className="page-x flex flex-wrap items-center justify-between gap-x-10 gap-y-4 py-8">
-        <Logo />
-        <nav aria-label={footer.navLabel}>
-          <ul className="flex gap-6 text-sm">
+    <footer className="bg-background footer">
+      <div className="page-x flex flex-wrap items-center justify-between gap-x-10 gap-y-4 py-8 footer__main">
+        <Logo className="footer__logo" />
+        <nav aria-label={footer.navLabel} className="footer__nav">
+          <ul className="flex gap-6 text-sm footer__nav-list">
             {links.map(({ href, label }) => (
-              <li key={href}>
-                <Link href={href} className={link}>
+              <li key={href} className="footer__nav-item">
+                <Link href={href} className={`${link} footer__nav-link`}>
                   {label}
                 </Link>
               </li>
@@ -31,12 +31,12 @@ export default async function Footer() {
           </ul>
         </nav>
       </div>
-      <div className="border-t border-foreground/10">
-        <div className="page-x flex flex-wrap items-center justify-between gap-x-10 gap-y-2 py-4 pr-20 text-xs text-secondary">
-          <p>
+      <div className="border-t border-foreground/10 footer__bottom">
+        <div className="page-x flex flex-wrap items-center justify-between gap-x-10 gap-y-2 py-4 pr-20 text-xs text-secondary footer__bottom-inner">
+          <p className="footer__copyright">
             © {brand.name} · {brand.descriptor}
           </p>
-          <Link href={`/${lang}/terms`} className={link}>
+          <Link href={`/${lang}/terms`} className={`${link} footer__terms-link`}>
             {common.termsSubtitle}
           </Link>
         </div>

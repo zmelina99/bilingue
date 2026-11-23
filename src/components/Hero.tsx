@@ -23,10 +23,10 @@ export default function Hero({
   strip,
 }: Props) {
   return (
-    <section className="bg-surface">
+    <section className="bg-surface hero">
       {/* Contemporary Literary: text left, artwork right on desktop;
           on mobile the title leads and the artwork follows. */}
-      <div className="page-x grid-page relative items-center gap-y-8 py-8 md:gap-y-0 md:py-10">
+      <div className="page-x grid-page relative items-center gap-y-8 py-8 md:gap-y-0 md:py-10 hero__inner">
         {/* Decorative Art Nouveau iris sprig (transparent PNG) growing
             diagonally from the bottom-left corner. Absolutely positioned and
             bottom-anchored, sized by height so the tallest bloom reaches near
@@ -37,17 +37,17 @@ export default function Hero({
           src="/iris-sprig.png"
           alt=""
           aria-hidden="true"
-          className="pointer-events-none absolute bottom-0 left-0 hidden h-full w-auto select-none lg:block"
+          className="pointer-events-none absolute bottom-0 left-0 hidden h-full w-auto select-none lg:block hero__sprig"
         />
 
         {/* Hero text — left column on desktop, first on mobile.
             At lg+ a left pad clears the full width of the diagonal sprig so the
             text never overlaps it. */}
-        <div className="md:col-span-5 md:col-start-1 md:row-start-1 lg:col-span-6 lg:pl-[180px] xl:pl-[220px]">
-          <p className="motion-safe:animate-fade-up eyebrow">{eyebrow}</p>
+        <div className="md:col-span-5 md:col-start-1 md:row-start-1 lg:col-span-6 lg:pl-[180px] xl:pl-[220px] hero__content">
+          <p className="motion-safe:animate-fade-up eyebrow hero__eyebrow">{eyebrow}</p>
 
           <h1
-            className="motion-safe:animate-fade-up mt-3 text-[clamp(2.75rem,6vw,5.25rem)] leading-[1.02] font-semibold tracking-tight text-balance break-words [hyphens:auto]"
+            className="motion-safe:animate-fade-up mt-3 text-[clamp(2.75rem,6vw,5.25rem)] leading-[1.02] font-semibold tracking-tight text-balance break-words [hyphens:auto] hero__title"
             style={{ animationDelay: "80ms" }}
           >
             {title}
@@ -55,14 +55,14 @@ export default function Hero({
 
           <div
             aria-hidden
-            className="motion-safe:animate-fade-up mt-6 h-px w-16 bg-primary-800"
+            className="motion-safe:animate-fade-up mt-6 h-px w-16 bg-primary-800 hero__divider"
             style={{ animationDelay: "160ms" }}
           />
         </div>
 
         {/* Hero illustration — right column on desktop, below on mobile */}
         <div
-          className="motion-safe:animate-fade-up md:col-span-6 md:col-start-7 md:row-start-1"
+          className="motion-safe:animate-fade-up md:col-span-6 md:col-start-7 md:row-start-1 hero__media"
           style={{ animationDelay: "240ms" }}
         >
           <MediaImage
@@ -71,7 +71,7 @@ export default function Hero({
             priority
             still
             sizes="(min-width: 768px) 26rem, 100vw"
-            className="aspect-[3/2] w-full max-w-[26rem] md:ml-auto"
+            className="aspect-[3/2] w-full max-w-[26rem] md:ml-auto hero__image"
             imageClassName={imageClassName}
             borderRadius
           />

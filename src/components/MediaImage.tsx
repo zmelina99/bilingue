@@ -23,7 +23,7 @@ export default function MediaImage({
   borderRadius,
 }: Props) {
   return (
-    <div className={`relative w-full overflow-hidden bg-surface ${className}`}>
+    <div className={`relative w-full overflow-hidden bg-surface media-image ${className}`}>
       <Image
         src={src}
         style={borderRadius ? { borderRadius: "8px" } : {}}
@@ -31,9 +31,9 @@ export default function MediaImage({
         fill
         sizes={sizes}
         priority={priority}
-        className={`object-cover ${imageClassName} ${
+        className={`object-cover media-image__image ${imageClassName} ${
           still
-            ? ""
+            ? "media-image__image--still"
             : "transition-transform duration-700 ease-soft motion-safe:hover:scale-105"
         }`}
       />

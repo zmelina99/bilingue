@@ -3,7 +3,7 @@ type Props = { rows: { label: string; value: string }[] };
 // Plain ruled list. The unit after "/" (per hour, per lesson) is set quieter than the price.
 export default function RatesList({ rows }: Props) {
   return (
-    <dl className="border-t border-foreground/15">
+    <dl className="border-t border-foreground/15 rates-list">
       {rows.map((row, i) => {
         const cut = row.value.indexOf("/");
         const price = cut === -1 ? row.value : row.value.slice(0, cut);
@@ -11,14 +11,14 @@ export default function RatesList({ rows }: Props) {
         return (
           <div
             key={i}
-            className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-b border-foreground/15 py-4 md:py-5"
+            className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-b border-foreground/15 py-4 md:py-5 rates-list__row"
           >
-            <dt className="text-base md:text-lg">{row.label}</dt>
-            <dd className="whitespace-nowrap tabular-nums">
-              <span className="text-xl font-semibold text-foreground md:text-2xl">
+            <dt className="text-base md:text-lg rates-list__label">{row.label}</dt>
+            <dd className="whitespace-nowrap tabular-nums rates-list__value">
+              <span className="text-xl font-semibold text-foreground md:text-2xl rates-list__price">
                 {price}
               </span>
-              <span className="text-sm text-secondary">{unit}</span>
+              <span className="text-sm text-secondary rates-list__unit">{unit}</span>
             </dd>
           </div>
         );

@@ -95,17 +95,17 @@ export default function ServiceModal({
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="mt-4 inline-flex items-center gap-1.5 self-start text-sm font-semibold text-primary-800 transition-colors hover:text-primary-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
+        className="mt-4 inline-flex items-center gap-1.5 self-start text-sm font-semibold text-primary-800 transition-colors hover:text-primary-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground service-modal__trigger"
       >
         {triggerLabel}
-        <span aria-hidden>&rarr;</span>
+        <span aria-hidden className="service-modal__trigger-icon">&rarr;</span>
       </button>
 
       {mounted &&
         open &&
         createPortal(
           <div
-            className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto overscroll-contain bg-ink/40 p-4 py-8 sm:items-center sm:p-6"
+            className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto overscroll-contain bg-ink/40 p-4 py-8 sm:items-center sm:p-6 service-modal__overlay"
             onMouseDown={(e) => {
               if (e.target === e.currentTarget) close();
             }}
@@ -115,18 +115,18 @@ export default function ServiceModal({
               role="dialog"
               aria-modal="true"
               aria-labelledby={titleId}
-              className="relative my-auto w-full max-w-[720px] rounded-lg bg-surface p-10 shadow-2xl shadow-ink/20 motion-safe:animate-fade-up md:p-12"
+              className="relative my-auto w-full max-w-[720px] rounded-lg bg-surface p-10 shadow-2xl shadow-ink/20 motion-safe:animate-fade-up md:p-12 service-modal service-modal__panel"
             >
               <button
                 type="button"
                 onClick={close}
                 aria-label="Schließen"
-                className="absolute right-4 top-4 inline-flex size-10 items-center justify-center rounded-full text-foreground/55 transition-colors hover:bg-foreground/5 hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground md:right-5 md:top-5"
+                className="absolute right-4 top-4 inline-flex size-10 items-center justify-center rounded-full text-foreground/55 transition-colors hover:bg-foreground/5 hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground md:right-5 md:top-5 service-modal__close"
               >
                 <svg
                   aria-hidden
                   viewBox="0 0 24 24"
-                  className="size-5"
+                  className="size-5 service-modal__close-icon"
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="1.5"
@@ -136,61 +136,61 @@ export default function ServiceModal({
                 </svg>
               </button>
 
-              <div className="flex flex-col-reverse gap-5 pr-8 sm:flex-row sm:items-start sm:justify-between sm:gap-6 sm:pr-10">
-                <div className="min-w-0 flex-1">
-                  <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary-800">
+              <div className="flex flex-col-reverse gap-5 pr-8 sm:flex-row sm:items-start sm:justify-between sm:gap-6 sm:pr-10 service-modal__header">
+                <div className="min-w-0 flex-1 service-modal__heading">
+                  <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary-800 service-modal__label">
                     {label}
                   </p>
                   <h2
                     id={titleId}
-                    className="mt-3 font-title text-3xl font-semibold leading-tight md:text-4xl"
+                    className="mt-3 font-title text-3xl font-semibold leading-tight md:text-4xl service-modal__title"
                   >
                     {title}
                   </h2>
                 </div>
                 {image && (
-                  <div className="relative h-28 w-20 shrink-0 overflow-hidden rounded-lg bg-surface">
+                  <div className="relative h-28 w-20 shrink-0 overflow-hidden rounded-lg bg-surface service-modal__media">
                     <Image
                       src={image}
                       alt={imageAlt ?? ""}
                       fill
                       sizes="80px"
-                      className="object-cover"
+                      className="object-cover service-modal__image"
                     />
                   </div>
                 )}
               </div>
 
-              <div aria-hidden className="mt-5 h-0.5 w-12 bg-primary-800" />
+              <div aria-hidden className="mt-5 h-0.5 w-12 bg-primary-800 service-modal__divider" />
 
-              <div className="mt-6 space-y-4 leading-relaxed text-foreground/75">
+              <div className="mt-6 space-y-4 leading-relaxed text-foreground/75 service-modal__content">
                 {paragraphs.map((paragraph, i) => (
-                  <p key={i}>{paragraph}</p>
+                  <p key={i} className="service-modal__paragraph">{paragraph}</p>
                 ))}
                 {bullets && bullets.length > 0 && (
-                  <ul className="space-y-2">
+                  <ul className="space-y-2 service-modal__list">
                     {bullets.map((bullet, i) => (
-                      <li key={i} className="flex gap-2.5">
+                      <li key={i} className="flex gap-2.5 service-modal__list-item">
                         <span
                           aria-hidden
-                          className="mt-2 size-1.5 shrink-0 rounded-full bg-primary-800"
+                          className="mt-2 size-1.5 shrink-0 rounded-full bg-primary-800 service-modal__bullet"
                         />
-                        <span>{bullet}</span>
+                        <span className="service-modal__bullet-text">{bullet}</span>
                       </li>
                     ))}
                   </ul>
                 )}
               </div>
 
-              <div className="mt-8 flex flex-col gap-4 border-t border-foreground/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
-                <p className="font-title text-xl font-semibold">
+              <div className="mt-8 flex flex-col gap-4 border-t border-foreground/10 pt-6 sm:flex-row sm:items-center sm:justify-between service-modal__footer">
+                <p className="font-title text-xl font-semibold service-modal__questions">
                   {questionsTitle}
                 </p>
                 <ButtonLink
                   href={contactHref}
                   onClick={close}
                   size="sm"
-                  className="self-start sm:self-auto"
+                  className="self-start sm:self-auto service-modal__cta"
                 >
                   {cta}
                 </ButtonLink>
