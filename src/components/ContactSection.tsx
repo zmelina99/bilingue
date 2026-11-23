@@ -20,7 +20,7 @@ export default async function ContactSection() {
       aria-labelledby="contact-title"
       className="scroll-mt-16"
     >
-      <div className="relative isolate overflow-hidden">
+      <div className="relative isolate flex min-h-[26rem] items-end overflow-hidden md:min-h-[33.75rem]">
         <Image
           src={lake}
           alt={t.imageAlt}
@@ -31,10 +31,10 @@ export default async function ContactSection() {
 
         <div
           aria-hidden
-          className="absolute inset-0 -z-10 bg-linear-to-r from-primary-950/75 via-primary-950/40 to-transparent"
+          className="absolute inset-0 -z-10 bg-linear-to-tr from-primary-950/80 via-primary-950/25 to-transparent"
         />
 
-        <div className="page-x py-16 text-white md:py-28">
+        <div className="page-x pt-24 pb-12 text-white md:pb-20">
           <p
             id="contact-title"
             className="text-[0.6875rem] font-bold tracking-[0.2em] uppercase text-white/80"
@@ -42,7 +42,7 @@ export default async function ContactSection() {
             {t.title}
           </p>
 
-          <p className="mt-5 max-w-3xl font-title text-3xl leading-[1.15] italic md:text-5xl">
+          <p className="mt-5 max-w-[750px] font-title text-[2rem] leading-[1.3] md:text-[2.375rem]">
             {t.body}
           </p>
         </div>
