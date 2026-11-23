@@ -49,7 +49,7 @@ export default async function EditingPage() {
         imageAlt={editing.imageAlt}
         imageClassName="object-[50%_50%]"
         actions={
-          <ButtonLink href="#contact" size="lg" arrow className="editing__contact-button">
+          <ButtonLink href="#contact-form" size="lg" arrow className="editing__contact-button">
             {cta.requestEditing}
           </ButtonLink>
         }
@@ -105,7 +105,7 @@ export default async function EditingPage() {
         <p className="font-sans max-md:leading-[1.6] editing__rates-intro">{rates.intro}</p>
         <p className="font-sans text-sm max-md:leading-[1.6] editing__rates-note">{rates.note}</p>
         <p className="editing__rates-cta">
-          <ArrowLink href="#contact">{cta.requestEditing}</ArrowLink>
+          <ArrowLink href="#contact-form">{cta.requestEditing}</ArrowLink>
         </p>
       </Section>
 

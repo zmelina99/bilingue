@@ -5,6 +5,7 @@ import { useEffect, useId, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import ArrowLink from "@/components/ArrowLink";
 import ButtonLink from "@/components/ButtonLink";
+import { CONTACT_HREF, goToContactForm } from "@/lib/contact-anchor";
 
 type Props = {
   /** Small uppercase label in the header (e.g. the section name). */
@@ -44,11 +45,13 @@ export default function ServiceModal({
   cta,
   inquiryLabel,
   closeLabel,
-  contactHref = "#contact",
+  contactHref = CONTACT_HREF,
 }: Props) {
   const [open, setOpen] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
   const titleId = useId();
+  const skipFocusRestore = useRef(false);
+  const releaseLock = useRef<(() => void) | null>(null);
 
   useEffect(() => {
     if (!open) return;
@@ -56,6 +59,10 @@ export default function ServiceModal({
     const previouslyFocused = document.activeElement as HTMLElement | null;
     const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
+    const unlock = () => {
+      document.body.style.overflow = prevOverflow;
+    };
+    releaseLock.current = unlock;
 
     const focusables = () =>
       panelRef.current?.querySelectorAll<HTMLElement>(
@@ -87,25 +94,28 @@ export default function ServiceModal({
     document.addEventListener("keydown", onKey);
     return () => {
       document.removeEventListener("keydown", onKey);
-      document.body.style.overflow = prevOverflow;
-      previouslyFocused?.focus();
+      unlock();
+      releaseLock.current = null;
+      // Return focus to the opener without scrolling the page back to it, and
+      // not at all when we are leaving for the contact form.
+      if (!skipFocusRestore.current) {
+        previouslyFocused?.focus({ preventScroll: true });
+      }
+      skipFocusRestore.current = false;
     };
   }, [open]);
 
   const close = () => setOpen(false);
 
-  // Close first so the scroll lock and focus restore finish, then go to contact.
+  // Close, release the scroll lock, and only then scroll; focus goes to the
+  // form heading, not back to the opener (which would pull the page back).
   const goToContact = (e: React.MouseEvent) => {
+    if (contactHref !== CONTACT_HREF) return;
     e.preventDefault();
-    close();
-    requestAnimationFrame(() => {
-      const target = document.querySelector<HTMLElement>(contactHref);
-      if (!target) return;
-      target.scrollIntoView();
-      history.replaceState(null, "", contactHref);
-      target.setAttribute("tabindex", "-1");
-      target.focus({ preventScroll: true });
-    });
+    skipFocusRestore.current = true;
+    releaseLock.current?.();
+    setOpen(false);
+    requestAnimationFrame(() => goToContactForm());
   };
 
   return (

@@ -5,5 +5,5 @@ import ButtonLink from "@/components/ButtonLink";
 export default function ContactButton(
   props: Omit<ComponentProps<typeof ButtonLink>, "href">,
 ) {
-  return <ButtonLink href="#contact" {...props} />;
+  return <ButtonLink href="#contact-form" {...props} />;
 }

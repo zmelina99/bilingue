@@ -1,4 +1,5 @@
-import Link from "next/link";
+import AppLink from "@/components/AppLink";
+import type Link from "next/link";
 import type { ComponentProps } from "react";
 
 // Quiet text link with a small arrow that nudges right on hover and keyboard focus.
@@ -9,7 +10,7 @@ export default function ArrowLink({
   ...props
 }: ComponentProps<typeof Link>) {
   return (
-    <Link
+    <AppLink
       className={`group inline-flex items-center gap-2 font-semibold text-primary-800 transition-colors duration-200 hover:text-primary-900 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-foreground arrow-link ${className}`}
       {...props}
     >
@@ -22,6 +23,6 @@ export default function ArrowLink({
       >
         &rarr;
       </span>
-    </Link>
+    </AppLink>
   );
 }

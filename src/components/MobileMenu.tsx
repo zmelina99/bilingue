@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import AppLink from "@/components/AppLink";
 import { usePathname } from "next/navigation";
 import { useEffect, useId, useState } from "react";
 
@@ -56,7 +56,7 @@ export default function MobileMenu({ label, items, contact }: Props) {
             const active = pathname === href || pathname.startsWith(`${href}/`);
             return (
               <li key={href} className="border-b border-foreground/10 last:border-0 mobile-menu__item">
-                <Link
+                <AppLink
                   href={href}
                   onClick={close}
                   aria-current={active ? "page" : undefined}
@@ -66,7 +66,7 @@ export default function MobileMenu({ label, items, contact }: Props) {
                   <span aria-hidden className="text-base text-secondary mobile-menu__arrow">
                     →
                   </span>
-                </Link>
+                </AppLink>
               </li>
             );
           })}

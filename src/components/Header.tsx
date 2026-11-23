@@ -6,9 +6,9 @@ import MobileMenu from "@/components/MobileMenu";
 import { getDictionary, getLocale } from "@/lib/dictionaries";
 
 // One header for every page. `contactHref` defaults to the #contact section
-// present on every page (on the landing page: the contact line under the hero).
+// present on every page (the form heading) (on the landing page: the contact line under the hero).
 export default async function Header({
-  contactHref = "#contact",
+  contactHref = "#contact-form",
   className = "bg-background",
 }: {
   contactHref?: string;

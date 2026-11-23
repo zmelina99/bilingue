@@ -2,10 +2,9 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import ArrowLink from "@/components/ArrowLink";
 import ButtonLink from "@/components/ButtonLink";
-import ContactForm from "@/components/ContactForm";
 import Header from "@/components/Header";
 import library from "@/assets/art/library.jpg";
-import { brand, contact, whatsappHref } from "@/data/business";
+import { brand } from "@/data/business";
 import { getDictionary, getLocale } from "@/lib/dictionaries";
 import { alternatesFor } from "@/lib/site";
 
@@ -24,7 +23,7 @@ export async function generateMetadata(): Promise<Metadata> {
 // One-screen landing page: a single choice between the two halves of the business.
 export default async function Home() {
   const lang = await getLocale();
-  const { hero, header, cta, whatsapp, contactForm } = await getDictionary();
+  const { hero, header, cta, contactForm } = await getDictionary();
 
   return (
     <div className="flex min-h-dvh flex-col bg-surface home">
@@ -80,7 +79,7 @@ export default async function Home() {
               {hero.body}
             </p>
             <p className="order-6 mt-4 text-sm sm:text-base md:order-4 home__contact-cta">
-              <ArrowLink href="#contact" className="font-normal">
+              <ArrowLink href="/courses#contact-form" className="font-normal">
                 {cta.contactDanielle}
               </ArrowLink>
             </p>
