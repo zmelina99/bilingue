@@ -123,6 +123,8 @@ export const allClients: Client[] = [
 // Mobile number from the manuscript, assumed to be on WhatsApp — to be confirmed
 // (international format, digits only).
 export const whatsappNumber = "41792337843";
+export const whatsappHref = (message: string) =>
+  `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
 // The logos displayed on the Editing page, in order. To change which brands are
 // featured, edit only this list — any id from `allClients` that has a `logo`

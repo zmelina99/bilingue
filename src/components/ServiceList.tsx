@@ -20,7 +20,7 @@ type Props = {
   /** When set, each card shows a "learn more" action. */
   learnMoreLabel?: string;
   /** Strings for the "learn more" modal; enables it alongside learnMoreLabel. */
-  modal?: { label: string; questionsTitle: string; cta: string; inquiryLabel?: string };
+  modal?: { label: string; questionsTitle: string; cta: string; inquiryLabel?: string; closeLabel: string };
 };
 
 // Independent services side by side (no numbering: they are not steps).
@@ -72,6 +72,7 @@ export default function ServiceList({
                 questionsTitle={modal.questionsTitle}
                 cta={modal.cta}
                 inquiryLabel={modal.inquiryLabel}
+                closeLabel={modal.closeLabel}
               />
             )}
           </li>

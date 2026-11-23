@@ -1,9 +1,9 @@
-import { whatsappNumber } from "@/data/business";
+import { whatsappHref } from "@/data/business";
 import { getDictionary } from "@/lib/dictionaries";
 
 export default async function WhatsAppButton() {
   const { whatsapp } = await getDictionary();
-  const href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsapp.message)}`;
+  const href = whatsappHref(whatsapp.message);
 
   return (
     <a

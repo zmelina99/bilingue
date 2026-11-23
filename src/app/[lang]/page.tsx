@@ -4,9 +4,9 @@ import ArrowLink from "@/components/ArrowLink";
 import ButtonLink from "@/components/ButtonLink";
 import Header from "@/components/Header";
 import library from "@/assets/art/library.jpg";
-import { brand, contact } from "@/data/business";
+import { brand, contact, whatsappHref } from "@/data/business";
 import { getDictionary, getLocale } from "@/lib/dictionaries";
-import { locales } from "@/lib/locales";
+import { alternatesFor } from "@/lib/site";
 
 export async function generateMetadata(): Promise<Metadata> {
   const lang = await getLocale();
@@ -15,10 +15,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: { absolute: meta.title },
     description: meta.description,
-    alternates: {
-      canonical: `/${lang}`,
-      languages: Object.fromEntries(locales.map((l) => [l, `/${l}`])),
-    },
+    alternates: alternatesFor(lang, ""),
     openGraph: { title: meta.title, description: meta.description },
   };
 }
@@ -26,14 +23,11 @@ export async function generateMetadata(): Promise<Metadata> {
 // One-screen landing page: a single choice between the two halves of the business.
 export default async function Home() {
   const lang = await getLocale();
-  const { hero, header, cta } = await getDictionary();
+  const { hero, header, cta, whatsapp } = await getDictionary();
 
   return (
     <div className="flex min-h-dvh flex-col bg-surface home">
-      <Header
-        contactHref={`mailto:${contact.email}`}
-        className="bg-surface home__header"
-      />
+      <Header className="bg-surface home__header" />
       <main className="relative isolate flex flex-1 flex-col overflow-hidden home__main">
         <section className="page-x grid-page flex-1 items-center py-6 sm:py-8 home__hero">
           {/* Phones: title, service choices, artwork, then the longer text.
@@ -60,8 +54,10 @@ export default async function Home() {
               <Image
                 src={library}
                 alt={hero.imageAlt}
-                priority
-                sizes="100vw"
+                loading="eager"
+                fetchPriority="high"
+                // Hidden from md up: request only a tiny variant there.
+                sizes="(min-width: 768px) 16px, 100vw"
                 className="h-auto w-full object-contain rounded-lg home__image"
               />
             </figure>
@@ -70,7 +66,7 @@ export default async function Home() {
               {hero.body}
             </p>
             <p className="order-6 mt-4 text-sm sm:text-base md:order-4 home__contact-cta">
-              <ArrowLink href={`mailto:${contact.email}`} className="font-normal">
+              <ArrowLink href="#contact" className="font-normal">
                 {cta.contactDanielle}
               </ArrowLink>
             </p>
@@ -84,8 +80,9 @@ export default async function Home() {
                 src={library}
                 alt={hero.imageAlt}
                 fill
-                priority
-                sizes="(min-width: 768px) 45vw, 0px"
+                loading="eager"
+                fetchPriority="high"
+                sizes="(min-width: 768px) 45vw, 16px"
                 className="object-cover object-[60%_50%] rounded-lg home__image"
               />
             </div>
@@ -95,7 +92,11 @@ export default async function Home() {
           </figure>
         </section>
 
-        <p className="page-x py-3 text-xs text-secondary sm:py-4 home__contact">
+        {/* Target of "Kontakt" and "Danielle kontaktieren" on this page. */}
+        <p
+          id="contact"
+          className="page-x scroll-mt-20 py-3 pr-24 text-xs text-secondary sm:py-4 md:pr-28 home__contact"
+        >
           <a
             href={`mailto:${contact.email}`}
             className="link-underline hover:text-primary-800 home__contact-link home__contact-link--email"
@@ -115,6 +116,15 @@ export default async function Home() {
             className="link-underline hover:text-primary-800 home__contact-link home__contact-link--mobile"
           >
             {contact.mobile}
+          </a>
+          {" · "}
+          <a
+            href={whatsappHref(whatsapp.message)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="link-underline hover:text-primary-800 home__contact-link home__contact-link--whatsapp"
+          >
+            {whatsapp.label}
           </a>
         </p>
       </main>

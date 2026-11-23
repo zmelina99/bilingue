@@ -51,7 +51,7 @@
     padding-block: 5rem;
   }
   @media (width >= 64rem) {
-    padding-block: 6rem;
+    padding-block: 4rem;
   }
 }
 

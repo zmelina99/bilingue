@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Section from "@/components/Section";
 import { brand } from "@/data/business";
 import { getDictionary, getLocale } from "@/lib/dictionaries";
-import { locales } from "@/lib/locales";
+import { alternatesFor } from "@/lib/site";
 
 export async function generateMetadata(): Promise<Metadata> {
   const lang = await getLocale();
@@ -10,10 +10,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
   return {
     title: common.termsSubtitle,
-    alternates: {
-      canonical: `/${lang}/terms`,
-      languages: Object.fromEntries(locales.map((l) => [l, `/${l}/terms`])),
-    },
+    alternates: alternatesFor(lang, "/terms"),
     openGraph: {
       title: common.termsSubtitle,
     },

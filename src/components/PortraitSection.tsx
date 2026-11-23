@@ -26,7 +26,7 @@ export default async function PortraitSection() {
               <MediaImage
                 src={portrait}
                 alt={t.imageAlt}
-                sizes="288px"
+                sizes="(min-width: 768px) 288px, 128px"
                 className="aspect-[4/5] portrait__image"
               />
             </div>

@@ -19,7 +19,7 @@ import {
 } from "@/data/business";
 import { getDictionary, getLocale } from "@/lib/dictionaries";
 import { slugify } from "@/lib/slug";
-import { locales } from "@/lib/locales";
+import { alternatesFor } from "@/lib/site";
 
 export async function generateMetadata(): Promise<Metadata> {
   const lang = await getLocale();
@@ -28,10 +28,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: header.nav.editing,
     description: editing.meta.description,
-    alternates: {
-      canonical: `/${lang}/editing`,
-      languages: Object.fromEntries(locales.map((l) => [l, `/${l}/editing`])),
-    },
+    alternates: alternatesFor(lang, "/editing"),
     openGraph: {
       title: header.nav.editing,
       description: editing.meta.description,
@@ -84,7 +81,7 @@ export default async function EditingPage() {
         {/* Trust proof sits directly under the services it supports. */}
         <div
           id="clients"
-          className="mt-12 scroll-mt-24 border-t border-primary-800/20 pt-10 md:mt-16 editing__clients"
+          className="mt-12 scroll-mt-24  pt-10 md:mt-16 editing__clients"
         >
           <Clients
             heading={clientsText.title}

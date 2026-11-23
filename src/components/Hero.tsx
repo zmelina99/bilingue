@@ -1,4 +1,4 @@
-import type { StaticImageData } from "next/image";
+import Image, { type StaticImageData } from "next/image";
 import type { ReactNode } from "react";
 import MediaImage from "@/components/MediaImage";
 
@@ -32,11 +32,13 @@ export default function Hero({
             bottom-anchored, sized by height so the tallest bloom reaches near
             the top without affecting the hero height. Proportions preserved
             (width auto); hidden below lg where the margin is too narrow. */}
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        <Image
           src="/iris-sprig.png"
           alt=""
           aria-hidden="true"
+          width={1024}
+          height={1536}
+          sizes="360px"
           className="pointer-events-none absolute bottom-0 left-0 hidden h-full w-auto select-none lg:block hero__sprig"
         />
 
@@ -66,7 +68,7 @@ export default function Hero({
           <MediaImage
             src={image}
             alt={imageAlt}
-            priority
+            preload
             still
             sizes="(min-width: 768px) 26rem, 100vw"
             className="aspect-[3/2] w-full max-w-[26rem] md:ml-auto hero__image"

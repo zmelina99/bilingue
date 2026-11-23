@@ -14,7 +14,7 @@ import konversationArt from "@/assets/art/tea-conversation.jpg";
 import { brand } from "@/data/business";
 import { getDictionary, getLocale } from "@/lib/dictionaries";
 import { slugify } from "@/lib/slug";
-import { locales } from "@/lib/locales";
+import { alternatesFor } from "@/lib/site";
 
 export async function generateMetadata(): Promise<Metadata> {
   const lang = await getLocale();
@@ -23,10 +23,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: header.nav.courses,
     description: courses.meta.description,
-    alternates: {
-      canonical: `/${lang}/courses`,
-      languages: Object.fromEntries(locales.map((l) => [l, `/${l}/courses`])),
-    },
+    alternates: alternatesFor(lang, "/courses"),
     openGraph: {
       title: header.nav.courses,
       description: courses.meta.description,
@@ -73,6 +70,7 @@ export default async function CoursesPage() {
             questionsTitle: offer.modal.questionsTitle,
             cta: offer.modal.cta,
             inquiryLabel: cta.requestLessons,
+            closeLabel: common.close,
           }}
           className="md:grid-cols-3 courses__services"
         />

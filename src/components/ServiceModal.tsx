@@ -22,6 +22,8 @@ type Props = {
   cta: string;
   /** Matching inquiry link label ("Unterricht anfragen"); closes the dialog and jumps to contact. */
   inquiryLabel?: string;
+  /** Accessible name of the close button. */
+  closeLabel: string;
   /** Contact target (same-page hash). */
   contactHref?: string;
 };
@@ -41,14 +43,12 @@ export default function ServiceModal({
   questionsTitle,
   cta,
   inquiryLabel,
+  closeLabel,
   contactHref = "#contact",
 }: Props) {
   const [open, setOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
   const titleId = useId();
-
-  useEffect(() => setMounted(true), []);
 
   useEffect(() => {
     if (!open) return;
@@ -123,8 +123,7 @@ export default function ServiceModal({
         </span>
       </button>
 
-      {mounted &&
-        open &&
+      {open &&
         createPortal(
           <div
             className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto overscroll-contain bg-ink/40 p-4 py-8 motion-safe:animate-fade-in sm:items-center sm:p-6 service-modal__overlay"
@@ -142,7 +141,7 @@ export default function ServiceModal({
               <button
                 type="button"
                 onClick={close}
-                aria-label="Schließen"
+                aria-label={closeLabel}
                 className="absolute right-4 top-4 inline-flex size-10 items-center justify-center rounded-full text-foreground/55 transition-colors hover:bg-foreground/5 hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground md:right-5 md:top-5 service-modal__close"
               >
                 <svg
@@ -219,7 +218,7 @@ export default function ServiceModal({
                   )}
                   <ButtonLink
                     href={contactHref}
-                    onClick={close}
+                    onClick={goToContact}
                     size="sm"
                     className="service-modal__cta"
                   >

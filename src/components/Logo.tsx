@@ -25,6 +25,7 @@ export default async function Logo({
         src={logo}
         alt=""
         height={40}
+        loading="eager"
         className={`logo__image h-10 w-auto transition-transform ${tone === "light" ? "brightness-0 invert" : ""} duration-500 ease-soft motion-safe:group-hover:-rotate-6`}
       />
       <span className="flex flex-col leading-none logo__text">

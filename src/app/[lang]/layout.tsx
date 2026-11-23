@@ -3,6 +3,7 @@ import { Cormorant_Garamond } from "next/font/google";
 import { lang } from "next/root-params";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import { locales } from "@/lib/locales";
+import { isIndexable, siteUrl } from "@/lib/site";
 import "../globals.css";
 
 const title = Cormorant_Garamond({
@@ -14,10 +15,9 @@ const title = Cormorant_Garamond({
 
 export const metadata: Metadata = {
   title: { default: "Bilingue", template: "%s – Bilingue" },
-  // Hosting is TBD: set NEXT_PUBLIC_SITE_URL once the domain is known.
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
-  ),
+  metadataBase: new URL(siteUrl),
+  // Previews and local builds: keep out of search results (see lib/site.ts).
+  robots: isIndexable ? undefined : { index: false, follow: false },
 };
 
 export function generateStaticParams() {

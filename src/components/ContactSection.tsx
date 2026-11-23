@@ -2,7 +2,7 @@
 import Image from "next/image";
 import lake from "@/assets/art/lake.jpg";
 import ButtonLink from "@/components/ButtonLink";
-import { brand, contact } from "@/data/business";
+import { brand, contact, whatsappHref } from "@/data/business";
 import { getDictionary } from "@/lib/dictionaries";
 
 const label =
@@ -18,7 +18,7 @@ export default async function ContactSection({
   /** Short CTA label (e.g. "Unterricht anfragen"); falls back to the email address. */
   inquiryLabel?: string;
 }) {
-  const { contact: t } = await getDictionary();
+  const { contact: t, whatsapp } = await getDictionary();
 
   return (
     <section
@@ -125,6 +125,16 @@ export default async function ContactSection({
                 className={`${value} contact__link`}
               >
                 {contact.mobile}
+              </a>
+            </dd>
+            <dd className="mt-2 contact__definition contact__definition--whatsapp">
+              <a
+                href={whatsappHref(whatsapp.message)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link-underline text-base text-primary-800 hover:text-primary-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground contact__link contact__link--whatsapp"
+              >
+                {whatsapp.label}
               </a>
             </dd>
           </div>

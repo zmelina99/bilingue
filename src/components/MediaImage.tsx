@@ -6,7 +6,8 @@ type Props = {
   className?: string;
   imageClassName?: string;
   sizes?: string;
-  priority?: boolean;
+  /** Above-the-fold LCP image: preload it instead of lazy-loading. */
+  preload?: boolean;
   /** Skip the hover zoom (e.g. for images inside a clickable card that zooms itself). */
   still?: boolean;
   borderRadius?: boolean;
@@ -18,7 +19,7 @@ export default function MediaImage({
   className = "",
   imageClassName = "",
   sizes = "(min-width: 768px) 560px, 100vw",
-  priority,
+  preload,
   still,
   borderRadius,
 }: Props) {
@@ -30,7 +31,7 @@ export default function MediaImage({
         alt={alt}
         fill
         sizes={sizes}
-        priority={priority}
+        preload={preload}
         className={`object-cover media-image__image ${imageClassName} ${
           still
             ? "media-image__image--still"
