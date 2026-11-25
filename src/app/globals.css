@@ -11,6 +11,23 @@
   --color-foreground: var(--foreground);
 }
 
+/*
+ * Contact form floating labels (see ContactForm `Control`). States live on the
+ * `.contact-form__control` wrapper, so no React state is needed:
+ *   cf-float   focused, has a value, autofilled, or a chosen service ([data-filled])
+ *   cf-filled  has a value but is not focused (and not invalid)
+ *   cf-focus   focused and not invalid
+ *   cf-hover   hovered while idle
+ *   cf-invalid aria-invalid="true" (focused or not)
+ * Text controls carry placeholder=" " so :placeholder-shown means "empty";
+ * the required <select> is :invalid while its empty option is selected.
+ */
+@custom-variant cf-float (&:is(.contact-form__control:is(:focus-within, :has(:is(input:not([type="hidden"]), textarea):not(:placeholder-shown)), :has(:autofill), :has(select:valid), :has([data-filled])) *));
+@custom-variant cf-filled (&:is(.contact-form__control:not(:focus-within, :has([aria-invalid="true"])):is(:has(:is(input:not([type="hidden"]), textarea):not(:placeholder-shown)), :has(:autofill), :has(select:valid), :has([data-filled])) *));
+@custom-variant cf-focus (&:is(.contact-form__control:focus-within:not(:has([aria-invalid="true"])) *));
+@custom-variant cf-hover (&:is(.contact-form__control:hover:not(:focus-within, :has([aria-invalid="true"])) *));
+@custom-variant cf-invalid (&:is(.contact-form__control:has([aria-invalid="true"]) *));
+
 /* Light only: the brand is designed on white. */
 :root {
   color-scheme: light;
@@ -93,7 +110,9 @@
   background-repeat: no-repeat;
   background-position: 0 100%;
   background-size: 0 1px;
-  transition: background-size 220ms var(--ease-soft), color 200ms;
+  transition:
+    background-size 220ms var(--ease-soft),
+    color 200ms;
   &:hover,
   &:focus-visible {
     background-size: 100% 1px;
@@ -107,6 +126,11 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
+}
+
+textarea:focus,
+input:focus {
+  outline: none;
 }
 
 ::selection {

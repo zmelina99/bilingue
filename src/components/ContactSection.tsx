@@ -5,11 +5,11 @@ import ContactDetails from "@/components/ContactDetails";
 import ContactForm from "@/components/ContactForm";
 import { brand, contact } from "@/data/business";
 import type { Service } from "@/lib/contact-form";
-import { CONTACT_HREF } from "@/lib/contact-anchor";
 import { getDictionary, getLocale } from "@/lib/dictionaries";
+import { CONTACT_SECTION_ID } from "@/lib/contact-anchor";
 
-// Identical on every service page. Old "#contact" URLs land on the section top;
-// all CTAs point to the form (#contact-form, rendered by ContactForm).
+// Identical on every service page. All contact CTAs point to this whole
+// section (#contact); ContactForm scrolls to it and focuses it.
 export default async function ContactSection({
   inquiryLabel,
   defaultService,
@@ -26,12 +26,13 @@ export default async function ContactSection({
 
   return (
     <section
-      id="contact"
+      id={CONTACT_SECTION_ID}
+      tabIndex={-1}
       aria-labelledby="contact-title"
-      className="scroll-mt-16 contact"
+      className="scroll-mt-16 outline-none contact"
     >
       {/* Compact introduction to the form below. */}
-      <div className="relative isolate flex min-h-[27rem] items-end overflow-hidden md:min-h-[28rem] contact__banner">
+      <div className="relative isolate flex min-h-[27rem] items-start pt-24 overflow-hidden md:min-h-[28rem] contact__banner">
         <Image
           src={lake}
           alt={t.imageAlt}
@@ -78,7 +79,7 @@ export default async function ContactSection({
           }}
         />
 
-        <div className="page-x pt-14 pb-24 text-white md:pt-16 md:pb-28 contact__content">
+        <div className="page-x pt-0 pb-12 text-white  md:pb-28 contact__content">
           <p
             id="contact-title"
             className="text-[0.6875rem] font-bold tracking-[0.2em] uppercase text-white/80 contact__title"
@@ -97,8 +98,8 @@ export default async function ContactSection({
         </div>
       </div>
 
-      <div className="relative -mt-px bg-surface contact__body">
-        <div className="page-x pt-4 pb-12 md:pt-6 md:pb-16 lg:pb-20 contact__layout">
+      <div className="relative flow-root bg-surface contact__body">
+        <div className="relative page-x pt-0 pb-12 md:-mt-12 md:pb-16 lg:pb-20 contact__layout">
           <div className="mx-auto w-full max-w-5xl">
             <ContactForm
               t={contactForm}

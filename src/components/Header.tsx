@@ -5,10 +5,10 @@ import MainNav from "@/components/MainNav";
 import MobileMenu from "@/components/MobileMenu";
 import { getDictionary, getLocale } from "@/lib/dictionaries";
 
-// One header for every page. `contactHref` defaults to the #contact section
-// present on every page (the form heading) (on the landing page: the contact line under the hero).
+// One header for every page. `contactHref` defaults to the #contact
+// section on every service page; the landing page passes /{lang}/courses#contact.
 export default async function Header({
-  contactHref = "#contact-form",
+  contactHref = "#contact",
   className = "bg-background",
 }: {
   contactHref?: string;

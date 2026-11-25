@@ -51,7 +51,7 @@ export default async function CoursesPage() {
         image={heroArt}
         imageAlt={courses.imageAlt}
         actions={
-          <ButtonLink href="#contact-form" size="lg" arrow className="courses__contact-button">
+          <ButtonLink href="#contact" size="lg" arrow className="courses__contact-button">
             {cta.requestLessons}
           </ButtonLink>
         }
@@ -87,7 +87,7 @@ export default async function CoursesPage() {
         <p className="font-sans max-md:leading-[1.6] courses__rates-intro">{rates.intro}</p>
         <p className="font-sans text-sm max-md:leading-[1.6] courses__rates-note">{rates.note}</p>
         <p className="courses__rates-cta">
-          <ArrowLink href="#contact-form">{cta.requestLessons}</ArrowLink>
+          <ArrowLink href="#contact">{cta.requestLessons}</ArrowLink>
         </p>
       </Section>
 

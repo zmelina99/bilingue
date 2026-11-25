@@ -7,11 +7,7 @@ import {
   type FormEvent,
   type ReactNode,
 } from "react";
-import {
-  CONTACT_FORM_ID,
-  CONTACT_HREF,
-  goToContactForm,
-} from "@/lib/contact-anchor";
+import { CONTACT_HREF, goToContactForm } from "@/lib/contact-anchor";
 import {
   limits,
   services,
@@ -21,12 +17,55 @@ import {
   type Service,
 } from "@/lib/contact-form";
 import type { Dictionary } from "@/lib/dictionaries";
+import ServiceSelect from "@/components/ServiceSelect";
 
 type Status = "idle" | "sending" | "success" | "error" | "rate";
 
+// The visible border is drawn by the notched <fieldset> in `Control`; the
+// control keeps a transparent 1px border so its size is unchanged.
 const field =
-  "block w-full rounded-md border border-neutral-300 bg-white px-4 py-3 font-sans text-base text-foreground placeholder:text-secondary hover:border-neutral-400 focus-visible:border-primary-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-800 aria-invalid:border-2 aria-invalid:border-red-700";
-const label = "mb-2.5 block text-sm font-bold text-foreground";
+  "block w-full rounded-md border border-transparent bg-surface px-3 py-3 font-sans text-base text-foreground outline-none contact-form__input";
+
+/**
+ * Outlined field with a floating label: a real <label> that rests inside the
+ * control and floats onto the top border, plus an aria-hidden fieldset/legend
+ * that cuts a notch in the border behind it (works on any background).
+ * States come from CSS variants in globals.css (cf-float, cf-focus, ...).
+ */
+function Control({
+  id,
+  label,
+  multiline = false,
+  children,
+}: {
+  id: string;
+  label: string;
+  /** Textarea: the resting label sits on the first line, not centered. */
+  multiline?: boolean;
+  children: ReactNode;
+}) {
+  const motion = "duration-200 ease-out motion-reduce:transition-none";
+  return (
+    <div className="relative contact-form__control">
+      {children}
+      <fieldset
+        aria-hidden
+        className={`pointer-events-none absolute inset-x-0 -top-[5px] bottom-0 m-0 min-w-0 rounded-md border border-neutral-300 px-2 text-left transition-colors ${motion} cf-hover:border-neutral-400 cf-focus:border-2 cf-focus:border-primary-800 cf-invalid:border-2 cf-invalid:border-red-700 contact-form__outline`}
+      >
+        <legend className="invisible float-none h-[11px] w-auto max-w-[0.01px] overflow-hidden p-0 text-xs font-medium whitespace-nowrap transition-[max-width] duration-[50ms] cf-float:max-w-full cf-float:duration-100 cf-float:delay-[50ms] contact-form__notch">
+          <span className="inline-block px-1">{label}</span>
+        </legend>
+      </fieldset>
+      <label
+        id={`${id}-label`}
+        htmlFor={id}
+        className={`pointer-events-none absolute left-3 max-w-[calc(100%-1.5rem)] truncate text-base leading-6 font-medium text-secondary transition-[top,translate,font-size,line-height,color] ${motion} ${multiline ? "top-3" : "top-1/2 -translate-y-1/2"} cf-float:top-0 cf-float:-translate-y-1/2 cf-float:text-xs cf-float:leading-4 cf-filled:text-foreground cf-focus:text-primary-800 cf-invalid:text-red-800 contact-form__label`}
+      >
+        {label}
+      </label>
+    </div>
+  );
+}
 const errorText =
   "mt-2 flex items-start gap-2 text-base font-medium text-red-800";
 
@@ -70,9 +109,9 @@ export default function ContactForm({
     startedAt.current = Date.now();
   }, []);
 
-  // Anchor behaviour. Ordinary "#contact-form" links are native anchors (the
-  // wrapper's scroll-margin-top clears the sticky header). Here we only
-  //  - move focus to the heading (never an input, so no mobile keyboard), and
+  // Anchor behaviour. Ordinary "#contact" links are native anchors (the
+  // section's scroll-margin-top clears the sticky header). Here we only
+  //  - move focus to the whole section (never an input, so no mobile keyboard), and
   //  - handle a click on a link whose hash is already in the URL: the browser
   //    may do nothing then, so scroll once ourselves (no second animation).
   useEffect(() => {
@@ -98,6 +137,7 @@ export default function ContactForm({
       window.removeEventListener("hashchange", onHash);
     };
   }, []);
+
   const sending = status === "sending";
 
   const fieldMessage = (code: FieldError) =>
@@ -121,8 +161,8 @@ export default function ContactForm({
         (k) => result.errors[k],
       );
       if (first) {
-        const el = formRef.current?.elements.namedItem(first);
-        if (el instanceof HTMLElement) el.focus();
+        // By id: the service value lives in a hidden input, its control is a button.
+        document.getElementById(`cf-${first}`)?.focus();
       }
       return;
     }
@@ -159,8 +199,9 @@ export default function ContactForm({
   const success = status === "success";
 
   return (
-    <div id={CONTACT_FORM_ID} className="scroll-mt-24 contact-form-wrap">
-      <div className="mt-8 grid grid-cols-1 gap-y-10 md:mt-10 md:grid-cols-[minmax(0,2fr)_1px_minmax(0,1fr)] md:gap-x-10 lg:gap-x-14 contact-form__layout">
+    <div className="contact-form-wrap">
+      <div className="-mt-2 grid grid-cols-1 gap-y-10 md:grid-cols-[minmax(0,2fr)_1px_minmax(0,1fr)] md:gap-x-10 lg:gap-x-14 contact-form__layout">
+        {" "}
         {success ? (
           <div role="status" className="contact-form contact-form--success">
             <p className="font-title text-3xl leading-tight font-semibold text-primary-800 md:text-4xl">
@@ -189,21 +230,21 @@ export default function ContactForm({
           >
             <div className="grid grid-cols-1 gap-x-6 gap-y-7 md:grid-cols-2 contact-form__grid">
               <div className="contact-form__field contact-form__field--name">
-                <label htmlFor="cf-name" className={label}>
-                  {t.name}
-                </label>
-                <input
-                  id="cf-name"
-                  name="name"
-                  type="text"
-                  autoComplete="name"
-                  maxLength={limits.name + 50}
-                  required
-                  aria-required
-                  aria-invalid={!!err("name")}
-                  aria-describedby={describe("name")}
-                  className={field}
-                />
+                <Control id="cf-name" label={t.name}>
+                  <input
+                    id="cf-name"
+                    name="name"
+                    type="text"
+                    autoComplete="name"
+                    maxLength={limits.name + 50}
+                    required
+                    aria-required
+                    aria-invalid={!!err("name")}
+                    aria-describedby={describe("name")}
+                    placeholder=" "
+                    className={field}
+                  />
+                </Control>
                 {err("name") && (
                   <FieldMessage id="name-error">
                     {fieldMessage(err("name")!)}
@@ -212,21 +253,21 @@ export default function ContactForm({
               </div>
 
               <div className="contact-form__field contact-form__field--email">
-                <label htmlFor="cf-email" className={label}>
-                  {t.email}
-                </label>
-                <input
-                  id="cf-email"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
-                  inputMode="email"
-                  required
-                  aria-required
-                  aria-invalid={!!err("email")}
-                  aria-describedby={describe("email")}
-                  className={field}
-                />
+                <Control id="cf-email" label={t.email}>
+                  <input
+                    id="cf-email"
+                    name="email"
+                    type="email"
+                    autoComplete="email"
+                    inputMode="email"
+                    required
+                    aria-required
+                    aria-invalid={!!err("email")}
+                    aria-describedby={describe("email")}
+                    placeholder=" "
+                    className={field}
+                  />
+                </Control>
                 {err("email") && (
                   <FieldMessage id="email-error">
                     {fieldMessage(err("email")!)}
@@ -235,42 +276,21 @@ export default function ContactForm({
               </div>
 
               <div className="md:col-span-2 contact-form__field contact-form__field--service">
-                <label htmlFor="cf-service" className={label}>
-                  {t.service}
-                </label>
-
-                <div className="relative">
-                  <select
+                <Control id="cf-service" label={t.service}>
+                  <ServiceSelect
                     id="cf-service"
                     name="service"
+                    options={services.map((s) => ({
+                      value: s,
+                      label: t.services[s],
+                    }))}
                     defaultValue={defaultService}
-                    required
-                    aria-required
-                    aria-invalid={!!err("service")}
-                    aria-describedby={describe("service")}
-                    className={`${field} appearance-none pr-10`}
-                  >
-                    <option value="" disabled>
-                      {t.choose}
-                    </option>
-                    {services.map((s) => (
-                      <option key={s} value={s}>
-                        {t.services[s]}
-                      </option>
-                    ))}
-                  </select>
-
-                  <svg
-                    aria-hidden="true"
-                    className="pointer-events-none absolute right-4 top-1/2 size-4 -translate-y-1/2"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                  >
-                    <path d="m3 6 5 5 5-5" />
-                  </svg>
-                </div>
+                    placeholder={t.choose}
+                    invalid={!!err("service")}
+                    describedBy={describe("service")}
+                    className={field}
+                  />
+                </Control>
 
                 {err("service") && (
                   <FieldMessage id="service-error">
@@ -280,25 +300,25 @@ export default function ContactForm({
               </div>
 
               <div className="md:col-span-2 contact-form__field contact-form__field--message">
-                <label htmlFor="cf-message" className={label}>
-                  {t.message}
-                </label>
-                <textarea
-                  id="cf-message"
-                  name="message"
-                  rows={6}
-                  required
-                  aria-required
-                  onChange={(e) => setCount(e.target.value.length)}
-                  aria-invalid={!!err("message")}
-                  aria-describedby={[
-                    describe("message"),
-                    showCount ? "message-count" : "",
-                  ]
-                    .filter(Boolean)
-                    .join(" ")}
-                  className={`${field} resize-y`}
-                />
+                <Control id="cf-message" label={t.message} multiline>
+                  <textarea
+                    id="cf-message"
+                    name="message"
+                    rows={4}
+                    required
+                    aria-required
+                    onChange={(e) => setCount(e.target.value.length)}
+                    aria-invalid={!!err("message")}
+                    aria-describedby={[
+                      describe("message"),
+                      showCount ? "message-count" : "",
+                    ]
+                      .filter(Boolean)
+                      .join(" ")}
+                    placeholder=" "
+                    className={`${field} resize-y`}
+                  />
+                </Control>
                 <div className="flex flex-wrap justify-between gap-x-4">
                   {err("message") ? (
                     <FieldMessage id="message-error">
@@ -365,7 +385,6 @@ export default function ContactForm({
             </button>
           </form>
         )}
-
         {aside && (
           <>
             <div

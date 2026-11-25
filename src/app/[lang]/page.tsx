@@ -27,7 +27,7 @@ export default async function Home() {
 
   return (
     <div className="flex min-h-dvh flex-col bg-surface home">
-      <Header className="bg-surface home__header" />
+      <Header contactHref={`/${lang}/courses#contact`} className="bg-surface home__header" />
       <main className="relative isolate flex flex-1 flex-col overflow-hidden home__main">
         <section className="page-x grid-page flex-1 items-center py-6 sm:py-8 home__hero">
           {/* Phones: title, service choices, artwork, then the longer text.
@@ -79,7 +79,7 @@ export default async function Home() {
               {hero.body}
             </p>
             <p className="order-6 mt-4 text-sm sm:text-base md:order-4 home__contact-cta">
-              <ArrowLink href="/courses#contact-form" className="font-normal">
+              <ArrowLink href={`/${lang}/courses#contact`} className="font-normal">
                 {cta.contactDanielle}
               </ArrowLink>
             </p>

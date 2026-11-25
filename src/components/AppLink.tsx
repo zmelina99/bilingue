@@ -2,7 +2,7 @@
 import Link from "next/link";
 import type { ComponentProps } from "react";
 
-// Same-page hash links (e.g. "#contact-form") are plain native anchors, so the
+// Same-page hash links (e.g. "#contact") are plain native anchors, so the
 // browser scrolls to the target and applies `scroll-margin-top`; the Next router
 // stays out of it. Everything else is a normal <Link>.
 export default function AppLink({
