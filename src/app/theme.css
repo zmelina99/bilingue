@@ -16,7 +16,8 @@
   /* Deep navy for the closing contact + footer band */
   --color-ink: #10162a;
 
-  --color-secondary: #717578;
+  /* ≥ 4.5:1 on white and on --color-surface (WCAG AA). */
+  --color-secondary: #5f6366;
   /* Soft band behind hero and page headers.
      Two interchangeable options — comment one, uncomment the other. */
   /* OPTION A — Cool gray (original) */
@@ -25,7 +26,7 @@
   --color-surface: #f8f6f2;
 
   --font-title: var(--font-cormorant), "Cormorant Garamond", serif;
-  --font-sans: Arial, Helvetica, sans-serif;
+  --font-sans: var(--font-source-sans), "Source Sans 3", Arial, sans-serif;
 
   /* Motion */
   --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
@@ -68,8 +69,8 @@
 }
 
 @layer base {
-  /* Every heading is Cormorant Garamond; body text falls back to --font-sans
-     (Arial). Label-style headings opt back out via the .eyebrow utility. */
+  /* Every heading is Cormorant Garamond; body text uses --font-sans
+     (Source Sans 3). */
   h1,
   h2,
   h3,

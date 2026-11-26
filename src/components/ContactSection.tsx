@@ -1,6 +1,5 @@
 import Image from "next/image";
 import lake from "@/assets/art/lake.jpg";
-import ButtonLink from "@/components/ButtonLink";
 import ContactDetails from "@/components/ContactDetails";
 import ContactForm from "@/components/ContactForm";
 import { brand, contact } from "@/data/business";
@@ -9,7 +8,9 @@ import { getDictionary, getLocale } from "@/lib/dictionaries";
 import { CONTACT_SECTION_ID } from "@/lib/contact-anchor";
 
 // Identical on every service page. All contact CTAs point to this whole
-// section (#contact); ContactForm scrolls to it and focuses it.
+// section (#contact); ContactForm scrolls to it and focuses it. The negative
+// scroll margin (banner pt-24 − 4rem header − 1.5rem gap) stops the scroll just
+// above the "Kontakt" label instead of at the top of the lake image.
 export default async function ContactSection({
   inquiryLabel,
   defaultService,
@@ -29,7 +30,7 @@ export default async function ContactSection({
       id={CONTACT_SECTION_ID}
       tabIndex={-1}
       aria-labelledby="contact-title"
-      className="scroll-mt-16 outline-none contact"
+      className="-scroll-mt-1 outline-none contact"
     >
       {/* Compact introduction to the form below. */}
       <div className="relative isolate flex min-h-[27rem] items-start pt-24 overflow-hidden md:min-h-[28rem] contact__banner">
@@ -51,41 +52,20 @@ export default async function ContactSection({
           }}
         />
 
-        {/* Fade into the form's background: the lower ~55% of the artwork,
-            eased in many small steps so it never reads as a band. The final
-            color is the same --color-surface token the form section uses. */}
+        {/* Fade into the form's background (eased gradient: see .contact__fade
+            in globals.css). */}
         <div
           aria-hidden
           className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-[55%] contact__fade"
-          style={{
-            backgroundImage: `linear-gradient(to top, ${[
-              [0, 1],
-              [6, 0.98],
-              [14, 0.92],
-              [24, 0.8],
-              [36, 0.62],
-              [48, 0.43],
-              [60, 0.27],
-              [72, 0.15],
-              [84, 0.06],
-              [93, 0.015],
-              [100, 0],
-            ]
-              .map(
-                ([pos, a]) =>
-                  `color-mix(in srgb, var(--color-surface) ${a * 100}%, transparent) ${pos}%`,
-              )
-              .join(", ")})`,
-          }}
         />
 
-        <div className="page-x pt-0 pb-12 text-white  md:pb-28 contact__content">
-          <p
+        <div className="page-x pt-0 pb-12 text-white md:pb-28 contact__content">
+          <h2
             id="contact-title"
             className="text-[0.6875rem] font-bold tracking-[0.2em] uppercase text-white/80 contact__title"
           >
             {t.title}
-          </p>
+          </h2>
 
           <p className="mt-3 max-w-[750px] [text-shadow:0_1px_14px_rgb(0_1_66/0.45)] font-title text-[1.5rem] leading-[1.3] md:text-[1.875rem] contact__body">
             {t.body}
@@ -98,7 +78,7 @@ export default async function ContactSection({
         </div>
       </div>
 
-      <div className="relative flow-root bg-surface contact__body">
+      <div className="relative flow-root bg-surface contact__form-area">
         <div className="relative page-x pt-0 pb-12 md:-mt-12 md:pb-16 lg:pb-20 contact__layout">
           <div className="mx-auto w-full max-w-5xl">
             <ContactForm

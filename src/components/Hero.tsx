@@ -31,7 +31,8 @@ export default function Hero({
             diagonally from the bottom-left corner. Absolutely positioned and
             bottom-anchored, sized by height so the tallest bloom reaches near
             the top without affecting the hero height. Proportions preserved
-            (width auto); hidden below lg where the margin is too narrow. */}
+            (width auto); hidden below lg where the margin is too narrow
+            (phones get their own copy beside the painting, see below). */}
         <Image
           src="/iris-sprig.png"
           alt=""
@@ -46,7 +47,7 @@ export default function Hero({
             At lg+ a left pad clears the full width of the diagonal sprig so the
             text never overlaps it. */}
         <div className="md:col-span-5 md:col-start-1 md:row-start-1 lg:col-span-6 lg:pl-[180px] xl:pl-[220px] hero__content">
-          <p className="eyebrow hero__eyebrow">{eyebrow}</p>
+          <p className="eyebrow text-primary-800 hero__eyebrow">{eyebrow}</p>
 
           <h1
             className="mt-3 text-[clamp(2.5rem,6vw,5.25rem)] leading-[1.02] font-semibold tracking-tight text-balance break-words [hyphens:auto] hero__title"
@@ -62,19 +63,31 @@ export default function Hero({
         </div>
 
         {/* Hero illustration — right column on desktop, below on mobile */}
-        <div
-          className="motion-safe:animate-hero-in md:col-span-6 md:col-start-7 md:row-start-1 hero__media"
-        >
-          <MediaImage
-            src={image}
-            alt={imageAlt}
-            preload
-            still
-            sizes="(min-width: 768px) 26rem, 100vw"
-            className="aspect-[3/2] w-full max-w-[26rem] md:ml-auto hero__image"
-            imageClassName={imageClassName}
-            borderRadius
+        <div className="relative motion-safe:animate-hero-in md:col-span-6 md:col-start-7 md:row-start-1 md:flex md:items-center md:self-stretch hero__media">
+          {/* Phones only: the iris sprig, mirrored, rising from behind the
+              painting's top-right corner beside the CTA (rendered first, so
+              the artwork covers its edge). */}
+          <Image
+            src="/iris-sprig.png"
+            alt=""
+            aria-hidden="true"
+            width={1024}
+            height={1536}
+            sizes="140px"
+            className="pointer-events-none absolute right-2 bottom-[calc(100%-2rem)] h-36 w-auto -scale-x-100 select-none md:hidden hero__sprig hero__sprig--mobile"
           />
+          <div className="w-full max-w-[26rem] md:ml-auto hero__frame">
+            <MediaImage
+              src={image}
+              alt={imageAlt}
+              preload
+              still
+              sizes="(min-width: 768px) 26rem, 100vw"
+              className="aspect-[3/2] w-full hero__image"
+              imageClassName={imageClassName}
+              borderRadius
+            />
+          </div>
         </div>
       </div>
 

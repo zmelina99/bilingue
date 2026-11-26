@@ -253,6 +253,12 @@
       "nameLong": "Le nom est trop long ({max} caractères max.).",
       "messageShort": "Veuillez écrire au moins {min} caractères.",
       "messageLong": "Le message est trop long ({max} caractères max.)."
+    },
+    "requiredFields": {
+      "name": "Veuillez indiquer votre nom.",
+      "email": "Veuillez indiquer votre adresse e-mail.",
+      "service": "Veuillez choisir votre demande.",
+      "message": "Veuillez écrire un message."
     }
   }
 }

@@ -2,7 +2,7 @@
 
 import AppLink from "@/components/AppLink";
 import { usePathname } from "next/navigation";
-import { useEffect, useId, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 
 type Props = {
   label: string;
@@ -15,19 +15,36 @@ export default function MobileMenu({ label, items, contact }: Props) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const panelId = useId();
+  const root = useRef<HTMLDivElement>(null);
+  const toggle = useRef<HTMLButtonElement>(null);
 
+  // While open: focus the first link, close on Escape (focus back to the
+  // toggle) and on any press outside the menu.
   useEffect(() => {
     if (!open) return;
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    root.current?.querySelector<HTMLElement>("nav a")?.focus();
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== "Escape") return;
+      setOpen(false);
+      toggle.current?.focus();
+    };
+    const onDown = (e: PointerEvent) => {
+      if (!root.current?.contains(e.target as Node)) setOpen(false);
+    };
     document.addEventListener("keydown", onKey);
-    return () => document.removeEventListener("keydown", onKey);
+    document.addEventListener("pointerdown", onDown);
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.removeEventListener("pointerdown", onDown);
+    };
   }, [open]);
 
   const close = () => setOpen(false);
 
   return (
-    <div className="md:hidden mobile-menu">
+    <div ref={root} className="md:hidden mobile-menu">
       <button
+        ref={toggle}
         type="button"
         aria-expanded={open}
         aria-controls={panelId}

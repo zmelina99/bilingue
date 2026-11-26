@@ -4,6 +4,7 @@ import {
   useEffect,
   useRef,
   useState,
+  type FocusEvent,
   type FormEvent,
   type ReactNode,
 } from "react";
@@ -20,6 +21,9 @@ import type { Dictionary } from "@/lib/dictionaries";
 import ServiceSelect from "@/components/ServiceSelect";
 
 type Status = "idle" | "sending" | "success" | "error" | "rate";
+type Field = keyof FieldErrors;
+const fields: readonly Field[] = ["name", "email", "service", "message"];
+const isField = (v: string): v is Field => (fields as string[]).includes(v);
 
 // The visible border is drawn by the notched <fieldset> in `Control`; the
 // control keeps a transparent 1px border so its size is unchanged.
@@ -66,12 +70,16 @@ function Control({
     </div>
   );
 }
-const errorText =
-  "mt-2 flex items-start gap-2 text-base font-medium text-red-800";
 
+// Not a live region: after a failed submit focus moves to the first invalid
+// field (which reads its description); blur errors go through one polite
+// announcer in the form.
 function FieldMessage({ id, children }: { id: string; children: string }) {
   return (
-    <p id={id} role="alert" className={errorText}>
+    <p
+      id={id}
+      className="mt-2 flex items-start gap-2 text-base font-medium text-red-800"
+    >
       <svg
         aria-hidden
         viewBox="0 0 20 20"
@@ -101,33 +109,31 @@ export default function ContactForm({
 }) {
   const [status, setStatus] = useState<Status>("idle");
   const [errors, setErrors] = useState<FieldErrors>({});
+  const [announcement, setAnnouncement] = useState("");
   const [count, setCount] = useState(0);
   const startedAt = useRef(0);
-  const formRef = useRef<HTMLFormElement>(null);
   const inFlight = useRef(false);
+  /** Fields the user has typed in; only these are validated on blur. */
+  const edited = useRef(new Set<Field>());
+  const successRef = useRef<HTMLDivElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
+  const refocusForm = useRef(false);
+
   useEffect(() => {
     startedAt.current = Date.now();
   }, []);
 
-  // Anchor behaviour. Ordinary "#contact" links are native anchors (the
-  // section's scroll-margin-top clears the sticky header). Here we only
-  //  - move focus to the whole section (never an input, so no mobile keyboard), and
-  //  - handle a click on a link whose hash is already in the URL: the browser
-  //    may do nothing then, so scroll once ourselves (no second animation).
+  // "#contact" links are native anchors: the browser scrolls (also when the
+  // hash is already in the URL) and scroll-margin-top clears the sticky header.
+  // We only move focus to the section afterwards (never an input, so no
+  // mobile keyboard). A same-hash click fires no hashchange, hence the click.
   useEffect(() => {
     const focusOnly = () => goToContactForm({ scroll: false });
     if (location.hash === CONTACT_HREF) focusOnly();
     const onClick = (e: MouseEvent) => {
-      if (e.defaultPrevented || e.button !== 0) return;
-      if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
       const a = (e.target as Element).closest?.("a[href]");
-      if (a?.getAttribute("href") !== CONTACT_HREF) return;
-      if (location.hash === CONTACT_HREF) {
-        e.preventDefault();
-        goToContactForm();
-      } else {
+      if (a?.getAttribute("href") === CONTACT_HREF && !e.defaultPrevented)
         setTimeout(focusOnly, 0);
-      }
     };
     const onHash = () => location.hash === CONTACT_HREF && focusOnly();
     document.addEventListener("click", onClick);
@@ -138,15 +144,64 @@ export default function ContactForm({
     };
   }, []);
 
+  // Success replaces the form, so move focus to the confirmation (the submit
+  // button that had focus is gone); "send another" brings it back to the form.
+  useEffect(() => {
+    if (status === "success") successRef.current?.focus();
+    else if (refocusForm.current) {
+      refocusForm.current = false;
+      document.getElementById("cf-name")?.focus();
+    }
+  }, [status]);
+
   const sending = status === "sending";
 
-  const fieldMessage = (code: FieldError) =>
-    t.errors[code]
-      .replace(
-        "{max}",
-        String(code === "nameLong" ? limits.name : limits.messageMax),
-      )
-      .replace("{min}", String(limits.messageMin));
+  const fieldMessage = (k: Field, code: FieldError) =>
+    code === "required"
+      ? t.requiredFields[k]
+      : t.errors[code]
+          .replace(
+            "{max}",
+            String(code === "nameLong" ? limits.name : limits.messageMax),
+          )
+          .replace("{min}", String(limits.messageMin));
+
+  const currentErrors = () =>
+    formRef.current
+      ? (() => {
+          const r = validate(Object.fromEntries(new FormData(formRef.current)));
+          return r.ok ? {} : r.errors;
+        })()
+      : {};
+
+  const setFieldError = (k: Field, code: FieldError | undefined) =>
+    setErrors((prev) => {
+      if (prev[k] === code) return prev;
+      const next = { ...prev };
+      if (code) next[k] = code;
+      else delete next[k];
+      return next;
+    });
+
+  // Clear a field's error as soon as its value is fixed (never add one while typing).
+  function onInput(e: FormEvent<HTMLFormElement>) {
+    const name = (e.target as unknown as HTMLInputElement).name;
+    if (!isField(name)) return;
+    edited.current.add(name);
+    if (errors[name] && !currentErrors()[name]) setFieldError(name, undefined);
+  }
+
+  // Validate a field the user edited once they leave it, and announce a new error.
+  function onBlur(e: FocusEvent<HTMLFormElement>) {
+    const name = (e.target as unknown as HTMLInputElement).name;
+    if (!isField(name) || !edited.current.has(name)) return;
+    const code = currentErrors()[name];
+    if (code && code !== errors[name]) {
+      setAnnouncement("");
+      setTimeout(() => setAnnouncement(fieldMessage(name, code)), 300);
+    }
+    setFieldError(name, code);
+  }
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -156,14 +211,8 @@ export default function ContactForm({
     if (!result.ok) {
       setErrors(result.errors);
       setStatus("idle");
-      // Move focus to the first invalid field.
-      const first = (["name", "email", "service", "message"] as const).find(
-        (k) => result.errors[k],
-      );
-      if (first) {
-        // By id: the service value lives in a hidden input, its control is a button.
-        document.getElementById(`cf-${first}`)?.focus();
-      }
+      const first = fields.find((k) => result.errors[k]);
+      if (first) document.getElementById(`cf-${first}`)?.focus();
       return;
     }
     setErrors({});
@@ -191,19 +240,25 @@ export default function ContactForm({
     }
   }
 
-  const err = (k: keyof FieldErrors) => errors[k];
-  const describe = (k: keyof FieldErrors) =>
-    err(k) ? `${k}-error` : undefined;
+  const err = (k: Field) => errors[k];
+  const describe = (k: Field) => (err(k) ? `${k}-error` : undefined);
+  const message = (k: Field) =>
+    err(k) && (
+      <FieldMessage id={`${k}-error`}>{fieldMessage(k, err(k)!)}</FieldMessage>
+    );
 
   const showCount = count >= limits.messageMax * 0.8;
-  const success = status === "success";
 
   return (
     <div className="contact-form-wrap">
       <div className="-mt-2 grid grid-cols-1 gap-y-10 md:grid-cols-[minmax(0,2fr)_1px_minmax(0,1fr)] md:gap-x-10 lg:gap-x-14 contact-form__layout">
-        {" "}
-        {success ? (
-          <div role="status" className="contact-form contact-form--success">
+        {status === "success" ? (
+          <div
+            ref={successRef}
+            role="status"
+            tabIndex={-1}
+            className="outline-none contact-form contact-form--success"
+          >
             <p className="font-title text-3xl leading-tight font-semibold text-primary-800 md:text-4xl">
               {t.successTitle}
             </p>
@@ -211,11 +266,13 @@ export default function ContactForm({
             <button
               type="button"
               onClick={() => {
+                edited.current.clear();
+                refocusForm.current = true;
                 setStatus("idle");
                 setCount(0);
                 startedAt.current = Date.now();
               }}
-              className="link-underline mt-5 text-primary-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
+              className="link-underline mt-5 inline-flex min-h-6 items-center text-primary-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
             >
               {t.again}
             </button>
@@ -225,7 +282,9 @@ export default function ContactForm({
             ref={formRef}
             noValidate
             onSubmit={onSubmit}
-            aria-labelledby="contact-form-title"
+            onInput={onInput}
+            onBlur={onBlur}
+            aria-label={t.title}
             className="contact-form"
           >
             <div className="grid grid-cols-1 gap-x-6 gap-y-7 md:grid-cols-2 contact-form__grid">
@@ -238,18 +297,13 @@ export default function ContactForm({
                     autoComplete="name"
                     maxLength={limits.name + 50}
                     required
-                    aria-required
                     aria-invalid={!!err("name")}
                     aria-describedby={describe("name")}
                     placeholder=" "
                     className={field}
                   />
                 </Control>
-                {err("name") && (
-                  <FieldMessage id="name-error">
-                    {fieldMessage(err("name")!)}
-                  </FieldMessage>
-                )}
+                {message("name")}
               </div>
 
               <div className="contact-form__field contact-form__field--email">
@@ -261,18 +315,13 @@ export default function ContactForm({
                     autoComplete="email"
                     inputMode="email"
                     required
-                    aria-required
                     aria-invalid={!!err("email")}
                     aria-describedby={describe("email")}
                     placeholder=" "
                     className={field}
                   />
                 </Control>
-                {err("email") && (
-                  <FieldMessage id="email-error">
-                    {fieldMessage(err("email")!)}
-                  </FieldMessage>
-                )}
+                {message("email")}
               </div>
 
               <div className="md:col-span-2 contact-form__field contact-form__field--service">
@@ -291,12 +340,7 @@ export default function ContactForm({
                     className={field}
                   />
                 </Control>
-
-                {err("service") && (
-                  <FieldMessage id="service-error">
-                    {fieldMessage(err("service")!)}
-                  </FieldMessage>
-                )}
+                {message("service")}
               </div>
 
               <div className="md:col-span-2 contact-form__field contact-form__field--message">
@@ -306,27 +350,19 @@ export default function ContactForm({
                     name="message"
                     rows={4}
                     required
-                    aria-required
                     onChange={(e) => setCount(e.target.value.length)}
                     aria-invalid={!!err("message")}
-                    aria-describedby={[
-                      describe("message"),
-                      showCount ? "message-count" : "",
-                    ]
-                      .filter(Boolean)
-                      .join(" ")}
+                    aria-describedby={
+                      [describe("message"), showCount ? "message-count" : ""]
+                        .filter(Boolean)
+                        .join(" ") || undefined
+                    }
                     placeholder=" "
                     className={`${field} resize-y`}
                   />
                 </Control>
                 <div className="flex flex-wrap justify-between gap-x-4">
-                  {err("message") ? (
-                    <FieldMessage id="message-error">
-                      {fieldMessage(err("message")!)}
-                    </FieldMessage>
-                  ) : (
-                    <span />
-                  )}
+                  {message("message") || <span />}
                   {showCount && (
                     <p
                       id="message-count"
@@ -357,10 +393,14 @@ export default function ContactForm({
               </div>
             </div>
 
+            <p aria-live="polite" className="sr-only">
+              {announcement}
+            </p>
+
             {(status === "error" || status === "rate") && (
               <div
                 role="alert"
-                className="mt-6 rounded-md border border-2 border-red-800 bg-red-50 px-4 py-3 text-base text-red-900 contact-form__alert"
+                className="mt-6 rounded-md border-2 border-red-800 bg-red-50 px-4 py-3 text-base text-red-900 contact-form__alert"
               >
                 <p className="font-bold">{t.errorTitle}</p>
                 <p className="mt-1">
@@ -378,7 +418,6 @@ export default function ContactForm({
             <button
               type="submit"
               disabled={sending}
-              aria-disabled={sending}
               className="mt-6 inline-flex w-full items-center justify-center rounded-full bg-primary-800 px-8 py-3 text-base text-white transition duration-300 ease-soft hover:bg-primary-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground disabled:cursor-wait disabled:opacity-60 sm:w-auto sm:px-10 sm:py-4 sm:text-xl contact-form__submit"
             >
               {sending ? t.sending : t.submit}

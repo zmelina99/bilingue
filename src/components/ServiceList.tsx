@@ -36,14 +36,14 @@ export default function ServiceList({
 }: Props) {
   return (
     <ul className={`grid gap-x-8 gap-y-10 md:gap-y-12 lg:gap-x-10 service-list ${className}`}>
-      {items.map((item, i) =>
+      {items.map((item) =>
         item.image ? (
           <li
             key={item.title}
             id={slugify(item.title)}
             className="group relative flex scroll-mt-24 flex-col service-list__item service-list__item--card"
           >
-            <Reveal delay={i * 120}>
+            <Reveal>
               <div className="relative aspect-[3/2] w-full overflow-hidden rounded-lg bg-surface service-list__media">
                 <Image
                   src={item.image}

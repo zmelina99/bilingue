@@ -7,7 +7,8 @@ const reducedMotion = () =>
 /**
  * Bring the whole contact section (banner + form) into view and focus the
  * section itself (never an input, so no mobile keyboard opens). Scrolling
- * honours the section's `scroll-margin-top`, so the sticky header never covers it.
+ * honours the section's `scroll-margin-top`, which lands the "Kontakt" label just
+ * below the sticky header.
  * `scroll: false` only moves focus (used after the browser scrolled natively).
  */
 export function goToContactForm({ scroll = true } = {}) {

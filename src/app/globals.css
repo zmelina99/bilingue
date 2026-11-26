@@ -4,6 +4,8 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  /* Light only: the brand is designed on white. */
+  color-scheme: light;
 }
 
 @theme inline {
@@ -27,11 +29,6 @@
 @custom-variant cf-focus (&:is(.contact-form__control:focus-within:not(:has([aria-invalid="true"])) *));
 @custom-variant cf-hover (&:is(.contact-form__control:hover:not(:focus-within, :has([aria-invalid="true"])) *));
 @custom-variant cf-invalid (&:is(.contact-form__control:has([aria-invalid="true"]) *));
-
-/* Light only: the brand is designed on white. */
-:root {
-  color-scheme: light;
-}
 
 /*
  * Layout system
@@ -72,14 +69,13 @@
   }
 }
 
-/* Small uppercase label above headings. */
+/* Small uppercase label above headings. Color is set per use. */
 @utility eyebrow {
   font-family: var(--font-sans);
   font-size: 1.25rem;
-  font-weight: 700;
-  letter-spacing: 0.2em;
+  font-weight: 600;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--color-primary-800);
 }
 
 @utility heading-1 {
@@ -128,11 +124,6 @@ body {
   font-family: var(--font-sans);
 }
 
-textarea:focus,
-input:focus {
-  outline: none;
-}
-
 ::selection {
   background: var(--color-primary-200);
   color: var(--color-primary-950);
@@ -141,6 +132,59 @@ input:focus {
 @media (prefers-reduced-motion: no-preference) {
   html {
     scroll-behavior: smooth;
+  }
+}
+
+/* No background scrolling behind an open modal <dialog>. */
+html:has(dialog[open]:modal) {
+  overflow: hidden;
+}
+
+/* Service select: the disabled empty option is the placeholder. It is only
+   shown while focused; at rest the floating label sits in its place. */
+.contact-form__select:invalid:not(:focus) {
+  color: transparent;
+}
+.contact-form__select option {
+  color: var(--foreground);
+}
+
+/* Contact banner: fades the lower part of the artwork into the form's
+   --color-surface in small eased steps, so it never reads as a band. */
+.contact__fade {
+  --fade: var(--color-surface);
+  background-image: linear-gradient(
+    to top,
+    var(--fade) 0%,
+    color-mix(in srgb, var(--fade) 98%, transparent) 6%,
+    color-mix(in srgb, var(--fade) 92%, transparent) 14%,
+    color-mix(in srgb, var(--fade) 80%, transparent) 24%,
+    color-mix(in srgb, var(--fade) 62%, transparent) 36%,
+    color-mix(in srgb, var(--fade) 43%, transparent) 48%,
+    color-mix(in srgb, var(--fade) 27%, transparent) 60%,
+    color-mix(in srgb, var(--fade) 15%, transparent) 72%,
+    color-mix(in srgb, var(--fade) 6%, transparent) 84%,
+    color-mix(in srgb, var(--fade) 1.5%, transparent) 93%,
+    transparent 100%
+  );
+}
+
+/* One-time entrance as a block scrolls into view (see Reveal). CSS only:
+   visible by default, animated only where scroll-driven animations exist and
+   motion is welcome, so content never waits for JavaScript. */
+@keyframes reveal {
+  from {
+    opacity: 0;
+    translate: 0 0.5rem;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .reveal-item {
+      animation: reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 10% entry 70%;
+    }
   }
 }
 /* {    

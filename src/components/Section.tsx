@@ -92,7 +92,7 @@ export default function Section({
 
   const heading = (
     <div className={`${headingAlignment} section__heading`}>
-      {eyebrow && <p className="eyebrow section__eyebrow">{eyebrow}</p>}
+      {eyebrow && <p className="eyebrow text-primary-800 section__eyebrow">{eyebrow}</p>}
       <p
         id={`${id}-title`}
         className={`heading-2 section__title ${eyebrow ? "mt-3" : ""}`}

@@ -253,6 +253,12 @@
       "nameLong": "The name is too long (max. {max} characters).",
       "messageShort": "Please write at least {min} characters.",
       "messageLong": "The message is too long (max. {max} characters)."
+    },
+    "requiredFields": {
+      "name": "Please enter your name.",
+      "email": "Please enter your email address.",
+      "service": "Please choose a subject.",
+      "message": "Please write a message."
     }
   }
 }

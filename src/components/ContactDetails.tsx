@@ -1,10 +1,10 @@
 import { contact, whatsappHref } from "@/data/business";
 import { getDictionary } from "@/lib/dictionaries";
 
-const label =
-  "text-[0.6875rem] font-bold tracking-[0.2em] text-secondary uppercase";
+const label = "text-sm font-semibold text-secondary";
+// min-h-6: at least a 24px tap target (WCAG 2.2).
 const value =
-  "link-underline text-xl hover:text-primary-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground";
+  "link-underline inline-flex min-h-6 items-center text-xl hover:text-primary-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground";
 
 // Direct contact details; sits beside the contact form.
 export default async function ContactDetails() {
@@ -53,7 +53,7 @@ export default async function ContactDetails() {
             href={whatsappHref(whatsapp.message)}
             target="_blank"
             rel="noopener noreferrer"
-            className="link-underline text-base text-primary-800 hover:text-primary-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground contact__link contact__link--whatsapp"
+            className="link-underline inline-flex min-h-6 items-center text-base text-primary-800 hover:text-primary-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground contact__link contact__link--whatsapp"
           >
             {whatsapp.label}
           </a>
